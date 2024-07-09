@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AiController : MonoBehaviour
+public class AiController : PawnController
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Moveing(Vector3 MoveDirection)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.Moveing(MoveDirection);
     }
 }
