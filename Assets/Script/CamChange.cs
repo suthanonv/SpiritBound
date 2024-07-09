@@ -19,7 +19,7 @@ public class CamChange : MonoBehaviour
 
     public void SetCam(Transform CameraPosition)
     {
-        //MainCam.transform.position = CameraPosition.transform.position; 
+        MainCam.transform.position = CameraPosition.transform.position; 
     }
 
      public void SetCamWithPreSet(CameraPreSetInEachRoom PreSetCam)
