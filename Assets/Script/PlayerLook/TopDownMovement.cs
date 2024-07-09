@@ -19,34 +19,82 @@ public class TopDownCharacterMover : MonoBehaviour
     [SerializeField]
     private Camera Camera;
 
+    
+    [SerializeField]
+    private float DashSpeed = 1f;
+    [SerializeField]
+    private float DashDuration = 0.2f;
+    [SerializeField]
+    private float DashCooldown = 1f;
+
+    private CharacterController _characterController;
+    private bool isDashing = false;
+    private float dashTime;
+    private float lastDashTime;
+
     private void Awake()
     {
         _input = GetComponent<FollowMouse>();
+        _characterController = GetComponent<CharacterController>();
     }
 
     public void Teleport(Vector3 destination)
     {
-        this.GetComponent<CharacterController>().enabled = false;
+        _characterController.enabled = false;
         this.transform.position = destination;
-        this.GetComponent<CharacterController>().enabled = true;
+        _characterController.enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        HandleDashInput();
 
-        var targetVector = new Vector3(_input.InputVector.x, 0, _input.InputVector.y);
-        var movementVector = MoveTowardTarget(targetVector);
-
-        if (!RotateTowardMouse)
+        if (isDashing)
         {
-            RotateTowardMovementVector(movementVector);
+            Dash();
         }
-        if (RotateTowardMouse)
+        else
         {
-            RotateFromMouseVector();
+            var targetVector = new Vector3(_input.InputVector.x, 0, _input.InputVector.y);
+            var movementVector = MoveTowardTarget(targetVector);
+
+            if (RotateTowardMouse)
+            {
+                RotateFromMouseVector();
+            }
+            else
+            {
+                RotateTowardMovementVector(movementVector);
+            }
+        }
+    }
+
+    private void HandleDashInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time >= lastDashTime + DashCooldown)
+        {
+            StartDash();
+        }
+    }
+
+    private void StartDash()
+    {
+        isDashing = true;
+        dashTime = Time.time + DashDuration;
+        lastDashTime = Time.time;
+    }
+
+    private void Dash()
+    {
+        if (Time.time >= dashTime)
+        {
+            isDashing = false;
+            return;
         }
 
+        var dashVector = transform.forward * DashSpeed * Time.deltaTime;
+        _characterController.Move(dashVector);
     }
 
     private void RotateFromMouseVector()
@@ -64,8 +112,6 @@ public class TopDownCharacterMover : MonoBehaviour
     private Vector3 MoveTowardTarget(Vector3 targetVector)
     {
         var speed = MovementSpeed * Time.deltaTime;
-       
-
         targetVector = Quaternion.Euler(0, Camera.gameObject.transform.rotation.eulerAngles.y, 0) * targetVector;
         var targetPosition = transform.position + targetVector * speed;
         transform.position = targetPosition;

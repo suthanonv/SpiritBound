@@ -2168,11 +2168,61 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6887944191474724413, guid: 480115c981185024e9052d573666f127,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.018
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887944191474724413, guid: 480115c981185024e9052d573666f127,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887944191474724413, guid: 480115c981185024e9052d573666f127,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.48409078
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887944191474724413, guid: 480115c981185024e9052d573666f127,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5154184
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887944191474724413, guid: 480115c981185024e9052d573666f127,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5154184
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887944191474724413, guid: 480115c981185024e9052d573666f127,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.48409078
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887944191474724413, guid: 480115c981185024e9052d573666f127,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 93.59
+      objectReference: {fileID: 0}
     - target: {fileID: 8346548940211280451, guid: 480115c981185024e9052d573666f127,
         type: 3}
       propertyPath: Camera
       value: 
       objectReference: {fileID: 786408172}
+    - target: {fileID: 8346548940211280451, guid: 480115c981185024e9052d573666f127,
+        type: 3}
+      propertyPath: DashSpeed
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8346548940211280451, guid: 480115c981185024e9052d573666f127,
+        type: 3}
+      propertyPath: DashCooldown
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8346548940211280451, guid: 480115c981185024e9052d573666f127,
+        type: 3}
+      propertyPath: DashDuration
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
