@@ -8,7 +8,7 @@ public class Room : MonoBehaviour
     [SerializeField] Transform CameraHolderPositon;
      public void SetRoom(Transform Player)
     {
-        Player.GetComponent<PlayerController>().Teleport(PlayerSpawnPosition);
+        Player.GetComponent<TopDownCharacterMover>().Teleport(PlayerSpawnPosition.position);
 
     }
 
