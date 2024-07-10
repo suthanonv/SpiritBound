@@ -18,7 +18,7 @@ public class TopDownCharacterMover : MonoBehaviour
     [SerializeField] float DashSpeedMultiple = 2;
    
     [SerializeField] float DashDuration = 0.25f;
-    [SerializeField] KeyCode DashKey = KeyCode.Space;
+    [SerializeField] KeyCode DashKey = KeyCode.LeftShift;
     Vector3 dashDirect = Vector3.zero;
     float lastDashTime;
     float dashTime;
