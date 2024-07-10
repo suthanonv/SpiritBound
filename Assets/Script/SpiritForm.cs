@@ -6,16 +6,33 @@ public class SpiritForm : MonoBehaviour
 {
     [SerializeField] KeyCode input;
     public GameObject prefab;
-   
-    // Update is called once per frame
+    public GameObject varGameObject;
+
     
+    float spawnDistance = 5f;
+    Vector3 playerPos;
+    Vector3 playerDirec;
+    Quaternion playerRotation;
+
+    private void Awake()
+    {
+        playerPos = GameObject.FindWithTag("Player").transform.position;
+        playerDirec = GameObject.FindWithTag("Player").transform.forward;
+        playerRotation = GameObject.FindWithTag("Player").transform.rotation;
+    }
+    public void Start()
+    {
+        GameObject varGameObject = GameObject.FindWithTag("Player");
+    }
+
     void Update()
     {
         if(Input.GetKeyUp(KeyCode.Space))
         {
             
-            GetComponent<TopDownCharacterMover>().enabled = false;
-            Instantiate(prefab, prefab.transform.position,Quaternion.identity);
+            varGameObject.GetComponent<TopDownCharacterMover>().enabled = false;
+            Vector3 spawnPos = playerPos + playerDirec * spawnDistance;
+            Instantiate(prefab, spawnPos, playerRotation);
         }
        
       }
