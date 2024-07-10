@@ -2,23 +2,31 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(FollowMouse))]
 public class TopDownCharacterMover : MonoBehaviour
 {
     public float rotationSpeed = 10f;
+    float currentSpeed = 0;
     public float moveSpeed = 5f;
 
     bool isDashing;
 
 
     [Header("Dash Detail")]
-    [SerializeField] float DashSpeed = 5;
+    [SerializeField] float DashSpeedMultiple = 2;
+   
     [SerializeField] float DashDuration = 0.25f;
     [SerializeField] KeyCode DashKey = KeyCode.Space;
     Vector3 dashDirect = Vector3.zero;
     float lastDashTime;
     float dashTime;
+
+    private void Start()
+    {
+        currentSpeed = moveSpeed;
+    }
 
 
     private void Update()
@@ -69,24 +77,24 @@ public class TopDownCharacterMover : MonoBehaviour
         // Handle movement based on WASD keys
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(forwardDirection * moveSpeed * Time.deltaTime, Space.World);
+            transform.Translate(forwardDirection * currentSpeed * Time.deltaTime, Space.World);
             
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(-forwardDirection * moveSpeed * Time.deltaTime, Space.World);
+            transform.Translate(-forwardDirection * currentSpeed * Time.deltaTime, Space.World);
             
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(-transform.right * moveSpeed * Time.deltaTime, Space.World);
+            transform.Translate(-transform.right * currentSpeed * Time.deltaTime, Space.World);
             
 
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(transform.right * moveSpeed * Time.deltaTime, Space.World);
+            transform.Translate(transform.right * currentSpeed * Time.deltaTime, Space.World);
             
 
         }
@@ -104,12 +112,14 @@ public class TopDownCharacterMover : MonoBehaviour
     {
         if (Time.time >= dashTime)
         {
+            currentSpeed = moveSpeed;
             isDashing = false;
             return;
         }
 
-        var dashVector = transform.forward * DashSpeed * Time.deltaTime;
-        transform.Translate(dashVector);
+        currentSpeed = moveSpeed * DashSpeedMultiple;
+        //var dashVector = transform.forward * DashSpeed * Time.deltaTime;
+        //transform.Translate(dashVector);
     }
 
 }
