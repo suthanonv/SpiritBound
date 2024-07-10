@@ -138,7 +138,7 @@ public class TopDownCharacterMover : MonoBehaviour
         //transform.Translate(dashVector);
     }
 
-    bool canWalk = true;
+    
 
     List<GameObject> GameObjectThatCollidedWihtPlayer = new List<GameObject>();
 
@@ -157,9 +157,6 @@ public class TopDownCharacterMover : MonoBehaviour
        GameObjectThatCollidedWihtPlayer.Remove(collision.gameObject);
     }
 
-    bool Canwalk()
-    {
-        if (GameObjectThatCollidedWihtPlayer.Count == 0) return true; return false;
-    }
+   
 
 }
