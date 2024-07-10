@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpiritForm : MonoBehaviour
+public class SpiritForm : MonoBehaviour 
 {
     [SerializeField] KeyCode input;
     public GameObject prefab;
@@ -14,6 +14,8 @@ public class SpiritForm : MonoBehaviour
     Vector3 playerDirec;
     Quaternion playerRotation;
 
+    
+
     private void Awake()
     {
         playerPos = GameObject.FindWithTag("Player").transform.position;
@@ -23,6 +25,7 @@ public class SpiritForm : MonoBehaviour
     public void Start()
     {
         GameObject varGameObject = GameObject.FindWithTag("Player");
+        
     }
 
     void Update()
@@ -32,7 +35,8 @@ public class SpiritForm : MonoBehaviour
             
             varGameObject.GetComponent<TopDownCharacterMover>().enabled = false;
             Vector3 spawnPos = playerPos + playerDirec * spawnDistance;
-            Instantiate(prefab, spawnPos, playerRotation);
+            GameObject SecondCharacter = Instantiate(prefab, spawnPos, playerRotation);
+            CamFollow.instance.player = SecondCharacter.transform;
         }
        
       }
