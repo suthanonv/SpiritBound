@@ -17,9 +17,9 @@ public class TopDownCharacterMover : MonoBehaviour
 
     [Header("Dash Detail")]
     [SerializeField] float DashSpeedMultiple = 2;
-   
     [SerializeField] float DashDuration = 0.25f;
     [SerializeField] KeyCode DashKey = KeyCode.LeftShift;
+    [SerializeField] float DashCoolDown = 1.5f;
     Vector3 dashDirect = Vector3.zero;
     float lastDashTime;
     float dashTime;
@@ -35,8 +35,8 @@ public class TopDownCharacterMover : MonoBehaviour
         // Rotate the character towards the mouse position
         RotateTowardsMouse();
 
-        
-        if(Input.GetKeyDown(DashKey))
+
+        if (Input.GetKeyDown(DashKey) && Time.time >= lastDashTime + DashCoolDown)
         {
             StartDash();
         }
