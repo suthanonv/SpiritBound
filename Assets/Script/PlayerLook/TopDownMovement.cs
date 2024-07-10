@@ -43,7 +43,7 @@ public class TopDownCharacterMover : MonoBehaviour
 
         Dash();
 
-       if(Canwalk())  
+     
         HandleMovement();
 
 
@@ -103,13 +103,14 @@ public class TopDownCharacterMover : MonoBehaviour
     }
     public float raycastDistance = 10f;
     [SerializeField] LayerMask LayerToDetection = 0;
+    [SerializeField] float RayCaseRadius;
     void MoveChar(Vector3 direct)
    {
         Ray ray = new Ray(transform.position, direct);
         RaycastHit hit;
 
       
-        if (Physics.Raycast(ray, out hit, raycastDistance , LayerToDetection))
+        if (Physics.SphereCast(ray, RayCaseRadius, out hit, raycastDistance , LayerToDetection))
         {  
         }
         else transform.Translate(direct * currentSpeed * Time.deltaTime, Space.World);
