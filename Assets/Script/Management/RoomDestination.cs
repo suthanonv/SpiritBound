@@ -10,8 +10,9 @@ public class RoomDestination : MonoBehaviour
 
     [SerializeField] List<RoomBranchList> AllBrachInRoom = new List<RoomBranchList>();
 
-   
-     
+    public Room  RoomThatPlayerin;
+    
+
     private void Awake()
     {
         instance = this;
