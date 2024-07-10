@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -42,6 +43,7 @@ public class TopDownCharacterMover : MonoBehaviour
 
         Dash();
 
+       if(Canwalk())  
         HandleMovement();
 
 
@@ -77,27 +79,39 @@ public class TopDownCharacterMover : MonoBehaviour
         // Handle movement based on WASD keys
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(forwardDirection * currentSpeed * Time.deltaTime, Space.World);
-            
+            MoveChar(forwardDirection);
+
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(-forwardDirection * currentSpeed * Time.deltaTime, Space.World);
-            
+            MoveChar(-forwardDirection);
+
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(-transform.right * currentSpeed * Time.deltaTime, Space.World);
-            
+            MoveChar(-transform.right);
+
 
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(transform.right * currentSpeed * Time.deltaTime, Space.World);
+            MoveChar(transform.right);
             
 
         }
+    }
+    public float raycastDistance = 10f;
+    void MoveChar(Vector3 direct)
+   {
+        Ray ray = new Ray(transform.position, direct);
+        RaycastHit hit;
+
+      
+        if (Physics.Raycast(ray, out hit, raycastDistance))
+        {  
+        }
+        else transform.Translate(direct * currentSpeed * Time.deltaTime, Space.World);
     }
 
 
@@ -120,6 +134,30 @@ public class TopDownCharacterMover : MonoBehaviour
         currentSpeed = moveSpeed * DashSpeedMultiple;
         //var dashVector = transform.forward * DashSpeed * Time.deltaTime;
         //transform.Translate(dashVector);
+    }
+
+    bool canWalk = true;
+
+    List<GameObject> GameObjectThatCollidedWihtPlayer = new List<GameObject>();
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!collision.gameObject.CompareTag("Floor"))
+        {
+            GameObjectThatCollidedWihtPlayer.Add(collision.gameObject);
+        }
+    }
+
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if(!collision.gameObject.CompareTag("Floor"))
+       GameObjectThatCollidedWihtPlayer.Remove(collision.gameObject);
+    }
+
+    bool Canwalk()
+    {
+        if (GameObjectThatCollidedWihtPlayer.Count == 0) return true; return false;
     }
 
 }
