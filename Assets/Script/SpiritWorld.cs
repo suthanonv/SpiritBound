@@ -18,10 +18,8 @@ public class SpiritWorld : MonoBehaviour
 
     GameObject SecondCharacter;
 
-    float spawnDistance = 5f;
-    Vector3 playerPos;
-    Vector3 playerDirec;
-    Quaternion playerRotation;
+    private float spawnDistance = 1f;
+ 
 
     private void Awake()
     {
@@ -30,19 +28,22 @@ public class SpiritWorld : MonoBehaviour
         physicalControl = player.GetComponent<TopDownCharacterMover>();
         spiritControl = player.GetComponent<SpiritController>();
 
-        playerPos = GameObject.FindWithTag("Player").transform.position;
-        playerDirec = GameObject.FindWithTag("Player").transform.forward;
-        playerRotation = GameObject.FindWithTag("Player").transform.rotation;
+
     }
 
 
     public void PlayerState()
     {
-        
+        //Update player position
+        Vector3 playerPos = player.transform.position; 
+        Vector3 playerDirec = player.transform.forward;
+        Quaternion playerRotation = player.transform.rotation;
+
         if (playerFormState == PlayerFormState.physic)
         {
             playerFormState = PlayerFormState.sprit;
             player.GetComponent<TopDownCharacterMover>().enabled = false;
+
             Vector3 spawnPos = playerPos + playerDirec * spawnDistance;
             SecondCharacter = Instantiate(spiritPlayer, spawnPos, playerRotation);
             CamFollow.instance.player = SecondCharacter.transform;
