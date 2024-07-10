@@ -46,6 +46,7 @@ public class SpiritWorld : MonoBehaviour
 
             Vector3 spawnPos = playerPos + playerDirec * spawnDistance;
             SecondCharacter = Instantiate(spiritPlayer, spawnPos, playerRotation);
+            SecondCharacter.GetComponent<SpiritController>().player = player;
             CamFollow.instance.player = SecondCharacter.transform;
         }
         else

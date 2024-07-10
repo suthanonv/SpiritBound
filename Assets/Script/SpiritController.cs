@@ -6,6 +6,10 @@ using UnityEngine;
 public class SpiritController : MonoBehaviour 
 {
     [Header("Spirit Controller")]
+
+    public GameObject player;
+    public float maxDistance = 10f;
+
     public float rotationSpeed = 10f;
     float currentSpeed = 0;
     public float moveSpeed = 5f;
@@ -31,6 +35,7 @@ public class SpiritController : MonoBehaviour
 
     private void Update()
     {
+        
         // Rotate the character towards the mouse position
         RotateTowardsMouse();
 
@@ -44,7 +49,12 @@ public class SpiritController : MonoBehaviour
 
         HandleMovement();
 
-
+        float distance = Vector3.Distance(transform.position, player.transform.position); //check distance between the spirit and the player
+        if(distance > maxDistance) 
+        {
+            Vector3 direction = (transform.position - player.transform.position).normalized;
+            transform.position = player.transform.position + direction * maxDistance;
+        }
 
     }
 
