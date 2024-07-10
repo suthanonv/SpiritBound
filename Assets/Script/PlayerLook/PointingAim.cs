@@ -36,14 +36,7 @@ public class PointingAim : MonoBehaviour
     {
         isAiming = !isAiming;
 
-        if (isAiming) 
-        {
-            playerMovement.RotateTowardMouse = false;
-        }
-        else 
-        {
-            playerMovement.RotateTowardMouse = true;
-        }
+        
         
     }
 
