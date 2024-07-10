@@ -615,7 +615,7 @@ GameObject:
   - component: {fileID: 253998492}
   - component: {fileID: 253998491}
   - component: {fileID: 253998490}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -630,13 +630,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253998488}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.55710524, y: -0, z: -0, w: 0.83044195}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 1.039999, y: 3.36, z: 0.91}
   m_LocalScale: {x: 24.165695, y: 1.0189458, z: 18.888275}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 594720670}
-  m_LocalEulerAnglesHint: {x: -67.712, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!65 &253998490
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1273,8 +1273,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289a40cbf55c3184884c457e31c1e9f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 786408172}
-  material: {fileID: 2100000, guid: 740521fcf1f461040b12282176421dd6, type: 2}
 --- !u!4 &656786868
 Transform:
   m_ObjectHideFlags: 0
@@ -2724,7 +2722,10 @@ MonoBehaviour:
   DashSpeedMultiple: 2
   DashDuration: 0.25
   DashKey: 32
-  raycastDistance: 2
+  raycastDistance: 1
+  LayerToDetection:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &8601310090892399901
 MonoBehaviour:
   m_ObjectHideFlags: 0

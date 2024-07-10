@@ -102,13 +102,14 @@ public class TopDownCharacterMover : MonoBehaviour
         }
     }
     public float raycastDistance = 10f;
+    [SerializeField] LayerMask LayerToDetection = 0;
     void MoveChar(Vector3 direct)
    {
         Ray ray = new Ray(transform.position, direct);
         RaycastHit hit;
 
       
-        if (Physics.Raycast(ray, out hit, raycastDistance))
+        if (Physics.Raycast(ray, out hit, raycastDistance , LayerToDetection))
         {  
         }
         else transform.Translate(direct * currentSpeed * Time.deltaTime, Space.World);
