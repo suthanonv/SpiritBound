@@ -56,6 +56,7 @@ public class SpiritWorld : MonoBehaviour
 
             Shader.gameObject.SetActive(true);
             player.GetComponent<PlayerAttack>().enabled = false;
+            player.GetComponent<TopDownCharacterMover>().anim.SetFloat("Speed", 0);
             player.GetComponent<TopDownCharacterMover>().enabled = false;
 
             Vector3 spawnPos = playerPos + playerDirec * spawnDistance;

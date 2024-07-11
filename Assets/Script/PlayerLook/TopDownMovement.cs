@@ -11,7 +11,7 @@ public class TopDownCharacterMover : PlayerMover
     float currentSpeed = 0;
     public float moveSpeed = 5f;
 
-    [SerializeField] Animator anim;
+    public Animator anim;
 
     [Header("Dash Detail")]
     [SerializeField] float DashSpeedMultiple = 2;
