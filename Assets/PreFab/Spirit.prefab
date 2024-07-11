@@ -1588,7 +1588,7 @@ MonoBehaviour:
   DashCoolDown: 1.5
   IsSpirit: 1
   player: {fileID: 0}
-  maxDistance: 10
+  maxDistance: 20
   raycastDistance: 1
   LayerToDetection:
     serializedVersion: 2

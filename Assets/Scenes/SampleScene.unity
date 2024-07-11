@@ -742,7 +742,7 @@ GameObject:
   - component: {fileID: 304755681}
   - component: {fileID: 304755680}
   - component: {fileID: 304755684}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4762,6 +4762,9 @@ MonoBehaviour:
   DashDuration: 0.25
   DashKey: 304
   DashCoolDown: 1.5
+  IsSpirit: 0
+  player: {fileID: 0}
+  maxDistance: 10
   raycastDistance: 1
   LayerToDetection:
     serializedVersion: 2
