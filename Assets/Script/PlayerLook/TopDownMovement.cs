@@ -22,6 +22,15 @@ public class TopDownCharacterMover : PlayerMover
     float lastDashTime;
     float dashTime;
 
+
+    [Header("Spirit Controller")]
+    public bool IsSpirit = false;
+    public GameObject player;
+    public float maxDistance = 10f;
+
+         
+
+
     private void Start()
     {
         currentSpeed = moveSpeed;
@@ -47,8 +56,16 @@ public class TopDownCharacterMover : PlayerMover
      
         HandleMovement();
 
+        if (IsSpirit)
+        {
+            float distance = Vector3.Distance(transform.position, player.transform.position); //check distance between the spirit and the player
+            if (distance > maxDistance)
+            {
+                Vector3 direction = (transform.position - player.transform.position).normalized;
+                transform.position = player.transform.position + direction * maxDistance;
+            }
 
-
+        }
     }
 
     private void RotateTowardsMouse()
