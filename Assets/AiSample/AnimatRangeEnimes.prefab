@@ -1797,7 +1797,8 @@ GameObject:
   - component: {fileID: 1900663460178290056}
   - component: {fileID: 5844963405275035810}
   - component: {fileID: 6266574902074324568}
-  m_Layer: 0
+  - component: {fileID: 6851961448726528497}
+  m_Layer: 9
   m_Name: AnimatRangeEnimes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1930,6 +1931,27 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &6851961448726528497
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6665261238444387577}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.3353786, y: 2, z: 0.99999994}
+  m_Center: {x: -0.013016701, y: 0, z: 0}
 --- !u!1 &6875382837838538856
 GameObject:
   m_ObjectHideFlags: 0
