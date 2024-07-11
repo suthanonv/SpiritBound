@@ -24,8 +24,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-       
-        if (currentCD <= 0 && CanDoingNextAttack()) 
+
+        if (currentCD <= 0 && CanDoingNextAttack())
         {
             if (Input.GetKeyDown(KeyCode.Mouse0) && currentCD <= 0)
             {
@@ -33,19 +33,16 @@ public class PlayerAttack : MonoBehaviour
                 Attack();
             }
         }
-        if(currentCD > 0) currentCD -= Time.deltaTime;
+        if (currentCD > 0) currentCD -= Time.deltaTime;
 
-        if(Time.time - lastClickedTime > maxComboDelay)
+        if (Time.time - lastClickedTime > maxComboDelay)
         {
             noOfClicks = 0;
         }
     }
 
 
-    void CheckAttackState()
-    {
 
-    }
 
 
     void Attack()
@@ -56,21 +53,28 @@ public class PlayerAttack : MonoBehaviour
 
     bool CanDoingNextAttack()
     {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack3") || anim.GetCurrentAnimatorStateInfo(0).IsName("Attack2") || anim.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attakc3") || anim.GetCurrentAnimatorStateInfo(0).IsName("Attakc2") || anim.GetCurrentAnimatorStateInfo(0).IsName("Attakc1"))
         {
+
+
             this.GetComponent<PlayerMover>().enabled = false;
             return false;
         }
         else
         {
+            AttackBox1.SetActive(false);
+            AttackBox2.SetActive(false);
+            AttackBox3.SetActive(false);
             this.GetComponent<PlayerMover>().enabled = true;
             return true;
-        }
 
+        }
     }
 
 
-    IEnumerator OnAttack()
+
+
+        IEnumerator OnAttack()
     {
         lastClickedTime = Time.time;
         noOfClicks++;
@@ -83,7 +87,6 @@ public class PlayerAttack : MonoBehaviour
             anim.SetTrigger("Attack");
             AttackBox1.SetActive(true);
             yield return null;
-            AttackBox1.SetActive(false);
         }
 
         noOfClicks = Mathf.Clamp(noOfClicks, 0, 3);
@@ -91,24 +94,18 @@ public class PlayerAttack : MonoBehaviour
         {
             anim.SetInteger("AtkCount", noOfClicks);
             anim.SetTrigger("Attack");
-            AttackBox1.SetActive(false);
             AttackBox2.SetActive(true);
             yield return null;
-            AttackBox1.SetActive(false);
-            AttackBox2.SetActive(false);
         }
 
         if (noOfClicks == 3)
         {
             anim.SetInteger("AtkCount", noOfClicks);
             anim.SetTrigger("Attack");
-            AttackBox1.SetActive(false);
-            AttackBox2.SetActive(false);
+
             AttackBox3.SetActive(true);
             yield return null;
-            AttackBox1.SetActive(false);
-            AttackBox2.SetActive(false);
-            AttackBox3.SetActive(false);
+
             noOfClicks = 0;
         }  
     }
