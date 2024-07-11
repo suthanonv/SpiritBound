@@ -9,14 +9,13 @@ public class SpiritWorld : MonoBehaviour
 
     
     public GameObject player;
-    public GameObject spiritPlayer;
 
     private TopDownCharacterMover physicalControl;
     private SpiritController spiritControl;
 
     public PlayerFormState playerFormState = 0f;
 
-    GameObject SecondCharacter;
+   [SerializeField] GameObject SecondCharacter;
 
     private float spawnDistance = 1f;
 
@@ -30,6 +29,16 @@ public class SpiritWorld : MonoBehaviour
         spiritControl = player.GetComponent<SpiritController>();
 
 
+    }
+
+
+    public GameObject GetPlayer(PlayerFormState EnimeieForm)
+    {
+        if (playerFormState == PlayerFormState.sprit  && EnimeieForm == PlayerFormState.sprit)
+        {
+            return SecondCharacter;
+        }
+        return player;
     }
 
 
@@ -58,10 +67,10 @@ public class SpiritWorld : MonoBehaviour
             player.GetComponent<PlayerAttack>().enabled = false;
             player.GetComponent<TopDownCharacterMover>().anim.SetFloat("Speed", 0);
             player.GetComponent<TopDownCharacterMover>().enabled = false;
-
+            SecondCharacter.SetActive(true);
             Vector3 spawnPos = playerPos + playerDirec * spawnDistance;
-            SecondCharacter = Instantiate(spiritPlayer, spawnPos, playerRotation);
-            SecondCharacter.GetComponent<TopDownCharacterMover>().player = player;
+            SecondCharacter.transform.position = spawnPos;
+           
             CamFollow.instance.player = SecondCharacter.transform;
         }
         else
@@ -73,7 +82,7 @@ public class SpiritWorld : MonoBehaviour
 
             player.GetComponent<TopDownCharacterMover>().enabled = true;
             CamFollow.instance.player = player.transform;
-            Destroy(SecondCharacter);
+            SecondCharacter.SetActive(false);
         }
     }
 

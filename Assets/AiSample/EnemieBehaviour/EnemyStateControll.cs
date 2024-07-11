@@ -6,6 +6,7 @@ public class EnemyStateControll : MonoBehaviour
 {
     public GameObject EnemySpiritForm;
     public GameObject EnemyPhisicalForm;
+    
 
     public void SetEnemyState(PlayerFormState playerState)
     {

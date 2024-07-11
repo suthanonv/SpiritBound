@@ -20,7 +20,7 @@ public class CloseEnemyMovement : Ai_Controllering
     [SerializeField] Animator anim;
     void Update()
     {
-        Player = SpiritWorld.Instance.player.transform;
+        Player = SpiritWorld.Instance.GetPlayer(EnemyForm).transform;
         Vector3 DifBetweenPlayer = this.transform.position - Player.transform.position;
 
 

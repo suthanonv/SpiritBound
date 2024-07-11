@@ -12,7 +12,9 @@ public class EnemyMoveingBackWard : Ai_Controllering
     void Start()
     {
         EnableWalk = true;
-        Agent = this.GetComponent<NavMeshAgent>();   
+        Agent = this.GetComponent<NavMeshAgent>();
+        Player = SpiritWorld.Instance.GetPlayer(EnemyForm).transform;
+
     }
 
     // Update is called once per frame
@@ -21,7 +23,8 @@ public class EnemyMoveingBackWard : Ai_Controllering
     [SerializeField] Animator anim;
     void Update()
     {
-        Player = SpiritWorld.Instance.player.transform;
+        Player = SpiritWorld.Instance.GetPlayer(EnemyForm).transform;
+
         Vector3 DifBetweenPlayer = this.transform.position - Player.transform.position;
 
         EnemeyBehaviour.CanDoingAction = true;

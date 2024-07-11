@@ -12,6 +12,7 @@ public class Ai_Controllering : MonoBehaviour
     protected Transform Player;
    [SerializeField] protected float AttackRange;
     [SerializeField] protected float ChasingRange;
+    [SerializeField] protected PlayerFormState EnemyForm = PlayerFormState.physic;
    
 
     bool enablewalk;
