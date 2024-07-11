@@ -19,7 +19,8 @@ public class SpiritWorld : MonoBehaviour
     GameObject SecondCharacter;
 
     private float spawnDistance = 1f;
- 
+
+    public GameObject Shader;
 
     private void Awake()
     {
@@ -52,6 +53,8 @@ public class SpiritWorld : MonoBehaviour
 
         if (playerFormState == PlayerFormState.sprit)
         {
+
+            Shader.gameObject.SetActive(true);
             player.GetComponent<PlayerAttack>().enabled = false;
             player.GetComponent<TopDownCharacterMover>().enabled = false;
 
@@ -63,6 +66,8 @@ public class SpiritWorld : MonoBehaviour
         else
         {
             playerFormState = PlayerFormState.physic;
+            Shader.gameObject.SetActive(false);
+
             player.GetComponent<PlayerAttack>().enabled = true;
 
             player.GetComponent<TopDownCharacterMover>().enabled = true;

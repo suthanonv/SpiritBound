@@ -4806,6 +4806,7 @@ MonoBehaviour:
   spiritPlayer: {fileID: 7612094014433022865, guid: 1500bbef9a37ed6459765de244a071d4,
     type: 3}
   playerFormState: 1
+  Shader: {fileID: 1707701606}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
