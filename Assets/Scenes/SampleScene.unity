@@ -1703,7 +1703,7 @@ MonoBehaviour:
       RoomGameObject: {fileID: 55454000}
     - roomIndex: 2
       RoomGameObject: {fileID: 578131584}
-  RoomThatPlayerin: {fileID: 0}
+  RoomThatPlayerin: {fileID: 120885932}
 --- !u!4 &1210094250
 Transform:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ public class SpiritForm : MonoBehaviour
     {
         if(Input.GetKeyUp(KeyCode.Space))
         {
-            SpiritWorld.Instance.PlayerState();
+           
             if(SpiritWorld.Instance.playerFormState == PlayerFormState.physic)
             {
                 SpiritWorld.Instance.playerFormState = PlayerFormState.sprit;
@@ -29,6 +29,7 @@ public class SpiritForm : MonoBehaviour
             {
                 SpiritWorld.Instance.playerFormState = PlayerFormState.physic;
             }
+            SpiritWorld.Instance.PlayerState();
         }
         
        
