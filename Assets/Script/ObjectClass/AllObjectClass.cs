@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 public enum PlayerFormState
 { sprit , physic }
@@ -43,4 +43,27 @@ public class FormStageComponent
 
 
 
+}
+
+
+[System.Serializable]
+public class ListCheck<T>
+{
+    public List<T> List = new List<T>();
+
+    public UnityEvent OnListAddedDelegate = new UnityEvent();
+    public UnityEvent OnListRemovedDelegate = new UnityEvent();
+
+    public void Add(T ElementToAdd)
+    {
+        List.Add(ElementToAdd);
+        OnListAddedDelegate.Invoke();
+    }
+
+
+    public void Remove(T ElementToAdd)
+    {
+        List.Remove(ElementToAdd);
+        OnListRemovedDelegate.Invoke();
+    }
 }

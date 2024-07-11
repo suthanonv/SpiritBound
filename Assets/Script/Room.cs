@@ -5,10 +5,22 @@ using System.Linq;
 public class Room : MonoBehaviour
 {
     [SerializeField] Transform PlayerSpawnPosition;
-    [SerializeField] Transform CameraHolderPositon;
+
 
     [SerializeField] List<FormStageComponent> ElementInEachForm = new List<FormStageComponent>();
-     public void SetRoom(Transform Player)
+
+
+    public ListCheck<GameObject> EnemyListInRoom = new ListCheck<GameObject>();
+
+    
+
+    private void Start()
+    {
+        EnemyListInRoom.OnListRemovedDelegate.AddListener(IsThisRoomClear);
+    }
+
+
+    public void SetRoom(Transform Player)
     {
         RoomDestination.instance.RoomThatPlayerin = this;
         Player.transform.position = PlayerSpawnPosition.position;
@@ -19,6 +31,7 @@ public class Room : MonoBehaviour
       public void SetRoomInPlayerStage(PlayerFormState CurrentState)
       {
         OpenRoomElement(CurrentState);
+        ChangeStateOfAllEnemy(CurrentState);
         CloseRoomELement(GetOppositPlayerFormState(CurrentState));
 
 
@@ -54,6 +67,21 @@ public class Room : MonoBehaviour
 
         foreach (GameObject i in componenet.ObjectInFormStage) i.SetActive(false);
     }
+
+    public void IsThisRoomClear()
+    {
+        if (EnemyListInRoom.List.Count <= 0) Debug.Log("Room Clear");
+    }
+
+    public void ChangeStateOfAllEnemy(PlayerFormState playerState)
+    {
+        
+        foreach(GameObject i in EnemyListInRoom.List)
+        {
+            i.GetComponent<EnemyStateControll>().SetEnemyState(playerState);
+        }
+    }
+
 }
 
 
