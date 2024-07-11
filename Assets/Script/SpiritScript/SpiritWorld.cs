@@ -52,7 +52,7 @@ public class SpiritWorld : MonoBehaviour
 
         if (playerFormState == PlayerFormState.sprit)
         {
-
+            player.GetComponent<PlayerAttack>().enabled = false;
             player.GetComponent<TopDownCharacterMover>().enabled = false;
 
             Vector3 spawnPos = playerPos + playerDirec * spawnDistance;
@@ -63,6 +63,8 @@ public class SpiritWorld : MonoBehaviour
         else
         {
             playerFormState = PlayerFormState.physic;
+            player.GetComponent<PlayerAttack>().enabled = true;
+
             player.GetComponent<TopDownCharacterMover>().enabled = true;
             CamFollow.instance.player = player.transform;
             Destroy(SecondCharacter);
