@@ -5,20 +5,28 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-     float currenthealth = 100;
+    protected float currenthealth = 100;
+   [SerializeField] protected float MaxHealth = 0;
 
-     public float CurrentHealth
-     {
-        get { return currenthealth; }
-        set { currenthealth = value;
-            if (currenthealth <= 0) this.gameObject.SetActive(false); 
+
+
+
+
+
+    public virtual void TakeDamage(float Damage)
+    {
+
+        currenthealth -= Damage;
+        if(currenthealth <= 0)
+        {
+            Died();
         }
     }
 
 
-    public void TakeDamage(float Damage)
+    public virtual void Died()
     {
-        CurrentHealth -= Damage;
+
     }
 
 }

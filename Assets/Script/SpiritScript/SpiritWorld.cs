@@ -65,7 +65,6 @@ public class SpiritWorld : MonoBehaviour
             playerFormState = PlayerFormState.physic;
             player.GetComponent<TopDownCharacterMover>().enabled = true;
             CamFollow.instance.player = player.transform;
-
             Destroy(SecondCharacter);
         }
     }
