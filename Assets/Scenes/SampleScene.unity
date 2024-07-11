@@ -2683,7 +2683,7 @@ MonoBehaviour:
   LayerToDetection:
     serializedVersion: 2
     m_Bits: 8
-  RayCaseRadius: 0
+  RayCaseRadius: 0.5
 --- !u!114 &8601310090892399901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2711,7 +2711,7 @@ MonoBehaviour:
   player: {fileID: 5284407147573367152}
   spiritPlayer: {fileID: 7612094014433022865, guid: 1500bbef9a37ed6459765de244a071d4,
     type: 3}
-  playerFormState: 0
+  playerFormState: 1
 --- !u!1 &9163460319182949047
 GameObject:
   m_ObjectHideFlags: 0

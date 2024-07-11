@@ -34,14 +34,25 @@ public class SpiritWorld : MonoBehaviour
 
     public void PlayerState()
     {
-        //Update player position
-        Vector3 playerPos = player.transform.position; 
+        
+
+        ChangePlayerForm(playerFormState);
+        RoomDestination.instance.RoomThatPlayerin.SetRoomInPlayerStage(playerFormState);
+
+    }
+
+
+
+    void ChangePlayerForm(PlayerFormState state)
+    {
+
+        Vector3 playerPos = player.transform.position;
         Vector3 playerDirec = player.transform.forward;
         Quaternion playerRotation = player.transform.rotation;
 
-        if (playerFormState == PlayerFormState.physic)
+        if (playerFormState == PlayerFormState.sprit)
         {
-            playerFormState = PlayerFormState.sprit;
+
             player.GetComponent<TopDownCharacterMover>().enabled = false;
 
             Vector3 spawnPos = playerPos + playerDirec * spawnDistance;
@@ -54,12 +65,17 @@ public class SpiritWorld : MonoBehaviour
             playerFormState = PlayerFormState.physic;
             player.GetComponent<TopDownCharacterMover>().enabled = true;
             CamFollow.instance.player = player.transform;
-            
+
             Destroy(SecondCharacter);
         }
-
-      
     }
+
+
+
+
+
+
+
 
  
 }

@@ -16,21 +16,41 @@ public class Room : MonoBehaviour
 
 
    
-    public void SetRoomElement(PlayerFormState CurrentState)
+      public void SetRoomInPlayerStage(PlayerFormState CurrentState)
+      {
+        OpenRoomElement(CurrentState);
+        CloseRoomELement(GetOppositPlayerFormState(CurrentState));
+
+
+    }
+
+
+    PlayerFormState GetOppositPlayerFormState(PlayerFormState CurrentState)
+    {
+        if (CurrentState == PlayerFormState.sprit) return PlayerFormState.physic;
+        else return PlayerFormState.physic;
+    }
+
+
+     void OpenRoomElement(PlayerFormState CurrentState)
     {
         List<GameObject> ObjectToOpen = new List<GameObject>();
 
         FormStageComponent componenet = ElementInEachForm.FirstOrDefault(i => i.formState == CurrentState);
 
+        if (componenet == null) return;
+
         foreach (GameObject i in componenet.ObjectInFormStage) i.SetActive(true);
 
     }
 
-    public void CloseRoomELement(PlayerFormState Opposit)
+    void CloseRoomELement(PlayerFormState Opposit)
     {
         List<GameObject> ObjectToClose = new List<GameObject>();
 
         FormStageComponent componenet = ElementInEachForm.FirstOrDefault(i => i.formState == Opposit);
+
+        if (componenet == null) return;
 
         foreach (GameObject i in componenet.ObjectInFormStage) i.SetActive(false);
     }
