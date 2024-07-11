@@ -16,13 +16,16 @@ public class EnemyMoveingBackWard : Ai_Controllering
     }
 
     // Update is called once per frame
+
+
+    [SerializeField] Animator anim;
     void Update()
     {
         Player = SpiritWorld.Instance.player.transform;
         Vector3 DifBetweenPlayer = this.transform.position - Player.transform.position;
 
         EnemeyBehaviour.CanDoingAction = true;
-
+        
 
 
         if (EnableWalk)
@@ -30,9 +33,13 @@ public class EnemyMoveingBackWard : Ai_Controllering
             transform.LookAt(Player.transform.position);
             if (DifBetweenPlayer.magnitude < AttackRange)
             {
+                
                 MovePosition(this.transform.position);
+                
             }
         }
+
+      
     }
 
 
@@ -41,9 +48,14 @@ public class EnemyMoveingBackWard : Ai_Controllering
 
     protected override void MovePosition(Vector3 EnemiePosition)
     {
+        
         Vector3 DifBetweenPlayer = EnemiePosition - Player.transform.position;
         Vector3 destinition = EnemiePosition - (DifBetweenPlayer.normalized * (DifBetweenPlayer.magnitude - AttackRange));
         base.MovePosition(destinition);
+        
+        if(destinition  == this.transform.position) anim.SetFloat("speed", 0);
+        else anim.SetFloat("speed", 1);
+
     }
 
 }

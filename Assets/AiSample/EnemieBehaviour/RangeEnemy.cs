@@ -11,9 +11,11 @@ public class RangeEnemy : EnemieBehaviour
     [SerializeField] Transform ShootingDirection;
     [SerializeField] float BulletForce = 5f;
 
+    [SerializeField] Animator anim;
+
     private void Update()
     {
-        if (CanDoingAction) Attack();
+        if (CanDoingAction && IsAnimationDone()) Attack();
     
     
      
@@ -30,13 +32,28 @@ public class RangeEnemy : EnemieBehaviour
     }
 
 
+
+    bool IsAnimationDone()
+    {
+        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+          {
+
+
+            MovementScript.EnableWalk = false;
+            return false;
+           }
+
+        else
+        {
+            MovementScript.EnableWalk = true;
+            return true; }
+    }
+
+
     IEnumerator DoingAction()
     {
-        
-        MovementScript.EnableWalk = false;
-        Debug.Log(MovementScript.EnableWalk);
+        anim.SetTrigger("Attack");
          yield return new WaitForSeconds(AttackTimeAnim);
-        MovementScript.EnableWalk = true;
         ShootingBullet();
         
     }
@@ -52,6 +69,7 @@ public class RangeEnemy : EnemieBehaviour
     {
         Rigidbody rb = Instantiate(Bullet, ShootingDirection);
         rb.transform.parent = null;
+
         rb.transform.position = ShootingDirection.transform.position;
         rb.velocity = ShootingDirection.forward * BulletForce;
 
