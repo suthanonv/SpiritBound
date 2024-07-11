@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
@@ -10,12 +11,12 @@ public class Ai_Controllering : MonoBehaviour
     [SerializeField] protected EnemieBehaviour EnemeyBehaviour;
     protected Transform Player;
    [SerializeField] protected float AttackRange;
-
+    [SerializeField] protected float ChasingRange;
    
 
     bool enablewalk;
 
-   public Vector3 DifBetweenPlayer = Vector3.zero;
+  [NonSerialized] public Vector3 DifBetweenPlayer = Vector3.zero;
 
     public bool EnableWalk
     {
