@@ -11,7 +11,7 @@ public class TopDownCharacterMover : PlayerMover
     float currentSpeed = 0;
     public float moveSpeed = 5f;
 
-
+    [SerializeField] Animator anim;
 
     [Header("Dash Detail")]
     [SerializeField] float DashSpeedMultiple = 2;
@@ -38,6 +38,9 @@ public class TopDownCharacterMover : PlayerMover
         {
             StartDash();
         }
+
+       
+
 
         Dash();
 
@@ -68,6 +71,8 @@ public class TopDownCharacterMover : PlayerMover
     private void HandleMovement()
     {
         // Get the current forward direction of the character
+        Vector3 movementDirection = Vector3.zero;
+
         Vector3 forwardDirection = transform.forward;
 
         // Normalize the movement direction to prevent faster diagonal movement
@@ -77,27 +82,31 @@ public class TopDownCharacterMover : PlayerMover
         // Handle movement based on WASD keys
         if (Input.GetKey(KeyCode.W))
         {
+            
             MoveChar(forwardDirection);
-
+            movementDirection += forwardDirection;
         }
         else if (Input.GetKey(KeyCode.S))
         {
             MoveChar(-forwardDirection);
+            movementDirection -= forwardDirection;
 
         }
 
         if (Input.GetKey(KeyCode.A))
         {
             MoveChar(-transform.right);
-
+            movementDirection -= transform.right;
 
         }
         else if (Input.GetKey(KeyCode.D))
         {
             MoveChar(transform.right);
-            
-
+            movementDirection += transform.right;
         }
+
+       
+        anim.SetFloat("Speed", movementDirection.sqrMagnitude);
     }
     public float raycastDistance = 10f;
     [SerializeField] LayerMask LayerToDetection = 0;
