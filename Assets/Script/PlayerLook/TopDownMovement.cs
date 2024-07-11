@@ -5,14 +5,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-[RequireComponent(typeof(FollowMouse))]
-public class TopDownCharacterMover : MonoBehaviour
+public class TopDownCharacterMover : PlayerMover
 {
     public float rotationSpeed = 10f;
     float currentSpeed = 0;
     public float moveSpeed = 5f;
 
-    bool isDashing;
 
 
     [Header("Dash Detail")]
@@ -119,7 +117,7 @@ public class TopDownCharacterMover : MonoBehaviour
 
     private void StartDash()
     {
-        isDashing = true;
+    
         dashTime = Time.time + DashDuration;
         lastDashTime = Time.time;
     }
@@ -129,7 +127,7 @@ public class TopDownCharacterMover : MonoBehaviour
         if (Time.time >= dashTime)
         {
             currentSpeed = moveSpeed;
-            isDashing = false;
+          
             return;
         }
 

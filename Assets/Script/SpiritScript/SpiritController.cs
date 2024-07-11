@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(FollowMouse))]
-public class SpiritController : MonoBehaviour 
+public class SpiritController : PlayerMover
 {
     [Header("Spirit Controller")]
 
@@ -14,7 +14,7 @@ public class SpiritController : MonoBehaviour
     float currentSpeed = 0;
     public float moveSpeed = 5f;
 
-    bool isDashing;
+ 
 
 
 
@@ -113,7 +113,7 @@ public class SpiritController : MonoBehaviour
 
     private void StartDash()
     {
-        isDashing = true;
+       
         dashTime = Time.time + DashDuration;
         lastDashTime = Time.time;
     }
@@ -123,7 +123,7 @@ public class SpiritController : MonoBehaviour
         if (Time.time >= dashTime)
         {
             currentSpeed = moveSpeed;
-            isDashing = false;
+            
             return;
         }
 

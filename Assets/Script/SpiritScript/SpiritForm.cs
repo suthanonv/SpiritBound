@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class SpiritForm : MonoBehaviour 
 {
-    KeyCode input = KeyCode.Space;
-
 
 
 
