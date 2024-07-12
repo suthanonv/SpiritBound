@@ -36,7 +36,6 @@ public class MeterialChange : MonoBehaviour
 
 
             i.GetComponent<Renderer>().material = OnHit;
-            Debug.Log(i.material.GetColor("_EmissionColor"));
 
 
         }
