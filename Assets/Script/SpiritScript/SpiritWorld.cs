@@ -65,8 +65,8 @@ public class SpiritWorld : MonoBehaviour
 
             Shader.gameObject.SetActive(true);
             player.GetComponent<PlayerAttack>().enabled = false;
-            player.GetComponent<TopDownCharacterMover>().anim.SetFloat("Speed", 0);
-            player.GetComponent<TopDownCharacterMover>().enabled = false;
+            player.GetComponent<ChracterMovement>().anim.SetBool("isSleep", true);
+            player.GetComponent<ChracterMovement>().enabled = false;
             SecondCharacter.SetActive(true);
             Vector3 spawnPos = playerPos + playerDirec * spawnDistance;
             SecondCharacter.transform.position = spawnPos;
@@ -77,10 +77,11 @@ public class SpiritWorld : MonoBehaviour
         {
             playerFormState = PlayerFormState.physic;
             Shader.gameObject.SetActive(false);
+            player.GetComponent<ChracterMovement>().anim.SetBool("isSleep", false);
 
             player.GetComponent<PlayerAttack>().enabled = true;
 
-            player.GetComponent<TopDownCharacterMover>().enabled = true;
+            player.GetComponent<ChracterMovement>().enabled = true;
             CamFollow.instance.player = player.transform;
             SecondCharacter.SetActive(false);
         }

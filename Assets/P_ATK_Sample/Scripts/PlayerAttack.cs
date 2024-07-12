@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.Animations;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] float AttackPeriod = 0.25f;
-    [SerializeField] GameObject AttackBox1;
-    [SerializeField] GameObject AttackBox2;
-    [SerializeField] GameObject AttackBox3;
+
 
     [SerializeField] Animator anim;
 
@@ -20,12 +18,19 @@ public class PlayerAttack : MonoBehaviour
     float maxComboDelay = 1;
 
 
+     public   bool offAtttack = true;
+
+
+    public bool isAnimationDone = true;
+  
+    
 
 
     private void Update()
     {
-
-        if (currentCD <= 0 && CanDoingNextAttack())
+    
+      
+        if (currentCD <= 0 && isAnimationDone)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0) && currentCD <= 0)
             {
@@ -51,26 +56,6 @@ public class PlayerAttack : MonoBehaviour
     }
 
 
-    bool CanDoingNextAttack()
-    {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attakc3") || anim.GetCurrentAnimatorStateInfo(0).IsName("Attakc2") || anim.GetCurrentAnimatorStateInfo(0).IsName("Attakc1"))
-        {
-
-
-            this.GetComponent<PlayerMover>().enabled = false;
-            return false;
-        }
-        else
-        {
-            AttackBox1.SetActive(false);
-            AttackBox2.SetActive(false);
-            AttackBox3.SetActive(false);
-            this.GetComponent<PlayerMover>().enabled = true;
-            return true;
-
-        }
-    }
-
 
 
 
@@ -88,7 +73,6 @@ public class PlayerAttack : MonoBehaviour
 
             yield return new WaitForSeconds(0.1f);
 
-            AttackBox1.SetActive(true);
            
         }
 
@@ -98,7 +82,6 @@ public class PlayerAttack : MonoBehaviour
             anim.SetInteger("AtkCount", noOfClicks);
             anim.SetTrigger("Attack");
             yield return new WaitForSeconds(0.2f);
-            AttackBox2.SetActive(true);
             yield return null;
         }
 
@@ -108,13 +91,10 @@ public class PlayerAttack : MonoBehaviour
             anim.SetTrigger("Attack");
             yield return new WaitForSeconds(0.15f);
 
-            AttackBox3.SetActive(true);
             yield return null;
 
             noOfClicks = 0;
         }  
     }
-
-
 
 }
