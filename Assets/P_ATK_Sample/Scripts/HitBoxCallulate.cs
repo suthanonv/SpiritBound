@@ -8,7 +8,7 @@ public class HitBoxCallulate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.TryGetComponent<Health>(out Health health))
+        if (other.gameObject.TryGetComponent<EnemyHealth>(out EnemyHealth health))
         {
             health.TakeDamage(Damage);
         }
