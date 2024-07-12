@@ -10,7 +10,7 @@ public class TopDownCharacterMover : PlayerMover
     public float rotationSpeed = 10f;
     float currentSpeed = 0;
     public float moveSpeed = 5f;
-
+    private PlayerInventory playerinventory;
     public Animator anim;
 
     [Header("Dash Detail")]
@@ -28,13 +28,17 @@ public class TopDownCharacterMover : PlayerMover
     public GameObject player;
     public float maxDistance = 10f;
 
-         
+    [Header("Use Potion Key")]
+    [SerializeField] KeyCode Health = KeyCode.E;
+
 
 
     private void Start()
     {
         currentSpeed = moveSpeed;
+        playerinventory = GetComponent<PlayerInventory>();
     }
+    
 
 
     private void Update()
@@ -65,6 +69,12 @@ public class TopDownCharacterMover : PlayerMover
                 transform.position = player.transform.position + direction * maxDistance;
             }
 
+        }
+
+        if(Input.GetKeyDown(Health))
+        {
+            playerinventory.UsePotion();
+            FindObjectOfType<PotionUIManager>().UpdatePotionUI();
         }
     }
 
