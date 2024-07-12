@@ -6,20 +6,22 @@ using UnityEngine;
 
 public class MeterialChange : MonoBehaviour
 {
-    [SerializeField] List<GameObject> ModelPart = new List<GameObject>();
+    public MeshRenderer[] ModelPart;
     [SerializeField] float HitChageperiod;
+    [SerializeField] Material OnHit;
+    [SerializeField] Material OffHit;
 
     public void OnHitMeterial()
     {
 
         StopAllCoroutines();
 
-
-        foreach (GameObject i in ModelPart)
+        foreach (MeshRenderer i in ModelPart)
         {
 
-          i.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", Color.black);
+            i.GetComponent<Renderer>().material = OffHit;
         }
+
         StartCoroutine(ChangeHitingColor());
 
 
@@ -27,18 +29,27 @@ public class MeterialChange : MonoBehaviour
 
     IEnumerator ChangeHitingColor()
     {
-        foreach (GameObject i in ModelPart)
+
+       
+        foreach (MeshRenderer i in ModelPart)
         {
 
-            i.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", Color.white);
+
+            i.GetComponent<Renderer>().material = OnHit;
+            Debug.Log(i.material.GetColor("_EmissionColor"));
+
+
         }
 
         yield return new WaitForSeconds(HitChageperiod);
 
-        foreach (GameObject i in ModelPart)
+
+        foreach (MeshRenderer i in ModelPart)
         {
 
-            i.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", Color.black);
+            i.GetComponent<Renderer>().material = OffHit;
+
+
         }
     }
 }

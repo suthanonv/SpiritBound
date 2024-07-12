@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
     public float nextFiretime = 0f;
     public static int noOfClicks = 0;
     float lastClickedTime = 0;
-    float maxComboDelay = 2;
+    float maxComboDelay = 1;
 
 
 
@@ -85,8 +85,11 @@ public class PlayerAttack : MonoBehaviour
         {
             anim.SetInteger("AtkCount", noOfClicks);
             anim.SetTrigger("Attack");
+
+            yield return new WaitForSeconds(0.1f);
+
             AttackBox1.SetActive(true);
-            yield return null;
+           
         }
 
         noOfClicks = Mathf.Clamp(noOfClicks, 0, 3);
@@ -94,6 +97,7 @@ public class PlayerAttack : MonoBehaviour
         {
             anim.SetInteger("AtkCount", noOfClicks);
             anim.SetTrigger("Attack");
+            yield return new WaitForSeconds(0.2f);
             AttackBox2.SetActive(true);
             yield return null;
         }
@@ -102,6 +106,7 @@ public class PlayerAttack : MonoBehaviour
         {
             anim.SetInteger("AtkCount", noOfClicks);
             anim.SetTrigger("Attack");
+            yield return new WaitForSeconds(0.15f);
 
             AttackBox3.SetActive(true);
             yield return null;

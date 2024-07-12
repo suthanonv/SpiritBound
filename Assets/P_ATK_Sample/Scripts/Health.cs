@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
 {
     protected float currenthealth = 100;
    [SerializeField] protected float MaxHealth = 0;
-
+    [SerializeField] protected MeterialChange HitEffect;
 
 
 
@@ -15,7 +15,7 @@ public class Health : MonoBehaviour
 
     public virtual void TakeDamage(float Damage)
     {
-
+        HitEffect.OnHitMeterial();
         currenthealth -= Damage;
         if(currenthealth <= 0)
         {
