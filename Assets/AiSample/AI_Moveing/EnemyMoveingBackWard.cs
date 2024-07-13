@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.GraphicsBuffer;
 
 public class EnemyMoveingBackWard : Ai_Controllering
 {
@@ -28,7 +29,7 @@ public class EnemyMoveingBackWard : Ai_Controllering
         Vector3 DifBetweenPlayer = this.transform.position - Player.transform.position;
 
         EnemeyBehaviour.CanDoingAction = true;
-        
+
 
 
         if (EnableWalk)
@@ -36,28 +37,36 @@ public class EnemyMoveingBackWard : Ai_Controllering
             transform.LookAt(Player.transform.position);
             if (DifBetweenPlayer.magnitude < AttackRange)
             {
-                
+
                 MovePosition(this.transform.position);
-                
+
             }
         }
 
-      
+
     }
 
 
-   
-  
+
+
 
     protected override void MovePosition(Vector3 EnemiePosition)
     {
-        
+
         Vector3 DifBetweenPlayer = EnemiePosition - Player.transform.position;
         Vector3 destinition = EnemiePosition - (DifBetweenPlayer.normalized * (DifBetweenPlayer.magnitude - AttackRange));
-        base.MovePosition(destinition);
-        
-        if(destinition  == this.transform.position) anim.SetFloat("speed", 0);
+        bool CanMove = Agent.pathStatus == NavMeshPathStatus.PathComplete;
+        Debug.Log(CanMove);
+
+        if (!CanMove) anim.SetFloat("speed", 0);
         else anim.SetFloat("speed", 1);
+        base.MovePosition(destinition);
+
+
+       
+
+
+        
 
     }
 

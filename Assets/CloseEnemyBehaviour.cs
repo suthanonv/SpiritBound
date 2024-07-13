@@ -6,16 +6,13 @@ public class CloseEnemyBehaviour : EnemieBehaviour
 {
 
     [SerializeField] Animator anim;
-    [SerializeField] GameObject WarningBox;
-    [SerializeField] GameObject ColliderBox;
-    
 
     bool NextAction = true;
 
     private void Update()
     {
-        bool isAnimationDone = IsAnimationDone();
-        if (MovementScript.isInRange(ActionRange) && isAnimationDone) Attack();
+   
+        if (MovementScript.isInRange(ActionRange)) Attack();
 
 
 
@@ -23,48 +20,30 @@ public class CloseEnemyBehaviour : EnemieBehaviour
     }
     public override void Attack()
     {
-        if (NextAction)
+        if (NextAction && IsAnimationDone)
         {
             NextAction = false;
-            StartCoroutine(DoingAction());
+            DoingAction();
             StartCoroutine(ResetCDAction());
         }
     }
 
 
 
-    bool IsAnimationDone()
-    {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
-        {
-           
-            MovementScript.EnableWalk = false;
-            return false;
-        }
-        else
-        {
-            ColliderBox.SetActive(false);
-            MovementScript.EnableWalk = true;
-            return true;
-        }
-    }
 
 
-    IEnumerator DoingAction()
+    void DoingAction()
     {
         anim.SetTrigger("Attack");
-        WarningBox.SetActive(true);
-        yield return new WaitForSeconds(AttackTimeAnim);
-        WarningBox.SetActive(false);
-        ColliderBox.SetActive(true);
-        ColliderBox.SetActive(false);
-
-        //enableCollider
-
     }
 
     IEnumerator ResetCDAction()
     {
+     while(!IsAnimationDone)
+        {
+            yield return new WaitForSeconds(0.01f);
+        }
+
         yield return new WaitForSeconds(AttackCd);
         NextAction = true;
         MovementScript.EnableWalk = true;

@@ -10,7 +10,7 @@ public class EnemieBehaviour : MonoBehaviour
     [SerializeField] public float AttackCd;
     [SerializeField] protected float AttackTimeAnim;
     public Ai_Controllering MovementScript;
-
+   public bool IsAnimationDone = true;
 
 
     public virtual void Attack()

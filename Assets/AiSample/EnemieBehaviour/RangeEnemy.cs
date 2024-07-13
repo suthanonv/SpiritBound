@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class RangeEnemy : EnemieBehaviour
 {
-    bool NextAction = true;
 
     [SerializeField] Rigidbody Bullet;
     [SerializeField] Transform ShootingDirection;
@@ -13,9 +12,12 @@ public class RangeEnemy : EnemieBehaviour
 
     [SerializeField] Animator anim;
 
+    bool OffCD = true;
+
+
     private void Update()
     {
-        if (CanDoingAction && IsAnimationDone()) Attack();
+        if (OffCD && IsAnimationDone) Attack();
     
     
      
@@ -23,49 +25,33 @@ public class RangeEnemy : EnemieBehaviour
     }
     public override void Attack()
     {
-        if(NextAction)
-        {
-            NextAction = false;
-            StartCoroutine(DoingAction());
+        OffCD = false;
+        DoingAction();
             StartCoroutine(ResetCDAction());
-        }
     }
 
 
 
-    bool IsAnimationDone()
-    {
-        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
-          {
 
-
-            MovementScript.EnableWalk = false;
-            return false;
-           }
-
-        else
-        {
-            MovementScript.EnableWalk = true;
-            return true; }
-    }
-
-
-    IEnumerator DoingAction()
+    void DoingAction()
     {
         anim.SetTrigger("Attack");
-         yield return new WaitForSeconds(AttackTimeAnim);
-        ShootingBullet();
-        
+                
     }
 
     IEnumerator ResetCDAction()
     {
+        while (!IsAnimationDone)
+        {
+            yield return null;
+        }
+
         yield return new WaitForSeconds(AttackCd);
-        NextAction = true;
+        OffCD = true;
     }
     
 
-    void ShootingBullet()
+   public void ShootingBullet()
     {
         Rigidbody rb = Instantiate(Bullet, ShootingDirection);
         rb.transform.parent = null;
