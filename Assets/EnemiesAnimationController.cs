@@ -18,6 +18,21 @@ public class EnemiesAnimationController : MonoBehaviour
     }
 
    
+    public virtual void OnBreaking()
+    {
+        AiMovement.enabled = false;
+        EnemyAttackScript.IsAnimationDone = false;
+        NevMesh.enabled = false;
+    }
+
+    public  virtual void OffBreaking()
+    {
+
+        NevMesh.enabled = true;
+        AiMovement.enabled = true;
+        EnemyAttackScript.IsAnimationDone = true;
+    }
+
   
     public virtual void OnAttackAnimationEnd()
     {
@@ -26,9 +41,5 @@ public class EnemiesAnimationController : MonoBehaviour
         NevMesh.enabled = true;
         AiMovement.enabled = true;
         EnemyAttackScript.IsAnimationDone = true;
-       
-
-
-
     }
 }

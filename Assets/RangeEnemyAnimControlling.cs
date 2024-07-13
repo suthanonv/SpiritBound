@@ -10,4 +10,15 @@ public class RangeEnemyAnimControlling : EnemiesAnimationController
 
         EnemyShootBehaviour.ShootingBullet();
     }
+
+
+    public override void OffBreaking()
+    {
+        base.OffBreaking();
+    }
+
+    public override void OnBreaking()
+    {
+        base.OnBreaking();
+    }
 }

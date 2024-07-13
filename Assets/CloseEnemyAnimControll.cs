@@ -5,21 +5,28 @@ using UnityEngine;
 public class CloseEnemyAnimControll :EnemiesAnimationController
 {
 
-    [SerializeField] GameObject WarningHitBox;
     [SerializeField] GameObject AttackHitBox;
     public override void OnAttackAnimationStart()
     {
-        WarningHitBox.SetActive(false);
         base.OnAttackAnimationStart();
     }
 
+    public override void OnBreaking()
+    {
+        AttackHitBox.SetActive(false);
+        base.OnBreaking();
+    }
+
+    public override void OffBreaking()
+    {
+        base.OffBreaking();
+    }
 
     public void Attacking()
     {
-        WarningHitBox.SetActive(false);
+
         AttackHitBox.SetActive(true);
     }
-
 
      public void OffAttackingHitBox()
     {
