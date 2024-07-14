@@ -35,7 +35,9 @@ public class EnemyHealth : Health
        
        if(CurrentToughness <= 0 && canbreak)
         {
+            canbreak = false;
             anim.SetTrigger("Breaking");
+            StartCoroutine(ResetBreakEnable());
 
         }
             StartCoroutine(StartResetToughness());
