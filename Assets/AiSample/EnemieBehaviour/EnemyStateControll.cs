@@ -6,11 +6,24 @@ public class EnemyStateControll : MonoBehaviour
 {
     [SerializeField] MeterialChange EnemyChangeMaterial;
     [SerializeField] Ai_Controllering FormCheck;
+    [SerializeField] GameObject HealthUi;
 
     public void SetEnemyState(PlayerFormState playerState)
     {
         EnemyChangeMaterial.PlayerState = playerState;
 
         EnemyChangeMaterial.ChangeMeterialCorespondToForm();
+
+        if(HealthUi != null)
+        {
+            if(playerState != FormCheck.EnemyForm)
+            {
+                HealthUi.SetActive(false);
+            }
+            else
+            {
+                HealthUi.SetActive(true);
+            }
+        }
     }
 }
