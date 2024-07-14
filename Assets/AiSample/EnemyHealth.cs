@@ -13,7 +13,7 @@ public class EnemyHealth : Health
     [SerializeField] float MaxToughness;
     [SerializeField] float ToughnessResetPerioud = 5;
     [SerializeField] float ResetEnableToBreakTIme = 3;
-  [NonSerialized]   public float CurrentToughness;
+  float CurrentToughness;
     bool canbreak = true;
 
     [SerializeField] Animator anim;
@@ -23,7 +23,7 @@ public class EnemyHealth : Health
     private void Start()
     {
         currenthealth = MaxHealth;
-        currenthealth = MaxToughness;
+        CurrentToughness = MaxToughness;
     }
 
     public void Breaking(float BreakingDamage)
@@ -36,6 +36,7 @@ public class EnemyHealth : Health
        if(CurrentToughness <= 0 && canbreak)
         {
             canbreak = false;
+            anim.StopPlayback();
             anim.SetTrigger("Breaking");
             StartCoroutine(ResetBreakEnable());
 
