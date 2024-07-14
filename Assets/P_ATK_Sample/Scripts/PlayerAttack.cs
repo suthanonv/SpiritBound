@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.Animations;
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] float AttackPeriod = 0.25f;
 
 
     [SerializeField] Animator anim;

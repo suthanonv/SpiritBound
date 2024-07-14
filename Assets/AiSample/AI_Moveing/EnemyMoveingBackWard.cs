@@ -56,7 +56,6 @@ public class EnemyMoveingBackWard : Ai_Controllering
         Vector3 DifBetweenPlayer = EnemiePosition - Player.transform.position;
         Vector3 destinition = EnemiePosition - (DifBetweenPlayer.normalized * (DifBetweenPlayer.magnitude - AttackRange));
         bool CanMove = Agent.pathStatus == NavMeshPathStatus.PathComplete;
-        Debug.Log(CanMove);
 
         if (!CanMove) anim.SetFloat("speed", 0);
         else anim.SetFloat("speed", 1);

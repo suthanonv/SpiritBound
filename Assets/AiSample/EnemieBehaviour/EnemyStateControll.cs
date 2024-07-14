@@ -4,21 +4,13 @@ using UnityEngine;
 
 public class EnemyStateControll : MonoBehaviour
 {
-    public GameObject EnemySpiritForm;
-    public GameObject EnemyPhisicalForm;
-    
+    [SerializeField] MeterialChange EnemyChangeMaterial;
+    [SerializeField] Ai_Controllering FormCheck;
 
     public void SetEnemyState(PlayerFormState playerState)
     {
-        if(playerState == PlayerFormState.physic)
-        {
-            EnemyPhisicalForm.SetActive(true);
-            EnemySpiritForm.SetActive(false);
-        }
-        else
-        {
-            EnemySpiritForm.SetActive(true);
-            EnemyPhisicalForm.SetActive(false);
-        }
+        EnemyChangeMaterial.PlayerState = playerState;
+
+        EnemyChangeMaterial.ChangeMeterialCorespondToForm();
     }
 }

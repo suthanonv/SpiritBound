@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -51,8 +52,8 @@ public class ListCheck<T>
 {
     public List<T> List = new List<T>();
 
-    public UnityEvent OnListAddedDelegate = new UnityEvent();
-    public UnityEvent OnListRemovedDelegate = new UnityEvent();
+[NonSerialized]    public UnityEvent OnListAddedDelegate = new UnityEvent();
+[NonSerialized]    public UnityEvent OnListRemovedDelegate = new UnityEvent();
 
     public void Add(T ElementToAdd)
     {

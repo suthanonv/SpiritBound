@@ -11,7 +11,12 @@ public class RoomDestination : MonoBehaviour
     [SerializeField] List<RoomBranchList> AllBrachInRoom = new List<RoomBranchList>();
 
     public Room  RoomThatPlayerin;
-    
+
+    private void Start()
+    {
+        RoomThatPlayerin.SetRoomInPlayerStage(SpiritWorld.Instance.playerFormState);
+    }
+
 
     private void Awake()
     {
