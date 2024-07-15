@@ -14,5 +14,9 @@ public class HitBoxCallulate : MonoBehaviour
             health.Breaking(BreakEfficiency);
             health.TakeDamage(Damage);
         }
+        if (other.gameObject.TryGetComponent<Bullet>(out Bullet bullet))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

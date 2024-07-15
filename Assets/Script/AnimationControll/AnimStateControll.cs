@@ -11,9 +11,11 @@ public class AnimStateControll : MonoBehaviour
     [SerializeField] GameObject HitBox2;
     [SerializeField] GameObject HitBox3;
 
+    [SerializeField] SpiritForm ChangeFormScript;
 
     public void StartAnimation()
     {
+        ChangeFormScript.enabled = false;
         PlayerAttackScript.isAnimationDone = false;
         moveScript.enabled = false;
         
@@ -31,6 +33,8 @@ public class AnimStateControll : MonoBehaviour
 
     public void AnimationEnd()
     {
+        ChangeFormScript.enabled = true;
+
         PlayerAttackScript.isAnimationDone = true;
         moveScript.enabled = true;
         HitBox1.SetActive(false);
