@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(InputHandler))]
 public class ChracterMovement : PlayerMover
 {
-          float currentSpeed;
+    float currentSpeed;
 
 
     private InputHandler _input;
@@ -30,17 +30,20 @@ public class ChracterMovement : PlayerMover
 
 
     [Header("Dash Detail")]
-    [SerializeField] float DashSpeedMultiple = 2;
-    [SerializeField] float DashDuration = 0.25f;
     [SerializeField] KeyCode DashKey = KeyCode.LeftShift;
-    [SerializeField] float DashCoolDown = 1.5f;
-    float lastDashTime;
-    float dashTime;
+    [SerializeField] float DashSpeedMultiple = 5f;
+    [SerializeField] float DashCD = 2f;
+    [SerializeField] float DashTime = 0.25f;
+    bool CanDash = true;
+    bool OnDash = false;
+
+
 
     [Header("Spirit Controller")]
     public bool IsSpirit = false;
     public GameObject player;
     public float maxDistance = 10f;
+    Vector3 movementDirection = Vector3.zero;
 
 
     private void Start()
@@ -53,47 +56,56 @@ public class ChracterMovement : PlayerMover
     void Update()
     {
 
-        Dash();
-
-        if (Input.GetKeyDown(DashKey) && Time.time >= lastDashTime + DashCoolDown)
+        if (Input.GetKeyDown(DashKey) && CanDash)
         {
-            StartDash();
-          
+            CanDash = false;
+            OnDash = true;
+            StartCoroutine(OffDash());
         }
 
 
 
-        if (!RotateTowardMouse)
+
+
+        if (!OnDash)
         {
-
-            input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            input.Normalize();
-
-            var targetVector = new Vector3(input.x, 0, input.y);
-
-            anim.SetFloat("Speed", input.magnitude);
-
-            var movementVector = MoveTowardTarget(targetVector);
-            RotateTowardMovementVector(movementVector);
-
-        }
-        if (RotateTowardMouse)
-        {
-            HandleMovement();
-            RotateFromMouseVector();
-        }
-
-
-        if (IsSpirit)
-        {
-            float distance = Vector3.Distance(transform.position, player.transform.position); //check distance between the spirit and the player
-            if (distance > maxDistance)
+            if (!RotateTowardMouse)
             {
-                Vector3 direction = (transform.position - player.transform.position).normalized;
-                transform.position = player.transform.position + direction * maxDistance;
+
+                input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+                input.Normalize();
+
+                var targetVector = new Vector3(input.x, 0, input.y);
+
+                anim.SetFloat("Speed", input.magnitude);
+
+                var movementVector = MoveTowardTarget(targetVector);
+                RotateTowardMovementVector(movementVector);
+
+            }
+            if (RotateTowardMouse)
+            {
+                HandleMovement();
+                RotateFromMouseVector();
             }
 
+
+
         }
+        else
+        {
+            MoveChar(transform.forward, DashSpeedMultiple * MovementSpeed);
+        }
+            if (IsSpirit)
+            {
+                float distance = Vector3.Distance(transform.position, player.transform.position); //check distance between the spirit and the player
+                if (distance > maxDistance)
+                {
+                    Vector3 direction = (transform.position - player.transform.position).normalized;
+                    transform.position = player.transform.position + direction * maxDistance;
+                }
+            }
+        
     }
 
 
@@ -101,7 +113,7 @@ public class ChracterMovement : PlayerMover
     private void HandleMovement()
     {
         // Get the current forward direction of the character
-        Vector3 movementDirection = Vector3.zero;
+         movementDirection = Vector3.zero;
 
         Vector3 forwardDirection = transform.forward;
 
@@ -113,25 +125,25 @@ public class ChracterMovement : PlayerMover
         if (Input.GetKey(KeyCode.W))
         {
 
-            MoveChar(forwardDirection);
+            MoveChar(forwardDirection , MovementSpeed);
             movementDirection += forwardDirection;
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            MoveChar(-forwardDirection);
+            MoveChar(-forwardDirection , MovementSpeed);
             movementDirection -= forwardDirection;
 
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            MoveChar(-transform.right);
+            MoveChar(-transform.right , MovementSpeed);
             movementDirection -= transform.right;
 
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            MoveChar(transform.right);
+            MoveChar(transform.right , MovementSpeed);
             movementDirection += transform.right;
         }
 
@@ -143,16 +155,19 @@ public class ChracterMovement : PlayerMover
     public float raycastDistance = 10f;
     [SerializeField] LayerMask LayerToDetection = 0;
     [SerializeField] float RayCaseRadius;
-    void MoveChar(Vector3 direct)
+    void MoveChar(Vector3 direct , float Speed)
     {
         Ray ray = new Ray(transform.position, direct);
         RaycastHit hit;
 
 
+
+
         if (Physics.SphereCast(ray, RayCaseRadius, out hit, raycastDistance, LayerToDetection))
         {
+            OnDash = false;
         }
-        else transform.Translate(direct * currentSpeed * Time.deltaTime, Space.World);
+        else transform.Translate(direct * Speed * Time.deltaTime, Space.World);
     }
 
     private void RotateFromMouseVector()
@@ -190,24 +205,19 @@ public class ChracterMovement : PlayerMover
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, RotationSpeed);
     }
 
-        private void StartDash()
+
+
+    IEnumerator OffDash()
     {
-       
-        dashTime = Time.time + DashDuration;
-        lastDashTime = Time.time;
+        yield return new WaitForSeconds(DashTime);
+        OnDash = false;
+        StartCoroutine(ReSetDashCD());
     }
 
-    private void Dash()
+
+    IEnumerator ReSetDashCD()
     {
-        if (Time.time >= dashTime)
-        {
-            currentSpeed = MovementSpeed;
-
-            return;
-        }
-
-        currentSpeed = MovementSpeed * DashSpeedMultiple;
-        //var dashVector = transform.forward * DashSpeed * Time.deltaTime;
-        //transform.Translate(dashVector);
+        yield return new WaitForSeconds(DashCD);
+        CanDash = true;
     }
 }

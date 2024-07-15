@@ -4081,10 +4081,10 @@ MonoBehaviour:
   RotationSpeed: 1
   Camera: {fileID: 786408172}
   anim: {fileID: 326787516}
-  DashSpeedMultiple: 5
-  DashDuration: 0.25
   DashKey: 304
-  DashCoolDown: 1.5
+  DashSpeedMultiple: 5
+  DashCD: 2
+  DashTime: 0.25
   IsSpirit: 1
   player: {fileID: 5284407147573367152}
   maxDistance: 10
@@ -7267,14 +7267,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!33 &390351044951507873
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5284407147573367152}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &405289429834180232
 Transform:
   m_ObjectHideFlags: 0
@@ -10183,8 +10175,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 406511521036980525}
-  - component: {fileID: 390351044951507873}
-  - component: {fileID: 6012861039603970720}
   - component: {fileID: 2707140077588154510}
   - component: {fileID: 1685804514217688900}
   - component: {fileID: 4632734868644659049}
@@ -10809,48 +10799,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!23 &6012861039603970720
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5284407147573367152}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: c812810ee265f1242a52c2c140609760, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!4 &6040092694686281928
 Transform:
   m_ObjectHideFlags: 0
@@ -11140,7 +11088,6 @@ MonoBehaviour:
   HitChageperiod: 0.125
   OnHit: {fileID: 2100000, guid: b54a4d30bf0a674499f784fb9acbdc05, type: 2}
   OffHit: {fileID: 2100000, guid: e14d65653f23bcc4097dde75b43c55a2, type: 2}
-  EnableFadeing: 1
   FormCheck: {fileID: 413081322}
   PlayerState: 0
   FadeMaterial: {fileID: 2100000, guid: 32c7f9f85cb9f7948b18e7d271455c16, type: 2}
@@ -11883,7 +11830,6 @@ MonoBehaviour:
   HitChageperiod: 0.125
   OnHit: {fileID: 2100000, guid: daf4c73d910b8f248a2ae82ada077bfd, type: 2}
   OffHit: {fileID: 2100000, guid: f8804c87ce0eb0b4d898f50aac7a03e2, type: 2}
-  EnableFadeing: 0
   FormCheck: {fileID: 8818580259405424271}
   PlayerState: 0
   FadeMaterial: {fileID: 0}
@@ -12649,10 +12595,10 @@ MonoBehaviour:
   RotationSpeed: 1
   Camera: {fileID: 786408172}
   anim: {fileID: 7704352053456460929}
-  DashSpeedMultiple: 5
-  DashDuration: 0.25
   DashKey: 304
-  DashCoolDown: 1.5
+  DashSpeedMultiple: 5
+  DashCD: 2
+  DashTime: 0.25
   IsSpirit: 0
   player: {fileID: 0}
   maxDistance: 10
