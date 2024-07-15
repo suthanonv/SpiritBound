@@ -12,10 +12,13 @@ public class Room : MonoBehaviour
 
     public ListCheck<GameObject> EnemyListInRoom = new ListCheck<GameObject>();
 
+    [SerializeField] GameObject Door;
     
 
     private void Start()
     {
+        if (Door != null) 
+        Door.SetActive(false);
         EnemyListInRoom.OnListRemovedDelegate.AddListener(IsThisRoomClear);
     }
 
@@ -70,7 +73,11 @@ public class Room : MonoBehaviour
 
     public void IsThisRoomClear()
     {
-        if (EnemyListInRoom.List.Count <= 0) Debug.Log("Room Clear");
+        if (EnemyListInRoom.List.Count <= 0)
+        {
+            Door.SetActive(true);
+        }
+        
     }
 
     public void ChangeStateOfAllEnemy(PlayerFormState playerState)

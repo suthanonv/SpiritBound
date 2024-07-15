@@ -9,9 +9,16 @@ public class EnemieCanvasTransform : MonoBehaviour
     [SerializeField] Camera MainCam;
     private void Update()
     {
-        Vector3 lookAtDirection = MainCam.transform.position - transform.position;
+        if (EnemiePostion != null) {
+            Vector3 lookAtDirection = MainCam.transform.position - transform.position;
 
-        transform.LookAt(lookAtDirection);
-        this.transform.position = EnemiePostion.position + OffSet;
+            transform.LookAt(lookAtDirection);
+            this.transform.position = EnemiePostion.position + OffSet;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
     }
 }

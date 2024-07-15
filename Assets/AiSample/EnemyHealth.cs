@@ -61,7 +61,7 @@ public class EnemyHealth : Health
 
     public override void Died()
     {
-        RoomThatEnemyInSide.EnemyListInRoom.List.Remove(this.gameObject);
+        RoomThatEnemyInSide.EnemyListInRoom.Remove(this.gameObject);
         Destroy(this.gameObject);
     }
 

@@ -348,6 +348,7 @@ MonoBehaviour:
   ElementInEachForm: []
   EnemyListInRoom:
     List: []
+  Door: {fileID: 0}
 --- !u!4 &55454001
 Transform:
   m_ObjectHideFlags: 0
@@ -837,6 +838,7 @@ MonoBehaviour:
     List:
     - {fileID: 4359102450824933374}
     - {fileID: 413081320}
+  Door: {fileID: 304755679}
 --- !u!1 &122320468
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,6 +955,7 @@ MonoBehaviour:
   ElementInEachForm: []
   EnemyListInRoom:
     List: []
+  Door: {fileID: 0}
 --- !u!4 &164070068
 Transform:
   m_ObjectHideFlags: 0
@@ -1395,7 +1398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8d8600e2c72b34fa235e52d2a580ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 0
+  Damage: 10
   BreakEfficiency: 25
 --- !u!65 &282190694
 BoxCollider:
@@ -2298,6 +2301,7 @@ MonoBehaviour:
   ElementInEachForm: []
   EnemyListInRoom:
     List: []
+  Door: {fileID: 0}
 --- !u!4 &578131585
 Transform:
   m_ObjectHideFlags: 0
@@ -2793,6 +2797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseHealthBar: {fileID: 657775905}
   DecreaseingHealthBar: {fileID: 1794312546}
+  LerpSpeed: 2
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3255,7 +3260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8d8600e2c72b34fa235e52d2a580ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 0
+  Damage: 10
   BreakEfficiency: 100
 --- !u!65 &933845902
 BoxCollider:
@@ -6468,6 +6473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseHealthBar: {fileID: 409453294}
   DecreaseingHealthBar: {fileID: 2016582986}
+  LerpSpeed: 2
 --- !u!1 &1761768849
 GameObject:
   m_ObjectHideFlags: 0
@@ -7207,7 +7213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8d8600e2c72b34fa235e52d2a580ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 0
+  Damage: 10
   BreakEfficiency: 25
 --- !u!65 &2021889403
 BoxCollider:
