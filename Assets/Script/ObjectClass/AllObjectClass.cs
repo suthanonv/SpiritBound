@@ -68,3 +68,9 @@ public class ListCheck<T>
         OnListRemovedDelegate.Invoke();
     }
 }
+
+[System.Serializable]
+public class EnemyWave
+{ 
+    public ListCheck<GameObject> EnemyInWave = new ListCheck<GameObject>();
+}

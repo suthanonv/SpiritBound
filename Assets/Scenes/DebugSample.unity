@@ -346,9 +346,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerSpawnPosition: {fileID: 1734818173}
   ElementInEachForm: []
-  EnemyListInRoom:
-    List: []
   Door: {fileID: 0}
+  EnemyWaveList: []
 --- !u!4 &55454001
 Transform:
   m_ObjectHideFlags: 0
@@ -834,11 +833,12 @@ MonoBehaviour:
     ObjectInFormStage: []
   - formState: 1
     ObjectInFormStage: []
-  EnemyListInRoom:
-    List:
-    - {fileID: 4359102450824933374}
-    - {fileID: 413081320}
   Door: {fileID: 304755679}
+  EnemyWaveList:
+  - EnemyInWave:
+      List:
+      - {fileID: 4359102450824933374}
+      - {fileID: 413081320}
 --- !u!1 &122320468
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,9 +953,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerSpawnPosition: {fileID: 1101189066}
   ElementInEachForm: []
-  EnemyListInRoom:
-    List: []
   Door: {fileID: 0}
+  EnemyWaveList: []
 --- !u!4 &164070068
 Transform:
   m_ObjectHideFlags: 0
@@ -2299,9 +2298,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerSpawnPosition: {fileID: 982994429}
   ElementInEachForm: []
-  EnemyListInRoom:
-    List: []
   Door: {fileID: 0}
+  EnemyWaveList: []
 --- !u!4 &578131585
 Transform:
   m_ObjectHideFlags: 0

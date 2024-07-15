@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using JetBrains.Annotations;
 public class Room : MonoBehaviour
 {
     [SerializeField] Transform PlayerSpawnPosition;
@@ -10,16 +11,28 @@ public class Room : MonoBehaviour
     [SerializeField] List<FormStageComponent> ElementInEachForm = new List<FormStageComponent>();
 
 
-    public ListCheck<GameObject> EnemyListInRoom = new ListCheck<GameObject>();
 
     [SerializeField] GameObject Door;
+
+    public List<EnemyWave> EnemyWaveList = new List<EnemyWave>();
+    int currentWave = 0;
+
+    public void RemoveEnemyFromList(GameObject Enemy)
+    {
+        EnemyWaveList[currentWave].EnemyInWave.Remove(Enemy);
+    }
     
 
     private void Start()
     {
         if (Door != null) 
         Door.SetActive(false);
-        EnemyListInRoom.OnListRemovedDelegate.AddListener(IsThisRoomClear);
+        SetEnemyInWave();
+        foreach (EnemyWave i in EnemyWaveList)
+        {
+            i.EnemyInWave.OnListRemovedDelegate.AddListener(IsThisRoomClear);
+        }
+        
     }
 
 
@@ -36,8 +49,6 @@ public class Room : MonoBehaviour
         OpenRoomElement(CurrentState);
         ChangeStateOfAllEnemy(CurrentState);
         CloseRoomELement(GetOppositPlayerFormState(CurrentState));
-
-
     }
 
 
@@ -73,9 +84,15 @@ public class Room : MonoBehaviour
 
     public void IsThisRoomClear()
     {
-        if (EnemyListInRoom.List.Count <= 0)
+        if (EnemyWaveList[currentWave].EnemyInWave.List.Count <= 0)
         {
-            Door.SetActive(true);
+            if (currentWave >= EnemyWaveList.Count -1) Door.SetActive(true);
+            else
+            {
+
+                currentWave++;
+                SetEnemyInWave();
+            }
         }
         
     }
@@ -83,10 +100,21 @@ public class Room : MonoBehaviour
     public void ChangeStateOfAllEnemy(PlayerFormState playerState)
     {
         
-        foreach(GameObject i in EnemyListInRoom.List)
+        foreach(GameObject i in EnemyWaveList[currentWave].EnemyInWave.List)
         {
             i.GetComponent<EnemyStateControll>().SetEnemyState(playerState);
         }
+    }
+
+
+    void SetEnemyInWave()
+    {
+        if (EnemyWaveList.Count == 0) return;
+        foreach(GameObject i in EnemyWaveList[currentWave].EnemyInWave.List)
+        {
+            i.SetActive(true);
+        }
+        ChangeStateOfAllEnemy(SpiritWorld.Instance.playerFormState);
     }
 
 }
