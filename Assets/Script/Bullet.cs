@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] float BulletTIme;
     [SerializeField] float ShowingRange;
+    [SerializeField] float Daamge;
 
     [SerializeField] PlayerFormState BullletForm = PlayerFormState.sprit;
 
@@ -37,6 +38,15 @@ public class Bullet : MonoBehaviour
         {
             this.GetComponent<MeshRenderer>().enabled = true;
             this.GetComponent<Renderer>().material = DefaultMaterial;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            PlayerHealth.instance.TakeDamage(Daamge);
+            Destroy(this.gameObject); 
         }
     }
 }
