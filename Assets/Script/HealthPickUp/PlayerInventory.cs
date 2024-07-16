@@ -7,6 +7,8 @@ public class PlayerInventory : MonoBehaviour
     public int maxPotions = 3;
     private int currentPotions = 0;
 
+    public int NumberOfCoins = 0;
+
     public static PlayerInventory Instance;
 
     private void Awake()
@@ -47,6 +49,11 @@ public class PlayerInventory : MonoBehaviour
     public int GetCurrentPotionCount()
     {
         return currentPotions;
+    }
+
+    public void CoinCollected()
+    {
+        NumberOfCoins++;
     }
 
 }
