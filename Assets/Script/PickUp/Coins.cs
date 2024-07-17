@@ -9,6 +9,7 @@ public class Coins : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PlayerInventory.Instance.CoinCollected();
+            CoinsUI.instance.UpdateCoinsText();
             Destroy(gameObject);
         }
     }
