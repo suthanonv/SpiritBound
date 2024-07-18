@@ -7,9 +7,19 @@ using UnityEngine;
 using UnityEngine.AI;
 using static UnityEngine.GraphicsBuffer;
 
+
 public class EnemyMoveingBackWard : Ai_Controllering
 {
+    enum AiStateMent
+    { Stop, Move }
 
+
+
+    [Header("AI State")]
+    [SerializeField] float MoveingPeriod = 3.5f;
+    [SerializeField] float StopPeriod = 5f;
+    bool ChangedCD = false;
+    AiStateMent CurrentState = AiStateMent.Move;
     void Start()
     {
         EnableWalk = true;
@@ -34,20 +44,56 @@ public class EnemyMoveingBackWard : Ai_Controllering
 
         if (EnableWalk)
         {
+            AIChangeState();
+
+
+
             transform.LookAt(Player.transform.position);
-            if (DifBetweenPlayer.magnitude < AttackRange)
+
+            if (CurrentState == AiStateMent.Move)
             {
-
+                anim.SetFloat("speed", 1);
                 MovePosition(this.transform.position);
-
+              
             }
-        }
+            else
+            {
+                anim.SetFloat("speed", 0);
 
+                Agent.destination = this.transform.position;
+            }
 
     }
 
 
+}
 
+    void AIChangeState()
+    {
+       if(!ChangedCD)
+        {
+            ChangedCD = true;
+            if (CurrentState == AiStateMent.Move)
+            {
+                CurrentState = AiStateMent.Stop;
+                StartCoroutine(StateChangeCD(StopPeriod));
+
+            }
+            else
+            {
+                CurrentState = AiStateMent.Move;
+                StartCoroutine(StateChangeCD(MoveingPeriod));
+
+            }
+
+        }
+    }
+
+    IEnumerator StateChangeCD(float Time)
+    { 
+    yield return new WaitForSeconds(Time);
+        ChangedCD = false;
+    }
 
 
     protected override void MovePosition(Vector3 EnemiePosition)
@@ -57,16 +103,31 @@ public class EnemyMoveingBackWard : Ai_Controllering
         Vector3 destinition = EnemiePosition - (DifBetweenPlayer.normalized * (DifBetweenPlayer.magnitude - AttackRange));
         bool CanMove = Agent.pathStatus == NavMeshPathStatus.PathComplete;
 
-        if (!CanMove) anim.SetFloat("speed", 0);
-        else anim.SetFloat("speed", 1);
+     
         base.MovePosition(destinition);
 
 
-       
+      
 
-
-        
+  
 
     }
 
+
+     public void EnableNavMesh(bool IsEnable)
+    {
+        if(IsEnable == false )
+        {
+            Agent.enabled = false;
+            anim.SetFloat("speed", 0);
+        }
+        else
+        {
+            Agent.enabled = true;
+
+            if (CurrentState == AiStateMent.Move)
+                anim.SetFloat("speed", 1);
+            else anim.SetFloat("speed", 0);
+        }
+    }
 }

@@ -11,6 +11,19 @@ public class RangeEnemyAnimControlling : EnemiesAnimationController
         EnemyShootBehaviour.ShootingBullet();
     }
 
+    public override void OnAttackAnimationStart()
+    {
+        EnemyMoveingBackWard RangeScript = AiMovement as EnemyMoveingBackWard;
+        RangeScript.EnableNavMesh(false);
+        base.OnAttackAnimationEnd();
+    }
+
+    public override void OnAttackAnimationEnd()
+    {
+        EnemyMoveingBackWard RangeScript = AiMovement as EnemyMoveingBackWard;
+        RangeScript.EnableNavMesh(true);
+        base.OnAttackAnimationEnd();
+    }
 
     public override void OffBreaking()
     {
