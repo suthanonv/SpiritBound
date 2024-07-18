@@ -23,13 +23,13 @@ public class EnemyHealth : Health
    
     private void Start()
     {
-
+     if(HealthBar != null) 
         HealthBar.SetHealthBar(MaxHealth, currenthealth);
         currenthealth = MaxHealth;
          CurrentToughness = MaxToughness;
     }
 
-    public void Breaking(float BreakingDamage)
+    public virtual void Breaking(float BreakingDamage)
     {
         if (resetToughness != null) StopCoroutine(resetToughness);
         
