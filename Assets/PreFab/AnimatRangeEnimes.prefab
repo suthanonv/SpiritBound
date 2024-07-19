@@ -1381,6 +1381,8 @@ MonoBehaviour:
   AttackRange: 15
   ChasingRange: 0
   EnemyForm: 0
+  MoveingPeriod: 3.5
+  StopPeriod: 5
   anim: {fileID: 319039370373333807}
 --- !u!114 &2609362291862858571
 MonoBehaviour:
@@ -1398,6 +1400,7 @@ MonoBehaviour:
   AttackCd: 3
   AttackTimeAnim: 0.75
   MovementScript: {fileID: 8348057324353225907}
+  IsAnimationDone: 1
   Bullet: {fileID: 7678432455103589446, guid: 1cbea50a49c4665439f23601f9b765d1, type: 3}
   ShootingDirection: {fileID: 7794210184741739786}
   BulletForce: 15
@@ -1516,6 +1519,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e45190ce93a8245a11f1230c2bf5d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ModelPart: []
+  HitChageperiod: 0
+  OnHit: {fileID: 0}
+  OffHit: {fileID: 0}
+  FormCheck: {fileID: 0}
+  PlayerState: 0
+  FadeMaterial: {fileID: 0}
 --- !u!1 &6194795894016235843
 GameObject:
   m_ObjectHideFlags: 0
