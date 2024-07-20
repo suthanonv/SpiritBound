@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public enum PlayerFormState
-{ sprit , physic }
+{ sprit , physic , both }
 
 [System.Serializable]
 public class AllObjectClass : MonoBehaviour

@@ -105,12 +105,6 @@ public class EnemyMoveingBackWard : Ai_Controllering
 
      
         base.MovePosition(destinition);
-
-
-      
-
-  
-
     }
 
 

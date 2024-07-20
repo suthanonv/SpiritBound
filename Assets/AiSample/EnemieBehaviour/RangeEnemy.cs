@@ -23,7 +23,9 @@ public class RangeEnemy : EnemieBehaviour
      
     
     }
-    public override void Attack()
+
+
+    public override void  Attack()
     {
         OffCD = false;
         DoingAction();
@@ -51,7 +53,7 @@ public class RangeEnemy : EnemieBehaviour
     }
     
 
-   public void ShootingBullet()
+   public virtual void ShootingBullet()
     {
         Rigidbody rb = Instantiate(Bullet, ShootingDirection);
         rb.transform.parent = null;

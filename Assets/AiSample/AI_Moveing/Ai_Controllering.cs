@@ -9,7 +9,7 @@ public class Ai_Controllering : MonoBehaviour
 {
   protected  NavMeshAgent Agent;
     [SerializeField] protected EnemieBehaviour EnemeyBehaviour;
-    protected Transform Player;
+    public Transform Player;
    [SerializeField] protected float AttackRange;
     [SerializeField] protected float ChasingRange;
     [SerializeField] public PlayerFormState EnemyForm = PlayerFormState.physic;

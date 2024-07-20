@@ -14,6 +14,7 @@ public class ExplosiveHitBox : MonoBehaviour
     List<EnemyHealth> EnemyHealth = new List<EnemyHealth>();
 
     [SerializeField] float ActivateTime  = 1.5f;
+    [SerializeField] DamageAreaEffect CircleArea;
 
 
     [Header("Damage")]
@@ -32,6 +33,7 @@ public class ExplosiveHitBox : MonoBehaviour
      
     private void OnEnable()
     {
+        CircleArea.enabled = true;
         Invoke("Explosive", ActivateTime);
     }
 

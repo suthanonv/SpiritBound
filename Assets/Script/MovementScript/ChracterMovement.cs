@@ -180,6 +180,8 @@ public class ChracterMovement : PlayerMover
             target.y = transform.position.y;
             transform.LookAt(target);
         }
+
+       
     }
 
     private Vector3 MoveTowardTarget(Vector3 targetVector)

@@ -10,6 +10,7 @@ public class EnemyStateControll : MonoBehaviour
 
     public void SetEnemyState(PlayerFormState playerState)
     {
+        if (FormCheck.EnemyForm == PlayerFormState.both) return;
         EnemyChangeMaterial.PlayerState = playerState;
 
         EnemyChangeMaterial.ChangeMeterialCorespondToForm();
