@@ -20,6 +20,8 @@ public class EnemyHealth : Health
     [SerializeField] Animator anim;
 
     Coroutine resetToughness;
+
+    [SerializeField] DamageText ShowingDamageText;
    
     private void Start()
     {
@@ -52,6 +54,7 @@ public class EnemyHealth : Health
     public override void TakeDamage(float Damage)
     {
         float PreviosHealth = currenthealth;
+        ShowingDamageText.SetDamageText(Damage);
         base.TakeDamage(Damage);
         HealthBar.HealthBarRunAnimation(currenthealth, PreviosHealth);
 
