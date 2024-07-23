@@ -1000,6 +1000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemeyBehaviour: {fileID: 413081321}
+  Player: {fileID: 0}
   AttackRange: 3
   ChasingRange: 15
   EnemyForm: 1
@@ -1390,14 +1391,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 729097674}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.449733, y: -18.35763, z: -128.37799}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.415619, y: -18.845633, z: -123.62538}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4020779231867153049}
   - {fileID: 406511521036980525}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 7954411332921814237}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &734712497 stripped
 GameObject:
@@ -2025,7 +2026,7 @@ Transform:
   m_GameObject: {fileID: 1210094248}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.856782, y: -16.435965, z: 29.018864}
+  m_LocalPosition: {x: -18.890896, y: -15.947961, z: 24.266254}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2033,7 +2034,7 @@ Transform:
   - {fileID: 164070068}
   - {fileID: 55454001}
   - {fileID: 578131585}
-  m_Father: {fileID: 7954411332921814237}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1210094251
 MonoBehaviour:
@@ -9648,7 +9649,6 @@ MonoBehaviour:
   OnHit: {fileID: 0}
   OffHit: {fileID: 0}
   FormCheck: {fileID: 0}
-  PlayerState: 0
   FadeMaterial: {fileID: 0}
 --- !u!23 &6451798955597447562
 MeshRenderer:
@@ -11031,7 +11031,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1210094250}
+  - {fileID: 729097675}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7964442844660774831
@@ -11914,9 +11914,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemeyBehaviour: {fileID: 3538734618411760549}
+  Player: {fileID: 0}
   AttackRange: 15
   ChasingRange: 0
   EnemyForm: 0
+  MoveingPeriod: 3.5
+  StopPeriod: 5
   anim: {fileID: 1982384499706442361}
 --- !u!4 &8824571613056579575
 Transform:
@@ -12189,9 +12192,9 @@ SceneRoots:
   - {fileID: 786408173}
   - {fileID: 7954411332921814237}
   - {fileID: 1707701608}
+  - {fileID: 1210094250}
   - {fileID: 5762839387258005882}
   - {fileID: 413081323}
-  - {fileID: 729097675}
   - {fileID: 42936535}
   - {fileID: 1375228070}
   - {fileID: 1520397749}
