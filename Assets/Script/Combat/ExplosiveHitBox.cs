@@ -29,7 +29,6 @@ public class ExplosiveHitBox : MonoBehaviour
     [SerializeField] GameObject ExplosiveEffect;
     [SerializeField] Transform ExplosivePreSet;
 
-    [SerializeField] float EffectTime = 1.25f;
      
     private void OnEnable()
     {

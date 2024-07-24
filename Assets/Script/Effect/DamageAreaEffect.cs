@@ -7,7 +7,6 @@ public class DamageAreaEffect : MonoBehaviour
 {
     [SerializeField] float TimeToFullTheCircle = 2f;
     [SerializeField] Transform ShowingCircleArea;
-        float ScaleXZ = 0;
 
     private float timer = 0f;
     private float currentValue = 0f;

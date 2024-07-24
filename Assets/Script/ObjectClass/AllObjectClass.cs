@@ -74,3 +74,10 @@ public class EnemyWave
 { 
     public ListCheck<GameObject> EnemyInWave = new ListCheck<GameObject>();
 }
+[System.Serializable]
+public class PlayerItemSkill
+{
+    public PlayerFormState PlayerState;
+    public UseAbleItemSkill CurrentSkill;
+    public UseAbleItem ItemInFormStorage; 
+}

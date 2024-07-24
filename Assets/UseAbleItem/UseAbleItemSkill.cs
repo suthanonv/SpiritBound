@@ -1,0 +1,58 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class UseAbleItemSkill : MonoBehaviour
+{
+     public UseAbleItem ItemData;
+    protected int RemainingUsedCount;
+    protected bool ONCD;
+
+
+
+    public bool IsSkillOnCD()
+    {
+        return ONCD;
+    }
+
+    public virtual void OnHoldingKey()
+    {
+
+    }
+
+
+     public virtual void OnRelesaingKey()
+     {
+        if (RemainingUsedCount == 0 || ONCD) return;
+     }
+
+     public virtual void StartItemCD()
+     {
+        ONCD = true;
+        RemainingUsedCount--;
+        StartCoroutine(CDItem(ItemData.CDTime));
+     }
+
+    IEnumerator CDItem(float TImer)
+    {
+        yield return new WaitForSeconds(TImer);
+        ONCD = false;
+    }
+
+
+    public  void ResetItemUseingCount()
+    {
+        RemainingUsedCount = ItemData.UsingLimitPerRoom;
+        StopAllCoroutines();
+        ONCD = false;
+
+    }
+
+    public void OnRemoveingItem()
+    {
+        StopAllCoroutines();
+        Destroy(this.gameObject);
+    }
+
+}

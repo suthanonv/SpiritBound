@@ -16,7 +16,7 @@ public class MortarEnemyBehaviour : EnemieBehaviour
 
     private void Update()
     {
-        if (OffCD && IsAnimationDone) Attack();
+        if (OffCD && IsAnimationDone && MovementScript.isInRange(ActionRange)) Attack();
 
 
 
@@ -52,7 +52,6 @@ public class MortarEnemyBehaviour : EnemieBehaviour
 
     public void ShootingBullet()
     {
-        Debug.Log("Shooting");
         Transform Player = this.GetComponent<Ai_Controllering>().Player;
 
         Instantiate(Nuke , new Vector3(Player.position.x , -16.86f , Player.position.z) , Quaternion.identity) ;
