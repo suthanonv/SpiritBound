@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,15 +32,41 @@ public class NewitemAnimationControlling : MonoBehaviour
 
 
 
+ [NonSerialized]   public PlayerFormState StorerageFormToSwap = PlayerFormState.both;
 
-    private void Start()
+
+    [SerializeField] GameObject KeyCodeUI;
+    KeyCode ConfirmKey = KeyCode.E;
+
+
+    private void Update()
+    {
+        if (StorerageFormToSwap != PlayerFormState.both)
+        {
+            KeyCodeUI.SetActive(true);
+            if (Input.GetKeyDown(ConfirmKey))
+            {
+                UseAbleItemStorage.instance.SetnewItem(ItemChoosingUIMangement.instance.NewItem, StorerageFormToSwap);
+                SetNewItemBorderToOrigin();
+                ItemChoosingUIMangement.instance.CloseChoosingItemPanel();
+                KeyCodeUI.SetActive(false);
+            }
+        }
+    }
+
+
+
+
+    public void SetNewItemBorderToOrigin()
     {
         NewItemBoarder.anchoredPosition = NewItemOriginPosition.anchoredPosition;
+        StorerageFormToSwap = PlayerFormState.both;
     }
 
     public void MoveOverHeadAnimation(RectTransform MoveTo , PlayerFormState StateOfItemThatMOuseOver)
     {
-      
+
+        StorerageFormToSwap = StateOfItemThatMOuseOver;
 
        StartCoroutine( MoveRectTransform(NewItemBoarder, MoveTo , 0.1f));
 

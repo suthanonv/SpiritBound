@@ -16,6 +16,10 @@ public class UseAbleItemStorage : MonoBehaviour
         instance = this;
     }
 
+    private void Start()
+    {
+        SetItemInStorage();
+    }
 
     public UseAbleItemSkill GetUseAbleItemSKill()
     {
@@ -25,9 +29,9 @@ public class UseAbleItemStorage : MonoBehaviour
     }
 
 
-    public UseAbleItem GetItemInfo()
+    public UseAbleItem GetItemInfo(PlayerFormState StateToGet)
     {
-        int Index = PlayerItemStorage.FindIndex(i => i.PlayerState == SpiritWorld.Instance.playerFormState);
+        int Index = PlayerItemStorage.FindIndex(i => i.PlayerState == StateToGet);
 
         return PlayerItemStorage[Index].ItemInFormStorage;
          
@@ -68,7 +72,6 @@ public class UseAbleItemStorage : MonoBehaviour
 
 
         ItemUIControlling.Instance.SetInfoPauseMenuItemInfo();
-        SetItemInStorage();
 
     }
 }

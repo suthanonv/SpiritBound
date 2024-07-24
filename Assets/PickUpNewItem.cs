@@ -11,7 +11,7 @@ public class PickUpNewItem : MonoBehaviour
         instance = this;
     }
 
-    public void GettingNewItem()
+    public void GettingNewItem(UseAbleItem Item)
     {
 
     }

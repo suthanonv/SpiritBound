@@ -22,7 +22,7 @@ public class ItemUIControlling : MonoBehaviour
 
     private void Update()
     {
-        IngameSkillIcon.sprite = UseAbleItemStorage.instance.GetItemInfo().SpriteIcon;
+
     }
 
 
