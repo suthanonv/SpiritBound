@@ -5,7 +5,6 @@ using UnityEngine;
 public class NukeDamage : MonoBehaviour
 {
     [SerializeField] float Damage = 20;
-    bool touchGround = false;
     [SerializeField] GameObject ExplotionEffect;
     [SerializeField] float EffectPeirod = 0.125f;
     [SerializeField] GameObject SecondColiider;
@@ -28,7 +27,7 @@ public class NukeDamage : MonoBehaviour
 
      
             GameObject ExplotionEffectPrefab = Instantiate(ExplotionEffect, this.transform.position, Quaternion.identity);
-            touchGround = true;
+            
             Destroy(this.gameObject, 0.1f);
             Destroy(ExplotionEffectPrefab, EffectPeirod);
 

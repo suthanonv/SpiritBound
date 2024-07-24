@@ -11,7 +11,6 @@ public class SpikeTrap : MonoBehaviour
 
     [SerializeField] Animator anim;
 
-    bool CanDamageToEntity = true;
 
 
     bool isActive = false;

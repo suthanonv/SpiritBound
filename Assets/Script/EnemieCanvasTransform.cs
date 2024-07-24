@@ -12,7 +12,7 @@ public class EnemieCanvasTransform : MonoBehaviour
         if (EnemiePostion != null) {
             Vector3 lookAtDirection = MainCam.transform.position - transform.position;
 
-            transform.LookAt(lookAtDirection);
+          transform.LookAt(lookAtDirection);
             this.transform.position = EnemiePostion.position + OffSet;
         }
         else

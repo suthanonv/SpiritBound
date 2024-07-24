@@ -22,6 +22,7 @@ public class DamageText : MonoBehaviour
 
         if(DisableTextCorou != null) StopCoroutine(DisableTextCorou);
 
+        if(this.gameObject.activeSelf == true)
         DisableTextCorou = StartCoroutine(DisableText());
 
     }

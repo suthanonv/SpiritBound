@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7678432455103589446}
   - component: {fileID: 556118585985848545}
   - component: {fileID: 2123537438080865682}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletTIme: 2.44
   ShowingRange: 3.5
+  Daamge: 15
   BullletForm: 0
   DefaultMaterial: {fileID: 2100000, guid: 0cfda9fcc91f4b8488a82a08d7017343, type: 2}
   FadingMaterial: {fileID: 2100000, guid: 5204ceca14d2de245a9a9a9da1c3c938, type: 2}
