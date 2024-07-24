@@ -26,7 +26,7 @@ public class MeterialChange : MonoBehaviour
 
     [Header("Show Material Before Attack")]
     [SerializeField] Ai_Controllering FormCheck;
- [NonSerialized]   public PlayerFormState PlayerState;
+    [NonSerialized]   public PlayerFormState PlayerState;
     [SerializeField] Material FadeMaterial;
 
     public void OnHitMeterial()
