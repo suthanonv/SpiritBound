@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Numerics;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -36,7 +37,7 @@ public class EnemyMoveingBackWard : Ai_Controllering
     {
         Player = SpiritWorld.Instance.GetPlayer(EnemyForm).transform;
 
-        Vector3 DifBetweenPlayer = this.transform.position - Player.transform.position;
+        UnityEngine.Vector3 DifBetweenPlayer = this.transform.position - Player.transform.position;
 
         EnemeyBehaviour.CanDoingAction = true;
 
@@ -68,6 +69,8 @@ public class EnemyMoveingBackWard : Ai_Controllering
 
 }
 
+
+
     void AIChangeState()
     {
        if(!ChangedCD)
@@ -96,11 +99,11 @@ public class EnemyMoveingBackWard : Ai_Controllering
     }
 
 
-    protected override void MovePosition(Vector3 EnemiePosition)
+    protected override void MovePosition(UnityEngine.Vector3 EnemiePosition)
     {
 
-        Vector3 DifBetweenPlayer = EnemiePosition - Player.transform.position;
-        Vector3 destinition = EnemiePosition - (DifBetweenPlayer.normalized * (DifBetweenPlayer.magnitude - AttackRange));
+        UnityEngine.Vector3 DifBetweenPlayer = EnemiePosition - Player.transform.position;
+        UnityEngine.Vector3 destinition = EnemiePosition - (DifBetweenPlayer.normalized * (DifBetweenPlayer.magnitude - AttackRange));
         bool CanMove = Agent.pathStatus == NavMeshPathStatus.PathComplete;
 
      
