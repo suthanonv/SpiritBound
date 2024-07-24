@@ -24,7 +24,7 @@ public class ChracterMovement : PlayerMover
 
     [SerializeField] public Animator anim;
 
-    [SerializeField] private PlayerInventory playerInventory;
+    
 
     Vector3 dashDirect;
 
@@ -39,8 +39,7 @@ public class ChracterMovement : PlayerMover
     bool CanDash = true;
     bool OnDash = false;
 
-    [Header("Use Potion Key")]
-    [SerializeField] KeyCode Health = KeyCode.E;
+
 
     [Header("Spirit Controller")]
     public bool IsSpirit = false;
@@ -49,11 +48,10 @@ public class ChracterMovement : PlayerMover
     Vector3 movementDirection = Vector3.zero;
 
 
-
     private void Start()
     {
         currentSpeed = MovementSpeed;
-        playerInventory = GetComponent<PlayerInventory>();
+     
     }
 
 
