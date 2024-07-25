@@ -58,25 +58,27 @@ public class Ai_Controllering : MonoBehaviour
 
 
     [NonSerialized] public GameObject ProvokeDestination;
-    [NonSerialized] public bool isProvoke = false;
+ public bool isProvoke = false;
     public void IsProvoking(bool Provoke , GameObject ObjectToProve)
     {
        
         isProvoke = Provoke;
-        if (isProvoke) ProvokeDestination = ObjectToProve;
+        if (isProvoke)
+        {
+
+            ObjectToProve.GetComponent<Fumo>().ProvokedEnemyList.Add(this.gameObject);
+            ProvokeDestination = ObjectToProve;
+
+        }
     }
 
     protected Transform GetDestination()
     {
         if(isProvoke)
         {
-            if(ProvokeDestination != null)   return ProvokeDestination.transform;
+         
+           return ProvokeDestination.transform;
 
-            else
-            {
-                Agent.destination = SpiritWorld.Instance.GetPlayer(EnemyForm).transform.position;
-                return SpiritWorld.Instance.GetPlayer(EnemyForm).transform;
-            }
         }
         else
         {

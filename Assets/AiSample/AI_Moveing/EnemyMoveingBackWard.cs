@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Numerics;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -48,8 +47,13 @@ public class EnemyMoveingBackWard : Ai_Controllering
             AIChangeState();
 
 
+            Vector3 targetPosition = Player.transform.position;
 
-            transform.LookAt(Player.transform.position);
+         
+            targetPosition.y = transform.position.y;
+
+            // Make the transform look at the adjusted target position
+            transform.LookAt(targetPosition);
 
             if (CurrentState == AiStateMent.Move)
             {
@@ -88,7 +92,6 @@ public class EnemyMoveingBackWard : Ai_Controllering
                 StartCoroutine(StateChangeCD(MoveingPeriod));
 
             }
-
         }
     }
 

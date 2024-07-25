@@ -47,6 +47,7 @@ public class ChracterMovement : PlayerMover
     public float maxDistance = 10f;
     Vector3 movementDirection = Vector3.zero;
 
+    [SerializeField] LayerMask LayerToRayCast;
 
     private void Start()
     {
@@ -177,7 +178,7 @@ public class ChracterMovement : PlayerMover
     {
         Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance: 300f))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance: 300f , LayerToRayCast))
         {
             var target = hitInfo.point;
             target.y = transform.position.y;

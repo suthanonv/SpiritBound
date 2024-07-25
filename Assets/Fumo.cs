@@ -9,7 +9,7 @@ public class Fumo : MonoBehaviour
 
     [SerializeField] Collider ProvokeColiider;
 
-   [NonSerialized] public List<GameObject> ProvokedEnemyList = new List<GameObject>();
+           public List<GameObject> ProvokedEnemyList = new List<GameObject>();
 
     [SerializeField] float SkillTime = 5;
     public void IsHolding(bool Holding)
@@ -38,14 +38,17 @@ public class Fumo : MonoBehaviour
 
     void DisActivateSkill()
     {
-        foreach(GameObject i in ProvokedEnemyList)
+        ProvokeColiider.enabled = false;
+
+        foreach (GameObject i in ProvokedEnemyList)
         {
             if (i != null)
             {
-                if (i.GetComponent<Ai_Controllering>().ProvokeDestination == this)  i.GetComponent<Ai_Controllering>().IsProvoking(false, this.gameObject);
+             i.GetComponent<Ai_Controllering>().IsProvoking(false, this.gameObject);
             }
         }
 
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
+
     }
 }
