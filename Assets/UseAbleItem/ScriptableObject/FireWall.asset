@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireWall
   m_EditorClassIdentifier: 
   ItemName: Fire Wall
-  SpriteIcon: {fileID: 0}
+  SpriteIcon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   ItemDescription: Dealing Dot Damage to the enemy that inside the area
   ItemSkill: {fileID: 3403959999408691094, guid: a5d029a7437386c4697c69daaafcc4df,
     type: 3}
