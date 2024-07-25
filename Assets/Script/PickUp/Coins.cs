@@ -8,8 +8,10 @@ public class Coins : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("kuy");
             PlayerInventory.Instance.CoinCollected();
             CoinsUI.instance.UpdateCoinsText();
+            Debug.Log("kuy2");
             Destroy(gameObject);
         }
     }
