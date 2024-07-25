@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UsingUseAbleItem : MonoBehaviour
@@ -15,6 +16,7 @@ public class UsingUseAbleItem : MonoBehaviour
 
         if(Input.GetKey(UsingKey))
         {
+            SkillToUse.OnHoldingKey();
         }
 
         if(Input.GetKeyUp(UsingKey))

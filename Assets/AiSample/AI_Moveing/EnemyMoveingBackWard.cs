@@ -25,7 +25,7 @@ public class EnemyMoveingBackWard : Ai_Controllering
     {
         EnableWalk = true;
         Agent = this.GetComponent<NavMeshAgent>();
-        Player = SpiritWorld.Instance.GetPlayer(EnemyForm).transform;
+        Player = GetDestination();
 
     }
 
@@ -35,7 +35,7 @@ public class EnemyMoveingBackWard : Ai_Controllering
     [SerializeField] Animator anim;
     void Update()
     {
-        Player = SpiritWorld.Instance.GetPlayer(EnemyForm).transform;
+        Player = GetDestination();
 
         UnityEngine.Vector3 DifBetweenPlayer = this.transform.position - Player.transform.position;
 

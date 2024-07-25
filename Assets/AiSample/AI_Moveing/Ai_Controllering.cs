@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
@@ -44,13 +45,44 @@ public class Ai_Controllering : MonoBehaviour
 
     public bool isInRange(float ActionRnage)
     {
-         DifBetweenPlayer = this.transform.position - Player.transform.position;
+        if(Player == null) Player = SpiritWorld.Instance.GetPlayer(EnemyForm).transform;
+
+        DifBetweenPlayer = this.transform.position - Player.transform.position;
 
         if (DifBetweenPlayer.magnitude <= ActionRnage)
         {
             return true;
         }
         return false;
+    }
+
+
+    [NonSerialized] public GameObject ProvokeDestination;
+    [NonSerialized] public bool isProvoke = false;
+    public void IsProvoking(bool Provoke , GameObject ObjectToProve)
+    {
+       
+        isProvoke = Provoke;
+        if (isProvoke) ProvokeDestination = ObjectToProve;
+    }
+
+    protected Transform GetDestination()
+    {
+        if(isProvoke)
+        {
+            if(ProvokeDestination != null)   return ProvokeDestination.transform;
+
+            else
+            {
+                Agent.destination = SpiritWorld.Instance.GetPlayer(EnemyForm).transform.position;
+                return SpiritWorld.Instance.GetPlayer(EnemyForm).transform;
+            }
+        }
+        else
+        {
+            return  SpiritWorld.Instance.GetPlayer(EnemyForm).transform;
+        }
+
     }
 
 }

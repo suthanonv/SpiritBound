@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] Material DefaultMaterial;
     [SerializeField] Material FadingMaterial;
 
-public bool IsEnemyBullet = true;
+     public bool IsEnemyBullet = true;
 
 
 
