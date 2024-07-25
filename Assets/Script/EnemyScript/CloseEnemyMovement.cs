@@ -9,7 +9,7 @@ public class CloseEnemyMovement : Ai_Controllering
     {
         EnableWalk = true;
         Agent = this.GetComponent<NavMeshAgent>();
-        Player = SpiritWorld.Instance.player.transform; 
+        Player = GetDestination();
     }
 
     // Update is called once per frame
@@ -20,7 +20,7 @@ public class CloseEnemyMovement : Ai_Controllering
     [SerializeField] Animator anim;
     void Update()
     {
-        Player = SpiritWorld.Instance.GetPlayer(EnemyForm).transform;
+        Player = base.GetDestination();
         Vector3 DifBetweenPlayer = this.transform.position - Player.transform.position;
 
 

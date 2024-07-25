@@ -81,8 +81,8 @@ public class MeterialChange : MonoBehaviour
     {
         foreach (MeshRenderer i in ModelPart)
         {
-
-            i.GetComponent<Renderer>().material = FadeMaterial;
+            if(i.TryGetComponent<Renderer>(out Renderer render))
+                render.material = FadeMaterial;
         }
     }
 
@@ -97,7 +97,7 @@ public class MeterialChange : MonoBehaviour
     }
 
  
-     void NormleMaterial()
+     public void NormleMaterial()
     {
         foreach (MeshRenderer i in ModelPart)
         {

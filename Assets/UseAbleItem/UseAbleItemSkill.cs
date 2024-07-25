@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class UseAbleItemSkill : MonoBehaviour
 {
      public UseAbleItem ItemData;
-    protected int RemainingUsedCount;
-    protected bool ONCD;
+    public int RemainingUsedCount;
+    public bool ONCD;
 
+    public PlayerFormState ItemInPlayerForm;
 
+    public int CurrentCountDownCD = 0;
 
     public bool IsSkillOnCD()
     {
@@ -24,24 +27,37 @@ public class UseAbleItemSkill : MonoBehaviour
 
      public virtual void OnRelesaingKey()
      {
-        if (RemainingUsedCount == 0 || ONCD) return;
-     }
+        if (RemainingUsedCount == 0 && ONCD)
+        {
 
-     public virtual void StartItemCD()
+            return;
+        }
+    
+    
+    }
+
+     public  void StartItemCD()
      {
         ONCD = true;
         RemainingUsedCount--;
         StartCoroutine(CDItem(ItemData.CDTime));
      }
 
-    IEnumerator CDItem(float TImer)
+  
+    IEnumerator CDItem(float timer)
     {
-        yield return new WaitForSeconds(TImer);
+        CurrentCountDownCD = Mathf.RoundToInt(timer);
+        while (CurrentCountDownCD > 0)
+        {
+            yield return new WaitForSeconds(1f);
+            CurrentCountDownCD -= 1;
+        }
+        CurrentCountDownCD = 0;
         ONCD = false;
     }
 
 
-    public  void ResetItemUseingCount()
+    public virtual void ResetItemUseingCount()
     {
         RemainingUsedCount = ItemData.UsingLimitPerRoom;
         StopAllCoroutines();

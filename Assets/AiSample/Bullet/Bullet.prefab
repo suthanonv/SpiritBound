@@ -153,6 +153,7 @@ MonoBehaviour:
   BullletForm: 0
   DefaultMaterial: {fileID: 2100000, guid: 0cfda9fcc91f4b8488a82a08d7017343, type: 2}
   FadingMaterial: {fileID: 2100000, guid: 5204ceca14d2de245a9a9a9da1c3c938, type: 2}
+  IsEnemyBullet: 1
 --- !u!114 &2123537438080865682
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d84cfddb179c941b401c7719a43474, type: 3}
+  m_Name: FireWall
+  m_EditorClassIdentifier: 
+  ItemName: Fire Wall
+  SpriteIcon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  ItemDescription: Dealing Dot Damage to the enemy that inside the area
+  ItemSkill: {fileID: 3403959999408691094, guid: a5d029a7437386c4697c69daaafcc4df,
+    type: 3}
+  UsingLimitPerRoom: -1
+  CDTime: 20

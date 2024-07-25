@@ -15,7 +15,7 @@ public class SpiritWorld : MonoBehaviour
 
     public PlayerFormState playerFormState = 0f;
 
-   [SerializeField] GameObject SecondCharacter;
+ public GameObject SecondCharacter;
 
     private float spawnDistance = 1f;
 
@@ -27,7 +27,6 @@ public class SpiritWorld : MonoBehaviour
 
         physicalControl = player.GetComponent<TopDownCharacterMover>();
         spiritControl = player.GetComponent<SpiritController>();
-
 
     }
 
@@ -52,9 +51,10 @@ public class SpiritWorld : MonoBehaviour
     }
 
 
-
+    bool CanChangeForm = true;
     void ChangePlayerForm(PlayerFormState state)
     {
+        if (!CanChangeForm) return;
 
         Vector3 playerPos = player.transform.position;
         Vector3 playerDirec = player.transform.forward;
@@ -90,7 +90,14 @@ public class SpiritWorld : MonoBehaviour
 
 
 
+    public void EnablePlayerMovementAndChagneForm(bool Iseanble)
+    {
+        player.GetComponent<ChracterMovement>().anim.SetBool("isSleep", !Iseanble);
 
+        CanChangeForm = Iseanble;
+        SecondCharacter.GetComponent<ChracterMovement>().enabled = Iseanble;
+        player.GetComponent<ChracterMovement>().enabled = Iseanble;
+    }
 
 
 

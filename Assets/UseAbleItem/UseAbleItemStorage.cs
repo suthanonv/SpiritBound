@@ -16,6 +16,10 @@ public class UseAbleItemStorage : MonoBehaviour
         instance = this;
     }
 
+    private void Start()
+    {
+        SetItemInStorage();
+    }
 
     public UseAbleItemSkill GetUseAbleItemSKill()
     {
@@ -25,9 +29,9 @@ public class UseAbleItemStorage : MonoBehaviour
     }
 
 
-    public UseAbleItem GetItemInfo()
+    public UseAbleItem GetItemInfo(PlayerFormState StateToGet)
     {
-        int Index = PlayerItemStorage.FindIndex(i => i.PlayerState == SpiritWorld.Instance.playerFormState);
+        int Index = PlayerItemStorage.FindIndex(i => i.PlayerState == StateToGet);
 
         return PlayerItemStorage[Index].ItemInFormStorage;
          
@@ -64,11 +68,21 @@ public class UseAbleItemStorage : MonoBehaviour
             if (item.CurrentSkill != null) item.CurrentSkill.OnRemoveingItem();
 
             item.CurrentSkill = Instantiate(item.ItemInFormStorage.ItemSkill, transform.position, Quaternion.identity);
+
+            item.CurrentSkill.ItemInPlayerForm = item.PlayerState;
         }
 
 
         ItemUIControlling.Instance.SetInfoPauseMenuItemInfo();
-        SetItemInStorage();
 
+    }
+
+    public void ResetPlayerItemUseingCount()
+    {
+     foreach(PlayerItemSkill i in PlayerItemStorage)
+        {
+            if (i.CurrentSkill == null) continue;
+            i.CurrentSkill.ResetItemUseingCount();
+        }
     }
 }
