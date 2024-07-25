@@ -15,6 +15,7 @@ public class DecoyFumoBehavioure : UseAbleItemSkill
 
     private void Start()
     {
+        ResetItemUseingCount();
         if (ItemInPlayerForm == PlayerFormState.sprit)
         {
             Player =  SpiritWorld.Instance.SecondCharacter;
@@ -30,40 +31,46 @@ public class DecoyFumoBehavioure : UseAbleItemSkill
 
     public override void OnHoldingKey()
     {
-        if (PcFumo == null)
-            PcFumo = Instantiate(FumoPreFab, transform.position, Quaternion.identity);
+        base.OnRelesaingKey();
+     
+            if (PcFumo == null)
+                PcFumo = Instantiate(FumoPreFab, transform.position, Quaternion.identity);
 
 
-        PcFumo.GetComponent<Fumo>().IsHolding(true);
+            PcFumo.GetComponent<Fumo>().IsHolding(true);
 
-        Camera mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            Camera mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance: 300f))
-        {
-            Vector3 target = hitInfo.point;
-            target.y = transform.position.y;
-
-            float distanceToPlayer = Vector3.Distance(Player.transform.position, target);
-
-            if (distanceToPlayer <= CastingArea)
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance: 300f))
             {
-                PcFumo.transform.position = target;
-            }
-            else
-            {
-                Vector3 direction = (target - Player.transform.position).normalized;
-                PcFumo.transform.position = Player.transform.position + direction * CastingArea;
-            }
+                Vector3 target = hitInfo.point;
+                target.y = transform.position.y;
+
+                float distanceToPlayer = Vector3.Distance(Player.transform.position, target);
+
+                if (distanceToPlayer <= CastingArea)
+                {
+                    PcFumo.transform.position = target;
+                }
+                else
+                {
+                    Vector3 direction = (target - Player.transform.position).normalized;
+                    PcFumo.transform.position = Player.transform.position + direction * CastingArea;
+                }
+            
         }
     }
 
 
     public override void OnRelesaingKey()
     {
-        base.OnRelesaingKey();
-        StartItemCD();
-        PcFumo.GetComponent<Fumo>().IsHolding(false);
+            base.OnRelesaingKey();
+           ONCD = true;
+            StartItemCD();
+          PcFumo.GetComponent<Fumo>().IsHolding(false);
+          
+        
 
     }
 }

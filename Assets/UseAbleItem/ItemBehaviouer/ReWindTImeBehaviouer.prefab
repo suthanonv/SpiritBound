@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4592148574814564857
+--- !u!1 &3941342208751256052
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 102335158499762535}
-  - component: {fileID: 4111365419033690993}
+  - component: {fileID: 7082525017662010614}
+  - component: {fileID: 3149727327580991538}
   m_Layer: 0
-  m_Name: DecoyItem
+  m_Name: ReWindTImeBehaviouer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &102335158499762535
+--- !u!4 &7082525017662010614
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4592148574814564857}
+  m_GameObject: {fileID: 3941342208751256052}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.158048, y: -16.743446, z: -123.80291}
+  m_LocalPosition: {x: 4.0109463, y: -16.201273, z: -123.62063}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4111365419033690993
+--- !u!114 &3149727327580991538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4592148574814564857}
+  m_GameObject: {fileID: 3941342208751256052}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: beb4406eed8343c488d0b52cd94353de, type: 3}
+  m_Script: {fileID: 11500000, guid: ac0e33c691ade5d4c99432f49553147e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemData: {fileID: 11400000, guid: 360c8ffebdb73f74689d942c992d3d2b, type: 2}
+  ItemData: {fileID: 11400000, guid: a76543a56c817a14f8a8dd7de60d422f, type: 2}
   ItemInPlayerForm: 0
-  CastingArea: 15
-  PhysicFumo: {fileID: 8069952086271350567, guid: aa38017461098ee45b8fd99099556617,
+  MarkingPrefabPhysic: {fileID: 3400336169231559216, guid: 20a16ad2b6d4a7840929985dcf4b6ee0,
     type: 3}
-  SpiritFumo: {fileID: 8069952086271350567, guid: e6852cdc41d2dce44bc802608a69f66a,
+  MarkingPreFabSpirit: {fileID: 3400336169231559216, guid: bdfc63c2284015247bff3ec36927cdda,
+    type: 3}
+  DamageEffectArea: {fileID: 2951488066055186096, guid: 2eba97cb7b5134d44878910a82fdbeaa,
+    type: 3}
+  DamageEffectAreaSpirit: {fileID: 2951488066055186096, guid: 134c88f9b36a6e9408bdd7ef97e83d90,
     type: 3}

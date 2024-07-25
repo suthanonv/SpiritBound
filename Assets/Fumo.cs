@@ -48,7 +48,7 @@ public class Fumo : MonoBehaviour
             }
         }
 
-        this.gameObject.SetActive(false);
+        Destroy(this.gameObject);
 
     }
 }

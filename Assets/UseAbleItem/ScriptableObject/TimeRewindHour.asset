@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d84cfddb179c941b401c7719a43474, type: 3}
+  m_Name: TimeRewindHour
+  m_EditorClassIdentifier: 
+  ItemName: Time Rewind
+  SpriteIcon: {fileID: 21300000, guid: cad2e130995d22c4fbbfd2a62f235436, type: 3}
+  ItemDescription: Activate the Hourglass to mark a position , reactivating teleports
+    and damages nearby enemies within 5 meters.
+  ItemSkill: {fileID: 3149727327580991538, guid: 1c38725ad64f91e44a1ae4bf5b4fefbb,
+    type: 3}
+  UsingLimitPerRoom: 1
+  CDTime: -1

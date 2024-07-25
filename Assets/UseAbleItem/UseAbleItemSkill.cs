@@ -24,8 +24,14 @@ public class UseAbleItemSkill : MonoBehaviour
 
      public virtual void OnRelesaingKey()
      {
-        if (RemainingUsedCount == 0 || ONCD) return;
-     }
+        if (RemainingUsedCount <= 0 && ONCD)
+        {
+
+            return;
+        }
+    
+    
+    }
 
      public  void StartItemCD()
      {
@@ -41,7 +47,7 @@ public class UseAbleItemSkill : MonoBehaviour
     }
 
 
-    public  void ResetItemUseingCount()
+    public  virtual void ResetItemUseingCount()
     {
         RemainingUsedCount = ItemData.UsingLimitPerRoom;
         StopAllCoroutines();
