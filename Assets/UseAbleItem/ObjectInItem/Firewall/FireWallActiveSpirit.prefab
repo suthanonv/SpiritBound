@@ -152,4 +152,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageToEnemy: 5
   BreakDamage: 1
-  HitCD: 0.25
+  HitCD: 1

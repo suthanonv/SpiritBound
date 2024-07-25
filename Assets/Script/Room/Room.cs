@@ -40,6 +40,8 @@ public class Room : MonoBehaviour
     {
         RoomDestination.instance.RoomThatPlayerin = this;
         Player.transform.position = PlayerSpawnPosition.position;
+        
+       if(UseAbleItemStorage.instance != null) 
         UseAbleItemStorage.instance.ResetPlayerItemUseingCount();
     }
 
