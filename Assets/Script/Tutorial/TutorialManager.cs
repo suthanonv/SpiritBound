@@ -17,7 +17,7 @@ public class TutorialManager : MonoBehaviour
     private bool sActive = true;
     private bool dActive = true;
     private bool shiftActive = false;
-    private bool spaceActive = false;
+    private bool spaceActive = false; // not using yett
 
     private int keysPressed = 0;
 
@@ -61,12 +61,12 @@ public class TutorialManager : MonoBehaviour
             shiftActive = false;
 
         }
-        if (spaceActive && Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(hideImageDelay(Shift));
-            shiftActive = false;
+        //if (spaceActive && Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    StartCoroutine(hideImageDelay(SpaceBar));
+        //    spaceActive = false;
 
-        }
+        //}
 
     }
 
