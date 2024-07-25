@@ -9,7 +9,7 @@ public class UseAbleItemSkill : MonoBehaviour
     protected int RemainingUsedCount;
     protected bool ONCD;
 
-
+    public PlayerFormState ItemInPlayerForm;
 
     public bool IsSkillOnCD()
     {
@@ -27,7 +27,7 @@ public class UseAbleItemSkill : MonoBehaviour
         if (RemainingUsedCount == 0 || ONCD) return;
      }
 
-     public virtual void StartItemCD()
+     public  void StartItemCD()
      {
         ONCD = true;
         RemainingUsedCount--;

@@ -68,10 +68,21 @@ public class UseAbleItemStorage : MonoBehaviour
             if (item.CurrentSkill != null) item.CurrentSkill.OnRemoveingItem();
 
             item.CurrentSkill = Instantiate(item.ItemInFormStorage.ItemSkill, transform.position, Quaternion.identity);
+
+            item.CurrentSkill.ItemInPlayerForm = item.PlayerState;
         }
 
 
         ItemUIControlling.Instance.SetInfoPauseMenuItemInfo();
 
+    }
+
+    public void ResetPlayerItemUseingCount()
+    {
+     foreach(PlayerItemSkill i in PlayerItemStorage)
+        {
+            if (i.CurrentSkill == null) continue;
+            i.CurrentSkill.ResetItemUseingCount();
+        }
     }
 }

@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 7678432455103589446}
   - component: {fileID: 556118585985848545}
   - component: {fileID: 2123537438080865682}
-  m_Layer: 0
-  m_Name: Bullet
+  m_Layer: 12
+  m_Name: PhysicBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,7 +52,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5793472957120639311}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5204ceca14d2de245a9a9a9da1c3c938, type: 2}
+  - {fileID: 2100000, guid: d69c224bf08ba874cb660840f222ba3f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -150,10 +150,10 @@ MonoBehaviour:
   BulletTIme: 2.44
   ShowingRange: 3.5
   Daamge: 15
-  BullletForm: 0
-  DefaultMaterial: {fileID: 2100000, guid: 0cfda9fcc91f4b8488a82a08d7017343, type: 2}
-  FadingMaterial: {fileID: 2100000, guid: 5204ceca14d2de245a9a9a9da1c3c938, type: 2}
-  IsEnemyBullet: 1
+  BullletForm: 1
+  DefaultMaterial: {fileID: 2100000, guid: d69c224bf08ba874cb660840f222ba3f, type: 2}
+  FadingMaterial: {fileID: 2100000, guid: d69c224bf08ba874cb660840f222ba3f, type: 2}
+  IsEnemyBullet: 0
 --- !u!114 &2123537438080865682
 MonoBehaviour:
   m_ObjectHideFlags: 0

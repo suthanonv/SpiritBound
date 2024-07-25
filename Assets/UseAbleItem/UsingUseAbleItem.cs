@@ -15,7 +15,6 @@ public class UsingUseAbleItem : MonoBehaviour
 
         if(Input.GetKey(UsingKey))
         {
-            SkillToUse.OnHoldingKey();
         }
 
         if(Input.GetKeyUp(UsingKey))

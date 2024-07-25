@@ -40,6 +40,7 @@ public class Room : MonoBehaviour
     {
         RoomDestination.instance.RoomThatPlayerin = this;
         Player.transform.position = PlayerSpawnPosition.position;
+        UseAbleItemStorage.instance.ResetPlayerItemUseingCount();
     }
 
 
@@ -86,7 +87,10 @@ public class Room : MonoBehaviour
     {
         if (EnemyWaveList[currentWave].EnemyInWave.List.Count <= 0)
         {
-            if (currentWave >= EnemyWaveList.Count -1) Door.SetActive(true);
+            if (currentWave >= EnemyWaveList.Count - 1)
+            {
+                Door.SetActive(true);
+            }
             else
             {
 

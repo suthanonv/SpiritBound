@@ -14,6 +14,11 @@ public class Bullet : MonoBehaviour
     [Header("Material")]
     [SerializeField] Material DefaultMaterial;
     [SerializeField] Material FadingMaterial;
+
+public bool IsEnemyBullet = true;
+
+
+
     void Start()
     {
         Destroy(gameObject, BulletTIme);
@@ -24,10 +29,17 @@ public class Bullet : MonoBehaviour
     {
         if(BullletForm != SpiritWorld.Instance.playerFormState)
         {
-            if(Vector3.Distance(this.transform.position, SpiritWorld.Instance.player.transform.position) <= ShowingRange)
+            if (IsEnemyBullet)
             {
-                this.GetComponent<MeshRenderer>().enabled = true;
-                this.GetComponent<Renderer>().material = FadingMaterial;
+                if (Vector3.Distance(this.transform.position, SpiritWorld.Instance.player.transform.position) <= ShowingRange)
+                {
+                    this.GetComponent<MeshRenderer>().enabled = true;
+                    this.GetComponent<Renderer>().material = FadingMaterial;
+                }
+                else
+                {
+                    this.GetComponent<MeshRenderer>().enabled = false;
+                }
             }
             else
             {
@@ -43,10 +55,17 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if(other.gameObject.CompareTag("Player") && IsEnemyBullet)
         {
             PlayerHealth.instance.TakeDamage(Daamge);
             Destroy(this.gameObject); 
         }
+
+        if (other.gameObject.TryGetComponent<EnemyHealth>(out EnemyHealth health) && !IsEnemyBullet)
+        {
+            
+            health.TakeDamage(Daamge);
+        }
+
     }
 }

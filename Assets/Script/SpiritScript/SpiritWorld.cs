@@ -15,7 +15,7 @@ public class SpiritWorld : MonoBehaviour
 
     public PlayerFormState playerFormState = 0f;
 
-   [SerializeField] GameObject SecondCharacter;
+ public GameObject SecondCharacter;
 
     private float spawnDistance = 1f;
 

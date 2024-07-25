@@ -16,6 +16,7 @@ MonoBehaviour:
   SpriteIcon: {fileID: 21300000, guid: 234ebe3f22139ce46bad8d730f522d16, type: 3}
   ItemDescription: shooting a bullet in the direction that the player is facing,
     dealing 15 damage upon bullet hitting an enemy
-  ItemSkill: {fileID: 0}
+  ItemSkill: {fileID: 9049842210450505980, guid: aeb6d23a181eccd42aba6642c17da6ea,
+    type: 3}
   UsingLimitPerRoom: -1
   CDTime: 5

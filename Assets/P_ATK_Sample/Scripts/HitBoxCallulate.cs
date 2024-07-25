@@ -19,7 +19,7 @@ public class HitBoxCallulate : MonoBehaviour
 
         if (other.gameObject.TryGetComponent<Bullet>(out Bullet bullet))
         {
-            Destroy(other.gameObject);
+            if(bullet.IsEnemyBullet)  Destroy(other.gameObject);
         }
     }
 }
