@@ -40,7 +40,7 @@ public class ItemUIControlling : MonoBehaviour
             else CountHolder.gameObject.SetActive(true);    
 
 
-
+          if(ItemInfo.UsingLimitPerRoom > 0)
             if(CountHolder.childCount != CurrentCdSKill.RemainingUsedCount)
             {
 

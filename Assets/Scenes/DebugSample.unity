@@ -6563,13 +6563,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 100
-  HitEffect: {fileID: 0}
+  HitEffect: {fileID: 6379519531422345935}
   RoomThatEnemyInSide: {fileID: 120885932}
   MaxToughness: 50
   ToughnessResetPerioud: 5
   ResetEnableToBreakTIme: 3
   HealthBar: {fileID: 343006505}
-  anim: {fileID: 0}
+  anim: {fileID: 370253181962545678}
   ShowingDamageText: {fileID: 836390584}
 --- !u!65 &1039286642
 BoxCollider:
