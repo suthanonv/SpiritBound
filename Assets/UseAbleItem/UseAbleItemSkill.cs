@@ -24,9 +24,8 @@ public class UseAbleItemSkill : MonoBehaviour
 
      public virtual void OnRelesaingKey()
      {
-        if (RemainingUsedCount <= 0 && ONCD)
+        if (RemainingUsedCount == 0 && ONCD)
         {
-
             return;
         }
     

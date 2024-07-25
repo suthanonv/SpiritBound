@@ -46,7 +46,7 @@ public class SpikeTrap : MonoBehaviour
 
                     trapDamageToEntityCDs.Add(newEnetity);
                     enemy.TakeDamage(DamageToEnemy);
-                    StartCoroutine(newEnetity.ResetCD(trapDamageToEntityCDs));
+                    StartCoroutine(newEnetity.ResetCD(trapDamageToEntityCDs , 0.1f));
                 }
             }
 
@@ -60,7 +60,7 @@ public class SpikeTrap : MonoBehaviour
 
                     trapDamageToEntityCDs.Add(newEnetity);
                     PlayerHealth.instance.TakeDamage(DamageToPlayer);
-                    StartCoroutine(newEnetity.ResetCD(trapDamageToEntityCDs));
+                    StartCoroutine(newEnetity.ResetCD(trapDamageToEntityCDs , 0.1f));
                 }
             }
         }
@@ -92,10 +92,10 @@ public class TrapDamageToEntityCD
     }
 
 
-   public IEnumerator ResetCD(List<TrapDamageToEntityCD> RemoveingList)
+   public IEnumerator ResetCD(List<TrapDamageToEntityCD> RemoveingList , float Time)
     {
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(Time);
         CanDamage = true;
 
         RemoveingList.Remove(this);
