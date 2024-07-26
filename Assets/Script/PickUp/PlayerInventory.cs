@@ -12,6 +12,8 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] UnityEvent OnCoinsCollected;
 
     public static PlayerInventory Instance;
+
+    [SerializeField] float HealignAmount;
    
     private void Awake()
     {
@@ -43,7 +45,7 @@ public class PlayerInventory : MonoBehaviour
     {
         if (currentPotions > 0)
         {
-            
+            PlayerHealth.instance.Healing(HealignAmount);
             currentPotions--;
             Debug.Log("Potion used. Remaining potions: " + currentPotions);
         }

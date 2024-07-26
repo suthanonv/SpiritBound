@@ -33,6 +33,15 @@ public class PlayerHealth : Health
 
     }
 
+    public void Healing(float HealingAmount)
+    {
+        if (currenthealth + HealingAmount > MaxHealth) currenthealth = MaxHealth;
+        else currenthealth += HealingAmount;
+
+        HealthBar.HealthBarRunAnimation(currenthealth, currenthealth);
+
+    }
+
     public override void Died()
     {
         
