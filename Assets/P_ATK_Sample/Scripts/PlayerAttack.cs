@@ -62,11 +62,20 @@ public class PlayerAttack : MonoBehaviour
     {
         lastClickedTime = Time.time;
         noOfClicks++;
-       
 
 
+        
+
+        
         if (noOfClicks == 1)
         {
+
+            SwordSlashingSound SoundEffect = SoundEffectManageMent.Instance.GetSoundScripting("Sword Slashing") as SwordSlashingSound;
+
+            SoundEffect.SoundIndex = noOfClicks;
+
+            SoundEffect.PlayeringSound();
+
             anim.SetInteger("AtkCount", noOfClicks);
             anim.SetTrigger("Attack");
 
@@ -78,6 +87,12 @@ public class PlayerAttack : MonoBehaviour
         noOfClicks = Mathf.Clamp(noOfClicks, 0, 3);
         if (noOfClicks == 2)
         {
+            SwordSlashingSound SoundEffect = SoundEffectManageMent.Instance.GetSoundScripting("Sword Slashing") as SwordSlashingSound;
+
+            SoundEffect.SoundIndex = noOfClicks;
+
+            SoundEffect.PlayeringSound();
+
             anim.SetInteger("AtkCount", noOfClicks);
             anim.SetTrigger("Attack");
             yield return new WaitForSeconds(0.2f);
@@ -86,13 +101,20 @@ public class PlayerAttack : MonoBehaviour
 
         if (noOfClicks == 3)
         {
+            SwordSlashingSound SoundEffect = SoundEffectManageMent.Instance.GetSoundScripting("Sword Slashing") as SwordSlashingSound;
+
+            SoundEffect.SoundIndex = noOfClicks;
+
+            SoundEffect.PlayeringSound();
+
             anim.SetInteger("AtkCount", noOfClicks);
             anim.SetTrigger("Attack");
             yield return new WaitForSeconds(0.15f);
 
+            noOfClicks = 0;
             yield return null;
 
-            noOfClicks = 0;
+
         }  
     }
 

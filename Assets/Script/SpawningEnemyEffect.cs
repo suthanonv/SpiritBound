@@ -12,6 +12,8 @@ public class SpawningEnemyEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (EnemyObject == null) return;
+
         if (EnemyObject.GetComponent<Ai_Controllering>().EnemyForm != SpiritWorld.Instance.playerFormState && EnemyObject.GetComponent<Ai_Controllering>().EnemyForm != PlayerFormState.both)
         {
             Effect.GetComponent<MeshRenderer>().enabled = false;

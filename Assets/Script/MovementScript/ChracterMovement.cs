@@ -7,6 +7,8 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(InputHandler))]
 public class ChracterMovement : PlayerMover
 {
+
+    [SerializeField] GameObject RotateingPoint;
     float currentSpeed;
 
 
@@ -173,22 +175,28 @@ public class ChracterMovement : PlayerMover
         }
         else transform.Translate(direct * Speed * Time.deltaTime, Space.World);
     }
-
     private void RotateFromMouseVector()
     {
-        Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance: 300f , LayerToRayCast))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 300f, LayerToRayCast))
         {
-            var target = hitInfo.point;
-            target.y = transform.position.y;
-            transform.LookAt(target);
-        }
+            Vector3 target = hitInfo.point;
+            target.y = transform.position.y;  // Keep the target at the same height as the player
 
-       
+            Vector3 direction = target - transform.position;
+            direction.y = 0;  // Remove any vertical component to ensure horizontal rotation
+
+            float distance = direction.magnitude;  // Calculate the distance to the target
+
+            if (direction != Vector3.zero && distance > 0.5f) // Ensure there's a direction to look at and the distance is greater than a threshold
+            {
+                transform.rotation = Quaternion.LookRotation(direction);
+            }
+        }
     }
 
-    private Vector3 MoveTowardTarget(Vector3 targetVector)
+        private Vector3 MoveTowardTarget(Vector3 targetVector)
     {
         var speed = currentSpeed * Time.deltaTime;
         // transform.Translate(targetVector * (MovementSpeed * Time.deltaTime)); Demonstrate why this doesn't work

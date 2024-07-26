@@ -72,6 +72,11 @@ public class SpiritWorld : MonoBehaviour
             SecondCharacter.transform.position = spawnPos;
            
             CamFollow.instance.player = SecondCharacter.transform;
+
+            if (SoundEffectManageMent.Instance != null)
+            {
+                SoundEffectManageMent.Instance.IsEffectEnable(false);
+            }
         }
         else
         {
@@ -84,7 +89,15 @@ public class SpiritWorld : MonoBehaviour
             player.GetComponent<ChracterMovement>().enabled = true;
             CamFollow.instance.player = player.transform;
             SecondCharacter.SetActive(false);
+
+            if (SoundEffectManageMent.Instance != null)
+            {
+                SoundEffectManageMent.Instance.IsEffectEnable(true);
+            }
         }
+
+
+       
     }
 
 
