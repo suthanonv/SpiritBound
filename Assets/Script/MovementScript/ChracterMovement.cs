@@ -38,6 +38,7 @@ public class ChracterMovement : PlayerMover
     [SerializeField] float DashSpeedMultiple = 5f;
     [SerializeField] float DashCD = 2f;
     [SerializeField] float DashTime = 0.25f;
+    [SerializeField] TrailRenderer trailRenderer;
     bool CanDash = true;
     bool OnDash = false;
 
@@ -47,6 +48,7 @@ public class ChracterMovement : PlayerMover
     public bool IsSpirit = false;
     public GameObject player;
     public float maxDistance = 10f;
+    
     Vector3 movementDirection = Vector3.zero;
 
     [SerializeField] LayerMask LayerToRayCast;
@@ -54,6 +56,11 @@ public class ChracterMovement : PlayerMover
     private void Start()
     {
         currentSpeed = MovementSpeed;
+        trailRenderer = GetComponent<TrailRenderer>();
+        if(trailRenderer != null ) 
+        {
+            trailRenderer.enabled = false;
+        }
      
     }
 
@@ -66,6 +73,10 @@ public class ChracterMovement : PlayerMover
         {
             CanDash = false;
             OnDash = true;
+            if (trailRenderer != null) 
+            {
+                trailRenderer.enabled = true;
+            }
             StartCoroutine(OffDash());
         }
 
@@ -93,6 +104,10 @@ public class ChracterMovement : PlayerMover
             {
                 HandleMovement();
                 RotateFromMouseVector();
+            }
+            if (trailRenderer !=null && trailRenderer.enabled) 
+            {
+                trailRenderer.enabled = false;
             }
 
 
@@ -225,6 +240,10 @@ public class ChracterMovement : PlayerMover
     {
         yield return new WaitForSeconds(DashTime);
         OnDash = false;
+        if(trailRenderer != null) 
+        {
+            trailRenderer.enabled = false;
+        }
         StartCoroutine(ReSetDashCD());
     }
 

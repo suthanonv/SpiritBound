@@ -24,7 +24,7 @@ public class PlayerInventory : MonoBehaviour
 
 
     [Header("Use Potion Key")]
-    [SerializeField] KeyCode Health = KeyCode.E;
+    [SerializeField] KeyCode Health = KeyCode.F;
 
     public void AddPotion()
     {
