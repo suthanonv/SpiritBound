@@ -8,4 +8,9 @@ public class Sound : MonoBehaviour
     {
 
     }
+
+    public virtual void EnableEffect(bool Enable)
+    {
+        GetComponent<AudioSource>().bypassEffects = Enable;
+    }
 }

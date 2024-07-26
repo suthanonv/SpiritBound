@@ -20,6 +20,16 @@ public class SoundEffectManageMent : MonoBehaviour
     }
 
 
+
+    public void IsEffectEnable(bool IsEnable)
+    {
+        foreach(GetSoundScript i in soundScripted)
+        {
+            i.SoundScript.EnableEffect(IsEnable);
+        }
+    }
+
+
 }
 
 [System.Serializable]
