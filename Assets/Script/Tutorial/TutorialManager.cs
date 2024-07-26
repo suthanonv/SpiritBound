@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
+    
+
     public Image W;
     public Image A;
     public Image S;
@@ -17,17 +19,24 @@ public class TutorialManager : MonoBehaviour
     private bool sActive = true;
     private bool dActive = true;
     private bool shiftActive = false;
-    private bool spaceActive = false; // not using yett
+    private bool spaceActive = false; 
 
     private int keysPressed = 0;
 
     [SerializeField] float hideDelay = 1f;
 
+    public static TutorialManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         Shift.gameObject.SetActive(false);
     
-     //   SpaceBar.gameObject.SetActive(false);
+        SpaceBar.gameObject.SetActive(false);
     }
 
     void Update()
@@ -62,17 +71,18 @@ public class TutorialManager : MonoBehaviour
         }
         if (shiftActive && Input.GetKeyDown(KeyCode.LeftShift))
         {
-            
+            shiftActive = false;
             StartCoroutine(hideImageDelay(Shift));
            
 
         }
-        //if (spaceActive && Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    StartCoroutine(hideImageDelay(SpaceBar));
-        //    spaceActive = false;
+        if (spaceActive && Input.GetKeyDown(KeyCode.Space))
+        {
+            spaceActive = false;
+            StartCoroutine(hideImageDelay(SpaceBar));
 
-        //}
+
+        }
 
     }
 
@@ -81,6 +91,7 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(hideDelay);
         image.gameObject.SetActive(false);
         keysPressed++;
+
         if (keysPressed == 4 && !shiftActive) //All WASD been pressed
         {
             ShowShiftButton();
@@ -98,5 +109,13 @@ public class TutorialManager : MonoBehaviour
         Debug.Log("Hiding Shift Button");
         Shift.gameObject.SetActive(false); 
     }
+    public void ShowSpaceButton()
+    {
+        Debug.Log("ShowSpace");
+        SpaceBar.gameObject.SetActive(true);
+        spaceActive = true;
+    }
+ 
+
 
 }
