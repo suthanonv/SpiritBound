@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Decoy
   m_EditorClassIdentifier: 
   ItemName: Decoy Fumo
-  SpriteIcon: {fileID: 21300000, guid: c2b239c0f1cab9a429cfffeb58629c4a, type: 3}
+  SpriteIcon: {fileID: 21300000, guid: 09a2ff05ea4a7b241bb36204de6bdf5e, type: 3}
   ItemDescription: 'Throw a Computer Buddy Fumo to provoke nearby enemies of the
     same type within a 15-meter radius.       '
   ItemSkill: {fileID: 4111365419033690993, guid: 37356f047dc36504388fe6c81d65e557,

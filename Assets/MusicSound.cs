@@ -9,10 +9,7 @@ public class MusicSound : Sound
 
 
 
-    private void Start()
-    {
-        PlayingMusic("Combat");
-    }
+
     public void PlayingMusic(string Name)
     {
        AudioClip MusicToplay = MusicToPlayList.FirstOrDefault(i => i.MusicName == Name).Music;
