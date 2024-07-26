@@ -27,7 +27,11 @@ public class Room : MonoBehaviour
     {
         if (Door != null) 
         Door.SetActive(false);
+        
+        
         SetEnemyInWave();
+
+
         foreach (EnemyWave i in EnemyWaveList)
         {
             i.EnemyInWave.OnListRemovedDelegate.AddListener(IsThisRoomClear);
@@ -95,6 +99,7 @@ public class Room : MonoBehaviour
         {
             if (currentWave >= EnemyWaveList.Count - 1)
             {
+                if(Door !=  null)
                 Door.SetActive(true);
             }
             else
@@ -123,7 +128,13 @@ public class Room : MonoBehaviour
 
     void SetEnemyInWave()
     {
-        if (EnemyWaveList.Count == 0) return;
+        IsThisRoomClear();
+        if (EnemyWaveList.Count == 0)
+        {
+
+            Door.SetActive(true);
+            return;
+        }
         foreach(GameObject i in EnemyWaveList[currentWave].EnemyInWave.List)
         {
             i.SetActive(true);

@@ -2852,7 +2852,9 @@ MonoBehaviour:
   PlayerSpawnPosition: {fileID: 1734818173}
   ElementInEachForm: []
   Door: {fileID: 0}
-  EnemyWaveList: []
+  EnemyWaveList:
+  - EnemyInWave:
+      List: []
 --- !u!4 &55454001
 Transform:
   m_ObjectHideFlags: 0
@@ -8591,7 +8593,9 @@ MonoBehaviour:
   PlayerSpawnPosition: {fileID: 1101189066}
   ElementInEachForm: []
   Door: {fileID: 0}
-  EnemyWaveList: []
+  EnemyWaveList:
+  - EnemyInWave:
+      List: []
 --- !u!4 &164070068
 Transform:
   m_ObjectHideFlags: 0
@@ -26286,8 +26290,10 @@ MonoBehaviour:
     ObjectInFormStage: []
   - formState: 2
     ObjectInFormStage: []
-  Door: {fileID: 0}
-  EnemyWaveList: []
+  Door: {fileID: 1506715732}
+  EnemyWaveList:
+  - EnemyInWave:
+      List: []
 --- !u!1 &548311120
 GameObject:
   m_ObjectHideFlags: 0
@@ -27990,7 +27996,9 @@ MonoBehaviour:
   PlayerSpawnPosition: {fileID: 982994429}
   ElementInEachForm: []
   Door: {fileID: 0}
-  EnemyWaveList: []
+  EnemyWaveList:
+  - EnemyInWave:
+      List: []
 --- !u!4 &578131585
 Transform:
   m_ObjectHideFlags: 0
@@ -28782,8 +28790,7 @@ MonoBehaviour:
   Door: {fileID: 0}
   EnemyWaveList:
   - EnemyInWave:
-      List:
-      - {fileID: 0}
+      List: []
 --- !u!4 &592776310 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 21b589029750c9241881a6f16030ff65,
@@ -29896,8 +29903,7 @@ MonoBehaviour:
   Door: {fileID: 0}
   EnemyWaveList:
   - EnemyInWave:
-      List:
-      - {fileID: 0}
+      List: []
 --- !u!65 &616778467
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -61195,7 +61201,7 @@ PrefabInstance:
     - target: {fileID: 5526820720426179093, guid: ec15d9615dd5ec948904dc74d0bbba4c,
         type: 3}
       propertyPath: DoorBranchIndex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8248176089385566675, guid: ec15d9615dd5ec948904dc74d0bbba4c,
         type: 3}

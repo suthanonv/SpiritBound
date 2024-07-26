@@ -12,11 +12,13 @@ public class EnemyStateControll : MonoBehaviour
     {
         if(playerState == PlayerFormState.sprit)
         {
-            this.GetComponent<AudioSource>().bypassEffects = false;
+          if(this.TryGetComponent<AudioSource>(out AudioSource Audio))
+                Audio.bypassEffects = false;
         }
         else
         {
-            this.GetComponent<AudioSource>().bypassEffects = true;
+            if (this.TryGetComponent<AudioSource>(out AudioSource Audio))
+                Audio.bypassEffects = true;
         }
 
         if (FormCheck.EnemyForm == PlayerFormState.both) return;
