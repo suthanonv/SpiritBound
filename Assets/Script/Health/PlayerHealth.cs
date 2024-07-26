@@ -9,6 +9,7 @@ public class PlayerHealth : Health
 
     [SerializeField] HealthBarAnimation HealthBar;
 
+    [SerializeField] GameObject HittingEffect;
 
     private void Awake()
     {
@@ -24,10 +25,21 @@ public class PlayerHealth : Health
         float previosHealth = currenthealth;
         currenthealth -= Damage;
         HealthBar.HealthBarRunAnimation(currenthealth , previosHealth);
+
+        HittingEffect.SetActive(true);
+
+        Invoke("OffHittingEffect", 0.125f);
+
+
     }
 
     public override void Died()
     {
         
+    }
+
+    public void OffHittingEffect()
+    {
+        HittingEffect.SetActive(false);
     }
 }
