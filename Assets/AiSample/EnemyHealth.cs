@@ -56,6 +56,8 @@ public class EnemyHealth : Health
     {
         float PreviosHealth = currenthealth;
         
+        this.GetComponent<AudioSource>().Play();
+
         if(currenthealth - Damage > 0) ShowingDamageText.SetDamageText(Damage);
 
         base.TakeDamage(Damage);

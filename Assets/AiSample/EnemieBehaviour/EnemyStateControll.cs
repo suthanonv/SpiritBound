@@ -10,6 +10,15 @@ public class EnemyStateControll : MonoBehaviour
 
     public void SetEnemyState(PlayerFormState playerState)
     {
+        if(playerState == PlayerFormState.sprit)
+        {
+            this.GetComponent<AudioSource>().bypassEffects = false;
+        }
+        else
+        {
+            this.GetComponent<AudioSource>().bypassEffects = true;
+        }
+
         if (FormCheck.EnemyForm == PlayerFormState.both) return;
         EnemyChangeMaterial.PlayerState = playerState;
 
