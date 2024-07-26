@@ -189,7 +189,7 @@ public class ChracterMovement : PlayerMover
 
             float distance = direction.magnitude;  // Calculate the distance to the target
 
-            if (direction != Vector3.zero && distance > 1.0f) // Ensure there's a direction to look at and the distance is greater than a threshold
+            if (direction != Vector3.zero && distance > 0.5f) // Ensure there's a direction to look at and the distance is greater than a threshold
             {
                 transform.rotation = Quaternion.LookRotation(direction);
             }
