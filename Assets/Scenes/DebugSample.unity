@@ -25304,21 +25304,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HourGlass
       objectReference: {fileID: 0}
-    - target: {fileID: 4547483448400434666, guid: d543cab510ad04d4a8494ae87914afdb,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.04858454
-      objectReference: {fileID: 0}
-    - target: {fileID: 4547483448400434666, guid: d543cab510ad04d4a8494ae87914afdb,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -17.1013
-      objectReference: {fileID: 0}
-    - target: {fileID: 4547483448400434666, guid: d543cab510ad04d4a8494ae87914afdb,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -22.778824
-      objectReference: {fileID: 0}
     - target: {fileID: 8838754612871413590, guid: d543cab510ad04d4a8494ae87914afdb,
         type: 3}
       propertyPath: m_LocalPosition.x

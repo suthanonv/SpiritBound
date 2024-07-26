@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TimeRewindHour
   m_EditorClassIdentifier: 
   ItemName: Time Rewind
-  SpriteIcon: {fileID: 21300000, guid: cad2e130995d22c4fbbfd2a62f235436, type: 3}
+  SpriteIcon: {fileID: 21300000, guid: 2d69c8225b5b8474bb81ba320f20bbc3, type: 3}
   ItemDescription: Activate the Hourglass to mark a position , reactivating teleports
     and damages nearby enemies within 5 meters.
   ItemSkill: {fileID: 3149727327580991538, guid: 1c38725ad64f91e44a1ae4bf5b4fefbb,
