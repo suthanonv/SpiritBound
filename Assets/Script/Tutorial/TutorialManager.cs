@@ -26,39 +26,45 @@ public class TutorialManager : MonoBehaviour
     void Start()
     {
         Shift.gameObject.SetActive(false);
-        SpaceBar.gameObject.SetActive(false);
+    
+     //   SpaceBar.gameObject.SetActive(false);
     }
 
     void Update()
     {
         if (wActive && Input.GetKeyDown(KeyCode.W))
         {
-            StartCoroutine(hideImageDelay(W));
             wActive = false;
+            StartCoroutine(hideImageDelay(W));
+        
 
         }
         if (aActive && Input.GetKeyDown(KeyCode.A))
         {
-            StartCoroutine(hideImageDelay(A));
             aActive = false;
+            StartCoroutine(hideImageDelay(A));
+           
 
         }
         if (sActive && Input.GetKeyDown(KeyCode.S))
         {
-            StartCoroutine(hideImageDelay(S));
             sActive = false;
+            StartCoroutine(hideImageDelay(S));
+          
 
         }
         if (dActive && Input.GetKeyDown(KeyCode.D))
         {
+              dActive = false;
             StartCoroutine(hideImageDelay(D));
-            dActive = false;
+       
 
         }
         if (shiftActive && Input.GetKeyDown(KeyCode.LeftShift))
         {
+            
             StartCoroutine(hideImageDelay(Shift));
-            shiftActive = false;
+           
 
         }
         //if (spaceActive && Input.GetKeyDown(KeyCode.Space))
@@ -75,7 +81,7 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(hideDelay);
         image.gameObject.SetActive(false);
         keysPressed++;
-        if (keysPressed >= 4 && !shiftActive) //All WASD been pressed
+        if (keysPressed == 4 && !shiftActive) //All WASD been pressed
         {
             ShowShiftButton();
         }

@@ -105,10 +105,14 @@ public class Room : MonoBehaviour
 
     public void ChangeStateOfAllEnemy(PlayerFormState playerState)
     {
-        
+        if (EnemyWaveList[currentWave].EnemyInWave.List.Count <= 0) return;
+
+
+
         foreach(GameObject i in EnemyWaveList[currentWave].EnemyInWave.List)
         {
-            i.GetComponent<EnemyStateControll>().SetEnemyState(playerState);
+          if(i.TryGetComponent<EnemyStateControll>(out EnemyStateControll StateOfEnemy))
+                StateOfEnemy.SetEnemyState(playerState);
         }
     }
 
