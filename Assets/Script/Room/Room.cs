@@ -69,7 +69,10 @@ public class Room : MonoBehaviour
         FormStageComponent componenet = ElementInEachForm.FirstOrDefault(i => i.formState == CurrentState);
 
 
-        foreach (GameObject i in componenet.ObjectInFormStage) i.SetActive(true);
+        foreach (GameObject i in componenet.ObjectInFormStage){
+         if(i != null) i.SetActive(true);
+
+        }
 
     }
 
@@ -80,7 +83,10 @@ public class Room : MonoBehaviour
         FormStageComponent componenet = ElementInEachForm.FirstOrDefault(i => i.formState == Opposit);
 
 
-        foreach (GameObject i in componenet.ObjectInFormStage) i.SetActive(false);
+        foreach (GameObject i in componenet.ObjectInFormStage)
+        {
+            if(i != null) i.SetActive(false); 
+        }
     }
 
     public void IsThisRoomClear()

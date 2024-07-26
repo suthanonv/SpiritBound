@@ -60,6 +60,8 @@ public class ExplosiveHitBox : MonoBehaviour
             }
         }
 
+
+        SoundEffectManageMent.Instance.GetSoundScripting("Explosion").PlayeringSound();
         Instantiate(ExplosiveEffect, ExplosivePreSet.transform.position, Quaternion.identity);
         Destroy(Barel);
     }
