@@ -58,7 +58,7 @@ public class Room : MonoBehaviour
     PlayerFormState GetOppositPlayerFormState(PlayerFormState CurrentState)
     {
         if (CurrentState == PlayerFormState.sprit) return PlayerFormState.physic;
-        else return PlayerFormState.physic;
+        else return PlayerFormState.sprit;
     }
 
 
@@ -68,7 +68,6 @@ public class Room : MonoBehaviour
 
         FormStageComponent componenet = ElementInEachForm.FirstOrDefault(i => i.formState == CurrentState);
 
-        if (componenet == null) return;
 
         foreach (GameObject i in componenet.ObjectInFormStage) i.SetActive(true);
 
@@ -80,7 +79,6 @@ public class Room : MonoBehaviour
 
         FormStageComponent componenet = ElementInEachForm.FirstOrDefault(i => i.formState == Opposit);
 
-        if (componenet == null) return;
 
         foreach (GameObject i in componenet.ObjectInFormStage) i.SetActive(false);
     }
