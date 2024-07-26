@@ -10,6 +10,7 @@ public class ShowShiftButton : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             TutorialManager.instance.ShowSpaceButton();
+            Destroy(gameObject);
         }
     }
 
