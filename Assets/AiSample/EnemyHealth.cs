@@ -8,6 +8,7 @@ public class EnemyHealth : Health
 {
     [SerializeField] Room RoomThatEnemyInSide;
 
+    [SerializeField] GameObject ObjectParent;
 
     [Header("Toughness")]
     [SerializeField] float MaxToughness;
@@ -54,8 +55,12 @@ public class EnemyHealth : Health
     public override void TakeDamage(float Damage)
     {
         float PreviosHealth = currenthealth;
-        ShowingDamageText.SetDamageText(Damage);
+        
+        if(currenthealth - Damage > 0) ShowingDamageText.SetDamageText(Damage);
+
         base.TakeDamage(Damage);
+        
+        
         HealthBar.HealthBarRunAnimation(currenthealth, PreviosHealth);
 
     }
