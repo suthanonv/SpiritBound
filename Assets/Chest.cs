@@ -30,6 +30,11 @@ public class Chest : MonoBehaviour
                 this.GetComponent<Animator>().SetTrigger("Open");
             }
         }
+       else
+        {
+            UiButtonClick.SetActive(false);
+
+        }
     }
 
     public void SpawningItem()

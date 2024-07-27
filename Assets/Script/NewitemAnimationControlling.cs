@@ -36,7 +36,8 @@ public class NewitemAnimationControlling : MonoBehaviour
 
 
     [SerializeField] GameObject KeyCodeUI;
-    KeyCode ConfirmKey = KeyCode.E;
+    KeyCode ConfirmKey = KeyCode.Mouse0;
+    KeyCode COnfirmKey2 = KeyCode.Q;
 
 
     private void Update()
@@ -44,7 +45,7 @@ public class NewitemAnimationControlling : MonoBehaviour
         if (StorerageFormToSwap != PlayerFormState.both)
         {
             KeyCodeUI.SetActive(true);
-            if (Input.GetKeyDown(ConfirmKey))
+            if (Input.GetKeyDown(ConfirmKey) || Input.GetKeyDown(COnfirmKey2))
             {
                 UseAbleItemStorage.instance.SetnewItem(ItemChoosingUIMangement.instance.NewItem, StorerageFormToSwap);
                 SetNewItemBorderToOrigin();

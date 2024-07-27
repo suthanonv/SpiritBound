@@ -13729,7 +13729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPotions: 3
-  NumberOfCoins: 0
+  NumberOfCoins: 100
   OnCoinsCollected:
     m_PersistentCalls:
       m_Calls: []
@@ -17550,6 +17550,7 @@ MonoBehaviour:
   InterActiveRange: 4
   ItemHolder: {fileID: 207660180}
   ShopCheckingPositon: {fileID: 191893313}
+  BuyingCD: 0.5
 --- !u!1 &2037591740
 GameObject:
   m_ObjectHideFlags: 0
@@ -20771,6 +20772,7 @@ MonoBehaviour:
   DashSpeedMultiple: 5
   DashCD: 2
   DashTime: 0.25
+  trailRenderer: {fileID: 0}
   IsSpirit: 1
   player: {fileID: 5796439959683816685}
   maxDistance: 20
@@ -32720,6 +32722,7 @@ MonoBehaviour:
   DashSpeedMultiple: 5
   DashCD: 1
   DashTime: 0.25
+  trailRenderer: {fileID: 0}
   IsSpirit: 0
   player: {fileID: 0}
   maxDistance: 10

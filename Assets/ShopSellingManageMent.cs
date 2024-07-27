@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ShopSellingManageMent : MonoBehaviour
 {
@@ -9,6 +11,12 @@ public class ShopSellingManageMent : MonoBehaviour
     [SerializeField] Transform ItemHolder;
     [SerializeField] Transform ShopCheckingPositon;
     GameObject TarGetItem;
+
+    [SerializeField] float BuyingCD = 0.5f;
+
+    bool OnCD = false;
+
+
     void Update()
     {
         if(Vector3.Distance(SpiritWorld.Instance.player.transform.position, ShopCheckingPositon.transform.position) <= InterActiveRange)
@@ -21,15 +29,23 @@ public class ShopSellingManageMent : MonoBehaviour
 
 
 
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.E) && !OnCD)
                 {
+                    OnCD = true;
                     Debug.Log("Key Pressed");
                     TarGetItem.GetComponent<ItemSelling>().OnBuyed();
+
+                    Invoke("ResetCD", BuyingCD);
                 }
             }
         }
     }
 
+
+    private void ResetCD()
+    {
+        OnCD = false;
+    }
 
     GameObject CloseedItem()
     {
