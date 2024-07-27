@@ -25272,6 +25272,7 @@ MonoBehaviour:
   HitEffect: {fileID: 0}
   HealthBar: {fileID: 7143325452557882433}
   HittingEffect: {fileID: 1793109130}
+  DeathEffect: {fileID: 1313791294}
 --- !u!114 &3190208375606340055
 MonoBehaviour:
   m_ObjectHideFlags: 0

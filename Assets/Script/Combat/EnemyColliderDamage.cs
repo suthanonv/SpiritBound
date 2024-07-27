@@ -7,6 +7,11 @@ public class EnemyColliderDamage : MonoBehaviour
     [SerializeField] float Damage;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player")) PlayerHealth.instance.TakeDamage(Damage);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            PlayerHealth.instance.SetPlayerHittedObject(other.gameObject); 
+                PlayerHealth.instance.TakeDamage(Damage);
+
+        }
     }
 }

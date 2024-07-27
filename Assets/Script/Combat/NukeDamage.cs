@@ -13,8 +13,10 @@ public class NukeDamage : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            
+            PlayerHealth.instance.SetPlayerHittedObject(other.gameObject);
                 PlayerHealth.instance.TakeDamage(Damage);
+            
+                         
             Destroy(this.gameObject);
    
         }
