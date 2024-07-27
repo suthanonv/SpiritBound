@@ -7,6 +7,6 @@ public class BarralExplote : Sound
 
     public override void PlayeringSound()
     {
-       this.GetComponent<AudioSource>().Play();
+      base.PlayeringSound();
     }
 }

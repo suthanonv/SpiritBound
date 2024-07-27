@@ -24,11 +24,13 @@ public class PlayerHealth : Health
     {
         float previosHealth = currenthealth;
         currenthealth -= Damage;
+
+        SoundEffectManageMent.Instance.GetSoundScripting("PlayerHitted").PlayeringSound();
         HealthBar.HealthBarRunAnimation(currenthealth , previosHealth);
 
         HittingEffect.SetActive(true);
 
-        Invoke("OffHittingEffect", 0.125f);
+        Invoke("OffHittingEffect", 0.171f);
 
 
     }
@@ -49,6 +51,7 @@ public class PlayerHealth : Health
 
     public void OffHittingEffect()
     {
+        SoundEffectManageMent.Instance.GetSoundScripting("PlayerHitted").StopplaySound();
         HittingEffect.SetActive(false);
     }
 }
