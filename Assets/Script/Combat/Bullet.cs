@@ -57,8 +57,17 @@ public class Bullet : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player") && IsEnemyBullet)
         {
+            PlayerHealth.instance.SetPlayerHittedObject(other.gameObject);
+
+            if (!PlayerHealth.instance.IsDeath(Daamge))
+            {
+                Destroy(this.gameObject);
+            }
+
             PlayerHealth.instance.TakeDamage(Daamge);
-            Destroy(this.gameObject); 
+            
+            
+          
         }
 
         if (other.gameObject.TryGetComponent<EnemyHealth>(out EnemyHealth health) && !IsEnemyBullet)

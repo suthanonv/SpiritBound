@@ -28,14 +28,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   scanLineJitter:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   verticalJump:
-    m_OverrideState: 0
-    m_Value: 0.223
+    m_OverrideState: 1
+    m_Value: 0.2
   horizontalShake:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.2
   colorDrift:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1

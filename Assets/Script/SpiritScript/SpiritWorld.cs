@@ -44,8 +44,9 @@ public class SpiritWorld : MonoBehaviour
     public void PlayerState()
     {
         
-
+       if(!PlayerHealth.instance.IsDeath(0))
         ChangePlayerForm(playerFormState);
+
         RoomDestination.instance.RoomThatPlayerin.SetRoomInPlayerStage(playerFormState);
 
     }
