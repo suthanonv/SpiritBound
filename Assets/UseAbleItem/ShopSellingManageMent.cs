@@ -19,11 +19,11 @@ public class ShopSellingManageMent : MonoBehaviour
 
     void Update()
     {
-        if(Vector3.Distance(SpiritWorld.Instance.player.transform.position, ShopCheckingPositon.transform.position) <= InterActiveRange)
+        if (Vector3.Distance(SpiritWorld.Instance.player.transform.position, ShopCheckingPositon.transform.position) <= InterActiveRange)
         {
-            if(ItemHolder.childCount > 0)
+            if (ItemHolder.childCount > 0)
             {
-                 TarGetItem = CloseedItem();
+                TarGetItem = CloseedItem();
 
                 TarGetItem.GetComponent<ItemSelling>().OnSelteced(true);
 
@@ -37,6 +37,13 @@ public class ShopSellingManageMent : MonoBehaviour
 
                     Invoke("ResetCD", BuyingCD);
                 }
+            }
+        }
+        else
+        {
+            foreach(Transform i in ItemHolder)
+            {
+                TarGetItem.GetComponent<ItemSelling>().OnSelteced(false);
             }
         }
     }
