@@ -44,6 +44,7 @@ MonoBehaviour:
   - {fileID: 8591105863843704719}
   - {fileID: 5554938911523225512}
   - {fileID: -6973896082085750014}
+  - {fileID: 7561491098736449377}
 --- !u!114 &5554938911523225512
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -59,19 +60,44 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: 0.09
+    m_Value: 0.05
   contrast:
     m_OverrideState: 1
-    m_Value: 61
+    m_Value: 54
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 0.8207547, g: 1, b: 0.8396226, a: 1}
+    m_Value: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
   hueShift:
     m_OverrideState: 0
-    m_Value: -6
+    m_Value: -180
   saturation:
+    m_OverrideState: 1
+    m_Value: -45
+--- !u!114 &7561491098736449377
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45fac1424df44990a90443d3cf649a75, type: 3}
+  m_Name: AnalogGlitchVolume
+  m_EditorClassIdentifier: 
+  active: 1
+  scanLineJitter:
+    m_OverrideState: 1
+    m_Value: 0.153
+  verticalJump:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 0.011
+  horizontalShake:
+    m_OverrideState: 0
+    m_Value: 0.0001
+  colorDrift:
+    m_OverrideState: 1
+    m_Value: 0.002
 --- !u!114 &8591105863843704719
 MonoBehaviour:
   m_ObjectHideFlags: 3
