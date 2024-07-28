@@ -41,10 +41,9 @@ public class ShopSellingManageMent : MonoBehaviour
         }
         else
         {
-            foreach(Transform i in ItemHolder)
-            {
+           if(TarGetItem != null)
                 TarGetItem.GetComponent<ItemSelling>().OnSelteced(false);
-            }
+            
         }
     }
 
