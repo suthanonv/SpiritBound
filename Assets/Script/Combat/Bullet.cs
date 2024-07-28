@@ -70,6 +70,12 @@ public class Bullet : MonoBehaviour
           
         }
 
+
+        if((other.gameObject.TryGetComponent<Bullet>(out Bullet bullet)))
+        {
+            Destroy(this.gameObject);
+        }
+
         if (other.gameObject.TryGetComponent<EnemyHealth>(out EnemyHealth health) && !IsEnemyBullet)
         {
             
