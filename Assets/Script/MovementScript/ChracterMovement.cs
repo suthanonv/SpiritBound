@@ -38,7 +38,9 @@ public class ChracterMovement : PlayerMover
     [SerializeField] float DashSpeedMultiple = 5f;
     [SerializeField] float DashCD = 2f;
     [SerializeField] float DashTime = 0.25f;
+    [SerializeField] private TrailRenderer _trailRenderer;
     
+
     bool CanDash = true;
     bool OnDash = false;
 
@@ -68,6 +70,7 @@ public class ChracterMovement : PlayerMover
         {
             CanDash = false;
             OnDash = true;
+            _trailRenderer.emitting = true;
           
             StartCoroutine(OffDash());
         }
@@ -229,7 +232,7 @@ public class ChracterMovement : PlayerMover
     {
         yield return new WaitForSeconds(DashTime);
         OnDash = false;
-
+        _trailRenderer.emitting = false;
         StartCoroutine(ReSetDashCD());
     }
 
