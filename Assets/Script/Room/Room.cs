@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using JetBrains.Annotations;
+using UnityEngine.Events;
 public class Room : MonoBehaviour
 {
     [SerializeField] Transform PlayerSpawnPosition;
@@ -13,9 +14,15 @@ public class Room : MonoBehaviour
 
 
     [SerializeField] GameObject Door;
+    [SerializeField] GameObject Chest;
 
     public List<EnemyWave> EnemyWaveList = new List<EnemyWave>();
     int currentWave = 0;
+
+
+    [SerializeField] bool IsThisRoomHasClearCondition = false;
+    bool ConditionClear = false;
+   
 
     public void RemoveEnemyFromList(GameObject Enemy)
     {
@@ -25,12 +32,18 @@ public class Room : MonoBehaviour
 
     private void Start()
     {
-        if (Door != null) 
-        Door.SetActive(false);
+    
         
         
-        SetEnemyInWave();
 
+        
+        foreach(var i in EnemyWaveList )
+        {
+            foreach(GameObject x in i.EnemyInWave.List)
+            {
+                x.GetComponent<EnemyHealth>().RoomThatEnemyInSide = this;
+            }
+        }
 
         foreach (EnemyWave i in EnemyWaveList)
         {
@@ -44,8 +57,10 @@ public class Room : MonoBehaviour
     {
         RoomDestination.instance.RoomThatPlayerin = this;
         Player.transform.position = PlayerSpawnPosition.position;
-        
-       if(UseAbleItemStorage.instance != null) 
+
+        SetEnemyInWave();
+
+        if (UseAbleItemStorage.instance != null) 
         UseAbleItemStorage.instance.ResetPlayerItemUseingCount();
     }
 
@@ -55,7 +70,13 @@ public class Room : MonoBehaviour
       {
         OpenRoomElement(CurrentState);
         ChangeStateOfAllEnemy(CurrentState);
-        CloseRoomELement(GetOppositPlayerFormState(CurrentState));
+        if(CurrentState == PlayerFormState.sprit)
+        CloseRoomELement(PlayerFormState.physic);
+        else
+        {
+            CloseRoomELement(PlayerFormState.sprit);
+
+        }
     }
 
 
@@ -97,15 +118,15 @@ public class Room : MonoBehaviour
     {
         if (EnemyWaveList[currentWave].EnemyInWave.List.Count <= 0)
         {
-            if (currentWave >= EnemyWaveList.Count - 1)
+            if (currentWave >= EnemyWaveList.Count - 1 && (!IsThisRoomHasClearCondition || ConditionClear))
             {
-                if(Door !=  null)
-                Door.SetActive(true);
+                SetThisRoomClear();
             }
-            else
+            else if(!IsThisRoomHasClearCondition)
             {
 
                 currentWave++;
+                if (EnemyWaveList[currentWave].IsHasNewWaveCondition == false)
                 SetEnemyInWave();
             }
         }
@@ -126,13 +147,11 @@ public class Room : MonoBehaviour
     }
 
 
-    void SetEnemyInWave()
+   public void SetEnemyInWave()
     {
         IsThisRoomClear();
         if (EnemyWaveList.Count == 0)
-        {
-
-            Door.SetActive(true);
+        { 
             return;
         }
         foreach(GameObject i in EnemyWaveList[currentWave].EnemyInWave.List)
@@ -142,6 +161,16 @@ public class Room : MonoBehaviour
         ChangeStateOfAllEnemy(SpiritWorld.Instance.playerFormState);
     }
 
+
+    public void SetThisRoomClear()
+    {
+        if (RoomDestination.instance.RoomThatPlayerin != this) return;   
+        ConditionClear = true;
+        if (Door != null)
+            Door.GetComponent<DoorInterActing>().OnOpenDoor();
+        if (Chest != null)
+            Chest.SetActive(true);
+    }
 }
 
 

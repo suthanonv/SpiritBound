@@ -23,6 +23,6 @@ public class CamFollow : MonoBehaviour
         transform.position = smoothedPosition;
     }
 
+
     
-   
 }

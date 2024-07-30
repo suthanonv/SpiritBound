@@ -7,7 +7,7 @@ public class SpiritWorld : MonoBehaviour
 {
     public static SpiritWorld Instance { get; private set; }
 
-    
+
     public GameObject player;
 
     private TopDownCharacterMover physicalControl;
@@ -15,7 +15,7 @@ public class SpiritWorld : MonoBehaviour
 
     public PlayerFormState playerFormState = 0f;
 
- public GameObject SecondCharacter;
+    public GameObject SecondCharacter;
 
     private float spawnDistance = 1f;
 
@@ -33,7 +33,7 @@ public class SpiritWorld : MonoBehaviour
 
     public GameObject GetPlayer(PlayerFormState EnimeieForm)
     {
-        if (playerFormState == PlayerFormState.sprit  && EnimeieForm == PlayerFormState.sprit)
+        if (playerFormState == PlayerFormState.sprit && EnimeieForm == PlayerFormState.sprit)
         {
             return SecondCharacter;
         }
@@ -43,9 +43,9 @@ public class SpiritWorld : MonoBehaviour
 
     public void PlayerState()
     {
-        
-       if(!PlayerHealth.instance.IsDeath(0))
-        ChangePlayerForm(playerFormState);
+
+        if (!PlayerHealth.instance.IsDeath(0))
+            ChangePlayerForm(playerFormState);
 
         RoomDestination.instance.RoomThatPlayerin.SetRoomInPlayerStage(playerFormState);
 
@@ -71,7 +71,7 @@ public class SpiritWorld : MonoBehaviour
             SecondCharacter.SetActive(true);
             Vector3 spawnPos = playerPos + playerDirec * spawnDistance;
             SecondCharacter.transform.position = spawnPos;
-           
+
             CamFollow.instance.player = SecondCharacter.transform;
 
             if (SoundEffectManageMent.Instance != null)
@@ -98,7 +98,7 @@ public class SpiritWorld : MonoBehaviour
         }
 
 
-       
+
     }
 
 
@@ -113,9 +113,25 @@ public class SpiritWorld : MonoBehaviour
         player.GetComponent<ChracterMovement>().enabled = Iseanble;
     }
 
+    public void EnablePlayer(bool Enable)
+    {
+        CanChangeForm = Enable;
+        if (this.playerFormState == PlayerFormState.physic)
+        {
+            player.GetComponent<PlayerAttack>().enabled = Enable;
+            player.GetComponent<ChracterMovement>().enabled = Enable;
+            player.GetComponent<ChracterMovement>().anim.SetFloat("Speed", 0);
 
+        }
+        else
+        {
+            SecondCharacter.GetComponent<PlayerAttack>().enabled = Enable;
+            SecondCharacter.GetComponent<ChracterMovement>().enabled = Enable;
+            SecondCharacter.GetComponent<ChracterMovement>().anim.SetFloat("Speed", 0);
+        }
 
- 
+    }
+
 }
 
     

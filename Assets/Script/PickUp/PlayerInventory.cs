@@ -26,6 +26,16 @@ public class PlayerInventory : MonoBehaviour
     [Header("Use Potion Key")]
     [SerializeField] KeyCode Health = KeyCode.F;
 
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(Health) && currentPotions > 0)
+        {
+            UsePotion();
+            FindObjectOfType<PotionUIManager>().UpdatePotionUI();
+        }
+    }
+
     public void AddPotion()
     {
         if (currentPotions < maxPotions)

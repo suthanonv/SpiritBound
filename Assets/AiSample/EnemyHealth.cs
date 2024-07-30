@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class EnemyHealth : Health
 {
-    [SerializeField] Room RoomThatEnemyInSide;
+[NonSerialized]    public Room RoomThatEnemyInSide;
 
     [SerializeField] GameObject ObjectParent;
 
@@ -68,11 +68,11 @@ public class EnemyHealth : Health
     }
 
 
-
+    [SerializeField] GameObject Parent;
     public override void Died()
     {
         RoomThatEnemyInSide.RemoveEnemyFromList(this.gameObject);
-        Destroy(this.gameObject);
+        Destroy(Parent);
     }
 
 

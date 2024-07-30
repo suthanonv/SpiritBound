@@ -35,11 +35,11 @@ public class PotionUIManager : MonoBehaviour
         {
             if (i < playerInventory.GetCurrentPotionCount())
             {
-                potionSlots[i].color = activeColor;
+                potionSlots[i].gameObject.SetActive(true);
             }
             else
             {
-                potionSlots[i].color = inactiveColor;
+                potionSlots[i].gameObject.SetActive(false);
             }
         }
     }

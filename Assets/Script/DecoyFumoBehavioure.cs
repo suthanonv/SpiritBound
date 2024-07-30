@@ -36,16 +36,20 @@ public class DecoyFumoBehavioure : UseAbleItemSkill
             if (PcFumo == null)
                 PcFumo = Instantiate(FumoPreFab, transform.position, Quaternion.identity);
 
+             
+        PcFumo.GetComponent<Fumo>().IsHolding(true);
 
-            PcFumo.GetComponent<Fumo>().IsHolding(true);
 
-            Camera mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+
+
+        Camera mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance: 300f))
             {
                 Vector3 target = hitInfo.point;
-                target.y = transform.position.y;
+      
+               target.y = SpiritWorld.Instance.player.transform.position.y;
 
                 float distanceToPlayer = Vector3.Distance(Player.transform.position, target);
 

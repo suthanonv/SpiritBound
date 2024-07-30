@@ -8,7 +8,6 @@ using UnityEngine.UIElements;
 public class ChracterMovement : PlayerMover
 {
 
-    [SerializeField] GameObject RotateingPoint;
     float currentSpeed;
 
 

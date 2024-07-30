@@ -33,8 +33,9 @@ public class DamageText : MonoBehaviour
     {
         yield return new WaitForSeconds(TextShowingTime);
 
-        text.gameObject.SetActive(false);
-
+        if (text.gameObject != null)
+            text.gameObject.SetActive(false);
+        else Destroy(this.gameObject);
     }
 
 

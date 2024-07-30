@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.Events;
+using Unity.VisualScripting;
 public class TutorialManager : MonoBehaviour
 {
     
@@ -27,6 +28,15 @@ public class TutorialManager : MonoBehaviour
 
     public static TutorialManager instance;
 
+    [SerializeField] List<GameObject> Enemy;
+
+
+    [SerializeField] UnityEvent OnTutorialEnd;
+
+    [SerializeField] UnityEvent OnClickSpaceBar;
+   
+
+
     private void Awake()
     {
         instance = this;
@@ -37,6 +47,8 @@ public class TutorialManager : MonoBehaviour
         Shift.gameObject.SetActive(false);
     
         SpaceBar.gameObject.SetActive(false);
+
+        OnTutorialEnd.AddListener(RoomDestination.instance.RoomThatPlayerin.SetThisRoomClear);
     }
 
     void Update()
@@ -73,7 +85,8 @@ public class TutorialManager : MonoBehaviour
         {
             shiftActive = false;
             StartCoroutine(hideImageDelay(Shift));
-           
+
+            OnTutorialEnd.Invoke();
 
         }
         if (spaceActive && Input.GetKeyDown(KeyCode.Space))
@@ -81,11 +94,12 @@ public class TutorialManager : MonoBehaviour
             spaceActive = false;
             StartCoroutine(hideImageDelay(SpaceBar));
 
-
+            OnClickSpaceBar.Invoke();
         }
 
     }
 
+  
     IEnumerator hideImageDelay(Image image) 
     {
         yield return new WaitForSeconds(hideDelay);

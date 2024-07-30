@@ -16,6 +16,10 @@ public class PlayerHealth : Health
 
     [SerializeField] GameObject DeathEffect;
 
+
+
+    [SerializeField] bool CanDeath = true;
+
     private void Awake()
     {
         
@@ -78,6 +82,8 @@ public class PlayerHealth : Health
     bool AlreadyDeath = false;
     public override void Died()
     {
+
+        if (!CanDeath) return;
         AlreadyDeath = true;
         CamFollow.instance.player = PlayerObjectThatGotHitted.transform;
 

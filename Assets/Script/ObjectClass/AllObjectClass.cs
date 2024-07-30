@@ -40,6 +40,7 @@ public class FormStageComponent
 {
     public PlayerFormState formState;
 
+
     public List<GameObject> ObjectInFormStage = new List<GameObject>();
 
 
@@ -73,6 +74,8 @@ public class ListCheck<T>
 public class EnemyWave
 { 
     public ListCheck<GameObject> EnemyInWave = new ListCheck<GameObject>();
+    public bool IsHasNewWaveCondition = false;
+
 }
 [System.Serializable]
 public class PlayerItemSkill
