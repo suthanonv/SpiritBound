@@ -28,7 +28,7 @@ public class EnemyStateControll : MonoBehaviour
 
         if(HealthUi != null)
         {
-            if(playerState != FormCheck.EnemyForm)
+            if(playerState != FormCheck.EnemyForm || this.gameObject.activeSelf == false)
             {
                 HealthUi.SetActive(false);
             }
