@@ -18,5 +18,5 @@ MonoBehaviour:
     same type within a 15-meter radius.       '
   ItemSkill: {fileID: 4111365419033690993, guid: 37356f047dc36504388fe6c81d65e557,
     type: 3}
-  UsingLimitPerRoom: 2
+  UsingLimitPerRoom: 3
   CDTime: 10
