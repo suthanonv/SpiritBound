@@ -183,22 +183,21 @@ public class ChracterMovement : PlayerMover
     }
     private void RotateFromMouseVector()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Vector3 mousePosition = Input.mousePosition;
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, 300f, LayerToRayCast))
+        // Convert the mouse position to world position
+        mousePosition.z = Camera.main.transform.position.y - transform.position.y; // This should be the distance from the camera to the player
+        Vector3 target = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        // Adjust the target to be at the same height as the player
+        target.y = transform.position.y;
+
+        Vector3 direction = target - transform.position;
+
+        // Ensure there's a direction to look at and the distance is greater than a threshold
+        if (direction != Vector3.zero && direction.magnitude > 0.5f)
         {
-            Vector3 target = hitInfo.point;
-            target.y = transform.position.y;  // Keep the target at the same height as the player
-
-            Vector3 direction = target - transform.position;
-            direction.y = 0;  // Remove any vertical component to ensure horizontal rotation
-
-            float distance = direction.magnitude;  // Calculate the distance to the target
-
-            if (direction != Vector3.zero && distance > 0.5f) // Ensure there's a direction to look at and the distance is greater than a threshold
-            {
-                transform.rotation = Quaternion.LookRotation(direction);
-            }
+            transform.rotation = Quaternion.LookRotation(direction);
         }
     }
 
