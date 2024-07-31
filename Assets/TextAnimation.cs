@@ -43,7 +43,7 @@ public class TextAnimation : MonoBehaviour
 [System.Serializable]
 public class StringTextAnimatedLists
 {
-     Color TextStartColor = Color.white;
+     Color TextStartColor = Color.gray;
     public Color TextEndColor = Color.white;
 
     public float NextTextCD = 0.5f;
