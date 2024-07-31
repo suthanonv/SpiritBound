@@ -14,14 +14,9 @@ public class SpawningEnemyEffect : MonoBehaviour
     {
         if (EnemyObject == null) return;
 
-        if (EnemyObject.GetComponent<Ai_Controllering>().EnemyForm != SpiritWorld.Instance.playerFormState && EnemyObject.GetComponent<Ai_Controllering>().EnemyForm != PlayerFormState.both)
-        {
-            Effect.GetComponent<MeshRenderer>().enabled = false;
-        }
-        else 
-        {
-            Effect.GetComponent<MeshRenderer>().enabled = true;
-        }
+ 
+      Effect.GetComponent<MeshRenderer>().enabled = true;
+        
 
         if(EnemyObject.activeSelf)
         {
