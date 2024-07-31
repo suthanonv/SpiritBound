@@ -82,6 +82,8 @@ public class SpiritWorld : MonoBehaviour
         else
         {
             playerFormState = PlayerFormState.physic;
+
+            SecondCharacter.GetComponent<ChracterMovement>().DisableDash();
             Shader.gameObject.SetActive(false);
             player.GetComponent<ChracterMovement>().anim.SetBool("isSleep", false);
 

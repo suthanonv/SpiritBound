@@ -235,9 +235,18 @@ public class ChracterMovement : PlayerMover
     }
 
 
+    public void DisableDash()
+    {
+        OnDash = false;
+        CanDash = true;
+        _trailRenderer.emitting = false;
+    }
+
+
     IEnumerator ReSetDashCD()
     {
         yield return new WaitForSeconds(DashCD);
         CanDash = true;
+
     }
 }

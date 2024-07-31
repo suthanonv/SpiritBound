@@ -18,5 +18,5 @@ MonoBehaviour:
     and damages nearby enemies within 5 meters.
   ItemSkill: {fileID: 3149727327580991538, guid: 1c38725ad64f91e44a1ae4bf5b4fefbb,
     type: 3}
-  UsingLimitPerRoom: 1
-  CDTime: -1
+  UsingLimitPerRoom: 2
+  CDTime: 10
