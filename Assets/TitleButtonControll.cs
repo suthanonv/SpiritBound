@@ -25,14 +25,16 @@ public class TitleButtonControll : MonoBehaviour
             {
                 CurrentCD = 1;
 
-                switch (currentButtonStat)
+                 if (currentButtonStat == ButtonStat.start)
                 {
-                    case ButtonStat.none:
-                        this.GetComponent<Animator>().SetTrigger("ONStartSelect") ;
-                        currentButtonStat = ButtonStat.start;
-                        return;
-                    case ButtonStat.start: this.GetComponent<Animator>().SetTrigger("ExitSelect"); currentButtonStat = ButtonStat.exit; return;
-                    case ButtonStat.exit: this.GetComponent<Animator>().SetTrigger("ONStartSelect"); currentButtonStat = ButtonStat.start; return;
+                    currentButtonStat = ButtonStat.exit;
+                   this.GetComponent<Animator>().SetTrigger("ExitSelect"); currentButtonStat = ButtonStat.exit; 
+                }
+                else
+                {
+                    currentButtonStat = ButtonStat.start;
+                    this.GetComponent<Animator>().SetTrigger("ONStartSelect");
+
                 }
                 Invoke("Cooldown", CD);
             }
