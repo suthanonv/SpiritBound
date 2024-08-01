@@ -28,11 +28,11 @@ public class TitleButtonControll : MonoBehaviour
                 switch (currentButtonStat)
                 {
                     case ButtonStat.none:
-                        this.GetComponent<Animator>().SetTrigger("ONStartSelect");
-
+                        this.GetComponent<Animator>().SetTrigger("ONStartSelect") ;
+                        currentButtonStat = ButtonStat.start;
                         return;
-                    case ButtonStat.start: this.GetComponent<Animator>().SetTrigger("ExitSelect"); return;
-                    case ButtonStat.exit: this.GetComponent<Animator>().SetTrigger("ONStartSelect"); return;
+                    case ButtonStat.start: this.GetComponent<Animator>().SetTrigger("ExitSelect"); currentButtonStat = ButtonStat.exit; return;
+                    case ButtonStat.exit: this.GetComponent<Animator>().SetTrigger("ONStartSelect"); currentButtonStat = ButtonStat.start; return;
                 }
                 Invoke("Cooldown", CD);
             }
