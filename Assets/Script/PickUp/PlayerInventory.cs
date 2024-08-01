@@ -41,12 +41,12 @@ public class PlayerInventory : MonoBehaviour
         if (currentPotions < maxPotions)
         {
             currentPotions++;
-            Debug.Log("Potion +1 : " + currentPotions);
+            //Debug.Log("Potion +1 : " + currentPotions);
            
         }
         else
         {
-            Debug.Log("Cannot carry any more potions.");
+            //Debug.Log("Cannot carry any more potions.");
            
         }
     }
@@ -57,11 +57,11 @@ public class PlayerInventory : MonoBehaviour
         {
             PlayerHealth.instance.Healing(HealignAmount);
             currentPotions--;
-            Debug.Log("Potion used. Remaining potions: " + currentPotions);
+           // Debug.Log("Potion used. Remaining potions: " + currentPotions);
         }
         else
         {
-            Debug.Log("No potions left.");
+           // Debug.Log("No potions left.");
         }
     }
 
