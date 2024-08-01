@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class TitleButtonControll : MonoBehaviour
 {
+    [SerializeField] string SceneToLoadName;
 
     enum ButtonStat
-    { none , start , exit}
+    { none, start, exit }
 
 
     ButtonStat currentButtonStat = ButtonStat.none;
@@ -18,33 +19,53 @@ public class TitleButtonControll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.UpArrow)) 
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if(CurrentCD == 0)
+            if (CurrentCD == 0)
             {
                 CurrentCD = 1;
 
                 switch (currentButtonStat)
-                { 
-                case ButtonStat.none : this.GetComponent<Animator>().SetTrigger("ONStartSelect");
-                            
-                            return;
+                {
+                    case ButtonStat.none:
+                        this.GetComponent<Animator>().SetTrigger("ONStartSelect");
+
+                        return;
                     case ButtonStat.start: this.GetComponent<Animator>().SetTrigger("ExitSelect"); return;
-                        case ButtonStat.exit: this.GetComponent<Animator>().SetTrigger("ONStartSelect");  return;
+                    case ButtonStat.exit: this.GetComponent<Animator>().SetTrigger("ONStartSelect"); return;
                 }
                 Invoke("Cooldown", CD);
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+
+        bool isRun = false;
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !isRun)
         {
+            if (currentButtonStat == ButtonStat.start)
+            {
+                isRun = true;
 
+                this.GetComponent<Animator>().SetTrigger("Selected");
+            }
+
+            if (currentButtonStat == ButtonStat.exit)
+            {
+                Application.Quit();
+            }
         }
+
+
+
     }
-
-
     void Cooldown()
     {
         CurrentCD = 0;
+    }
+
+    public void LoadScene()
+    {
+        SceneManager.LoadScene(SceneToLoadName);
     }
 }
