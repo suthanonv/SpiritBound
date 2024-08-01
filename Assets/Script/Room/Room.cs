@@ -62,6 +62,8 @@ public class Room : MonoBehaviour
 
         if (UseAbleItemStorage.instance != null) 
         UseAbleItemStorage.instance.ResetPlayerItemUseingCount();
+
+        IsThisRoomClear();
     }
 
 
@@ -96,7 +98,6 @@ public class Room : MonoBehaviour
 
         foreach (GameObject i in componenet.ObjectInFormStage){
          if(i != null) i.SetActive(true);
-
         }
 
     }
@@ -120,15 +121,30 @@ public class Room : MonoBehaviour
         {
             if (currentWave >= EnemyWaveList.Count - 1 && (!IsThisRoomHasClearCondition || ConditionClear))
             {
+                MusicSound PlayMusic = SoundEffectManageMent.Instance.GetSoundScripting("Music") as MusicSound;
+
+                PlayMusic.PlayingMusic("Normal");
                 SetThisRoomClear();
             }
+
             else if(!IsThisRoomHasClearCondition)
             {
-
                 currentWave++;
                 if (EnemyWaveList[currentWave].IsHasNewWaveCondition == false)
                 SetEnemyInWave();
             }
+            else
+            {
+                MusicSound PlayMusic = SoundEffectManageMent.Instance.GetSoundScripting("Music") as MusicSound;
+
+                PlayMusic.PlayingMusic("Normal");
+            }
+        }
+        else
+        {
+            MusicSound PlayMusic = SoundEffectManageMent.Instance.GetSoundScripting("Music") as MusicSound;
+
+            PlayMusic.PlayingMusic("Combat");
         }
         
     }
@@ -151,7 +167,8 @@ public class Room : MonoBehaviour
     {
         IsThisRoomClear();
         if (EnemyWaveList.Count == 0)
-        { 
+        {
+            
             return;
         }
         foreach(GameObject i in EnemyWaveList[currentWave].EnemyInWave.List)
@@ -160,7 +177,6 @@ public class Room : MonoBehaviour
         }
         ChangeStateOfAllEnemy(SpiritWorld.Instance.playerFormState);
     }
-
 
     public void SetThisRoomClear()
     {

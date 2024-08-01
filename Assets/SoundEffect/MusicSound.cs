@@ -8,10 +8,16 @@ public class MusicSound : Sound
     [SerializeField] List<MusicList> MusicToPlayList = new List<MusicList>();
 
 
-
+    string CurrentMusic = "";
 
     public void PlayingMusic(string Name)
     {
+
+        if (CurrentMusic == Name) return;
+        CurrentMusic = Name;
+
+
+
        AudioClip MusicToplay = MusicToPlayList.FirstOrDefault(i => i.MusicName == Name).Music;
 
      AudioSource Source = GetComponent<AudioSource>();
@@ -19,6 +25,7 @@ public class MusicSound : Sound
         Source.clip = MusicToplay;
         Source.Play();
 
+        
     }
 }
 
