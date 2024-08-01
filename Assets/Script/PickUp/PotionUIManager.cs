@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class PotionUIManager : MonoBehaviour
 {
-    public Image[] potionSlots; // Assign these in the Inspector
+    [SerializeField] List<Sprite> PotionSpirte = new List<Sprite>(); 
+
     public Color activeColor = Color.green;
     public Color inactiveColor = Color.gray;
     private PlayerInventory playerInventory;
@@ -15,6 +16,8 @@ public class PotionUIManager : MonoBehaviour
     public static PotionUIManager instance;
 
     public TextMeshProUGUI Cointext;
+
+    [SerializeField] Image PotionImage;
 
     private void Awake()
     {
@@ -34,17 +37,9 @@ public class PotionUIManager : MonoBehaviour
 
     public void UpdatePotionUI()
     {
-        for (int i = 0; i < potionSlots.Length; i++)
-        {
-            if (i < playerInventory.GetCurrentPotionCount())
-            {
-                potionSlots[i].gameObject.SetActive(true);
-            }
-            else
-            {
-                potionSlots[i].gameObject.SetActive(false);
-            }
-        }
+        int CurrentPotion = playerInventory.GetCurrentPotionCount();
+
+        PotionImage.sprite = PotionSpirte[CurrentPotion];
     }
 }
 
