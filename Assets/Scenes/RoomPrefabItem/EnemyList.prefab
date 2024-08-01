@@ -365,6 +365,7 @@ MonoBehaviour:
   EnemiePostion: {fileID: 8878845927575231936}
   OffSet: {x: 0, y: 3.09, z: -0.25}
   MainCam: {fileID: 0}
+  IsRotateToCam: 1
 --- !u!1 &247196062966814060
 GameObject:
   m_ObjectHideFlags: 0
@@ -2467,6 +2468,7 @@ MonoBehaviour:
   EnemiePostion: {fileID: 5159160507369028753}
   OffSet: {x: 0, y: 2.77, z: 0}
   MainCam: {fileID: 0}
+  IsRotateToCam: 1
 --- !u!114 &1982002595904341849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3965,6 +3967,7 @@ MonoBehaviour:
   EnemiePostion: {fileID: 8440756752564854629}
   OffSet: {x: 0, y: 1.37, z: -0.25}
   MainCam: {fileID: 0}
+  IsRotateToCam: 1
 --- !u!1 &3166198657169169592
 GameObject:
   m_ObjectHideFlags: 0
@@ -5185,6 +5188,7 @@ MonoBehaviour:
   EnemiePostion: {fileID: 9154924116719273572}
   OffSet: {x: -0.16, y: -0.34, z: -0.26}
   MainCam: {fileID: 0}
+  IsRotateToCam: 1
 --- !u!1 &4382727582020471659
 GameObject:
   m_ObjectHideFlags: 0
@@ -5305,6 +5309,7 @@ MonoBehaviour:
   EnemiePostion: {fileID: 8440756752564854629}
   OffSet: {x: 0, y: 1.67, z: 0}
   MainCam: {fileID: 0}
+  IsRotateToCam: 1
 --- !u!114 &7560699539324959217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7141,7 +7146,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 100
   HitEffect: {fileID: 1361667855423810715}
-  RoomThatEnemyInSide: {fileID: 0}
   ObjectParent: {fileID: 5511264211220869713}
   MaxToughness: 50
   ToughnessResetPerioud: 5
@@ -7149,6 +7153,7 @@ MonoBehaviour:
   HealthBar: {fileID: 7560699539324959217}
   anim: {fileID: 4864294942644143682}
   ShowingDamageText: {fileID: 1581281350286531031}
+  Parent: {fileID: 0}
 --- !u!54 &6267132319634613101
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9231,7 +9236,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 100
   HitEffect: {fileID: 5608837494933069061}
-  RoomThatEnemyInSide: {fileID: 0}
   ObjectParent: {fileID: 4497604792243792745}
   MaxToughness: 50
   ToughnessResetPerioud: 5
@@ -9239,6 +9243,7 @@ MonoBehaviour:
   HealthBar: {fileID: 1982002595904341849}
   anim: {fileID: 5399023148429878406}
   ShowingDamageText: {fileID: 5506903569941352590}
+  Parent: {fileID: 0}
 --- !u!54 &56810759139180236
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11345,6 +11350,7 @@ MonoBehaviour:
   EnemiePostion: {fileID: 8878845927575231936}
   OffSet: {x: 0, y: 3.5, z: 0}
   MainCam: {fileID: 0}
+  IsRotateToCam: 1
 --- !u!114 &3038630515743944073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13317,7 +13323,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 50
   HitEffect: {fileID: 9154610628319956687}
-  RoomThatEnemyInSide: {fileID: 0}
   ObjectParent: {fileID: 6902502930685241782}
   MaxToughness: 100
   ToughnessResetPerioud: 5
@@ -13325,6 +13330,7 @@ MonoBehaviour:
   HealthBar: {fileID: 3038630515743944073}
   anim: {fileID: 2952375465359008400}
   ShowingDamageText: {fileID: 4316300313146795376}
+  Parent: {fileID: 0}
 --- !u!114 &7920222431711614203
 MonoBehaviour:
   m_ObjectHideFlags: 0
