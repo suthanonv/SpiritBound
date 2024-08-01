@@ -4549,7 +4549,7 @@ RectTransform:
   m_Father: {fileID: 657775904}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7359,7 +7359,7 @@ RectTransform:
   m_Father: {fileID: 1794312545}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8605,7 +8605,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &996478084
 Transform:
   m_ObjectHideFlags: 0
@@ -35507,7 +35507,7 @@ Transform:
   m_Children:
   - {fileID: 6547897911799776831}
   m_Father: {fileID: 8166084471296634849}
-  m_LocalEulerAnglesHint: {x: 4.5000005, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0, y: -0, z: -0}
 --- !u!4 &7377443192543047774
 Transform:
   m_ObjectHideFlags: 0
@@ -36044,7 +36044,7 @@ Transform:
   - {fileID: 8957035780361274056}
   - {fileID: 8166084471296634849}
   m_Father: {fileID: 4728530143801725845}
-  m_LocalEulerAnglesHint: {x: -1.2923738, y: -6.9852915, z: -3.2439752}
+  m_LocalEulerAnglesHint: {x: -1.6250566, y: -17.964571, z: 3.4541094}
 --- !u!95 &7550582421315289921
 Animator:
   serializedVersion: 5
@@ -37735,7 +37735,7 @@ Transform:
   - {fileID: 134026572913900612}
   - {fileID: 7369043670630766754}
   m_Father: {fileID: 7547385404616642881}
-  m_LocalEulerAnglesHint: {x: -6.5142198, y: 14.770347, z: -88.13093}
+  m_LocalEulerAnglesHint: {x: 6.109736, y: 19.446482, z: -91.046936}
 --- !u!65 &8189751939046440674
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39978,7 +39978,7 @@ Transform:
   m_Children:
   - {fileID: 749491326666056503}
   m_Father: {fileID: 7547385404616642881}
-  m_LocalEulerAnglesHint: {x: -0, y: 0, z: 30}
+  m_LocalEulerAnglesHint: {x: -17.229395, y: -10.314103, z: 46.5667}
 --- !u!4 &8970682747777527414
 Transform:
   m_ObjectHideFlags: 0
