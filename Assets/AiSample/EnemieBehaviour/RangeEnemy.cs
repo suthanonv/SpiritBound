@@ -17,7 +17,7 @@ public class RangeEnemy : EnemieBehaviour
 
     private void Update()
     {
-        if (OffCD && IsAnimationDone) Attack();
+        if (OffCD && IsAnimationDone && MovementScript.isInRange(ActionRange)) Attack();
     
     
      

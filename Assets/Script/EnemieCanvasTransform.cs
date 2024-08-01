@@ -9,7 +9,7 @@ public class EnemieCanvasTransform : MonoBehaviour
     [SerializeField] Vector3 OffSet;
     [SerializeField] Camera MainCam;
 
-    [SerializeField] bool IsRotateToCam = true; 
+  bool IsRotateToCam = false; 
 
     private void Start()
     {
