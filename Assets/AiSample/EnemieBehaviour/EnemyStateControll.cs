@@ -21,7 +21,11 @@ public class EnemyStateControll : MonoBehaviour
                 Audio.bypassEffects = true;
         }
 
-        if (FormCheck.EnemyForm == PlayerFormState.both) return;
+        if (FormCheck.EnemyForm == PlayerFormState.both)
+        {
+            HealthUi.SetActive(true);
+            return;
+        }
         EnemyChangeMaterial.PlayerState = playerState;
 
         EnemyChangeMaterial.ChangeMeterialCorespondToForm();
