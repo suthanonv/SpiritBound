@@ -81,12 +81,16 @@ public class TimeRewindBehavioer : UseAbleItemSkill
 
                     Destroy(DamageArea, 0.425f);
                 }
-                
+
+                HaveBeenUseBefore = false;
                 StartItemCD();
             }
         }
         
     }
+
+
+   
 
     public override void ResetItemUseingCount()
     {

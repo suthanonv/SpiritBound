@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,8 @@ public class PotionUIManager : MonoBehaviour
     private PlayerInventory playerInventory;
 
     public static PotionUIManager instance;
+
+    public TextMeshProUGUI Cointext;
 
     private void Awake()
     {

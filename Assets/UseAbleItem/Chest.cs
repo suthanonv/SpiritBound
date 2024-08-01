@@ -14,6 +14,8 @@ public class Chest : MonoBehaviour
 
     [SerializeField] Transform ItemSpawningPoint;
 
+    [SerializeField] int MoneyDrop = 10;
+
     KeyCode InterActingKey = KeyCode.E;
 
 
@@ -39,6 +41,10 @@ public class Chest : MonoBehaviour
 
     public void SpawningItem()
     {
+
+        PlayerInventory.Instance.NumberOfCoins += 10;
+
+        PotionUIManager.instance.Cointext.text = PlayerInventory.Instance.NumberOfCoins.ToString();
         int indexToSpawn = Random.Range(0 , ItemToDropList.Count);
 
         Instantiate(ItemToDropList[indexToSpawn], ItemSpawningPoint.transform.position, Quaternion.identity);
