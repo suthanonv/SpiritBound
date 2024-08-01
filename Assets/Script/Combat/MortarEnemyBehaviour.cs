@@ -54,7 +54,7 @@ public class MortarEnemyBehaviour : EnemieBehaviour
     {
         Transform Player = this.GetComponent<Ai_Controllering>().Player;
 
-        Instantiate(Nuke , new Vector3(Player.position.x , -16.86f , Player.position.z) , Quaternion.identity) ;
+        Instantiate(Nuke , new Vector3(Player.position.x , Player.position.y - 16.86f , Player.position.z) , Quaternion.identity) ;
     }
 
 
