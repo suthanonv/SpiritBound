@@ -14,6 +14,7 @@ public class TutorialManager : MonoBehaviour
     public Image D;
     public Image Shift;
     public Image SpaceBar;
+    public Image F;
 
     private bool wActive = true;
     private bool aActive = true;
@@ -21,6 +22,7 @@ public class TutorialManager : MonoBehaviour
     private bool dActive = true;
     private bool shiftActive = false;
     private bool spaceActive = false; 
+    private bool fActive = false;
 
     private int keysPressed = 0;
 
@@ -47,6 +49,8 @@ public class TutorialManager : MonoBehaviour
         Shift.gameObject.SetActive(false);
     
         SpaceBar.gameObject.SetActive(false);
+
+        F.gameObject.SetActive(false);
 
         OnTutorialEnd.AddListener(RoomDestination.instance.RoomThatPlayerin.SetThisRoomClear);
     }
@@ -96,6 +100,13 @@ public class TutorialManager : MonoBehaviour
 
             OnClickSpaceBar.Invoke();
         }
+        if (fActive && Input.GetKeyDown(KeyCode.F))
+        {
+            fActive = false;
+            StartCoroutine(hideImageDelay(F));
+
+            OnClickSpaceBar.Invoke();
+        }
 
     }
 
@@ -114,20 +125,25 @@ public class TutorialManager : MonoBehaviour
     }
     void ShowShiftButton()
     {
-        Debug.Log("Shift Button");
+        //Debug.Log("Shift Button");
         Shift.gameObject.SetActive(true);
         shiftActive = true;
     }
     public void HideShiftButton()
     {
-        Debug.Log("Hiding Shift Button");
+        //Debug.Log("Hiding Shift Button");
         Shift.gameObject.SetActive(false); 
     }
     public void ShowSpaceButton()
     {
-        Debug.Log("ShowSpace");
+        //Debug.Log("ShowSpace");
         SpaceBar.gameObject.SetActive(true);
         spaceActive = true;
+    }
+    public void ShowFButton()
+    {
+        F.gameObject.SetActive(true);
+        fActive = true;
     }
  
 
