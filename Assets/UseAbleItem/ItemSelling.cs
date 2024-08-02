@@ -15,6 +15,7 @@ public class ItemSelling : MonoBehaviour
         if(PlayerInventory.Instance.NumberOfCoins >= ItemPrice)
         {
             PlayerInventory.Instance.NumberOfCoins -= ItemPrice;
+            PotionUIManager.instance.Cointext.text = PlayerInventory.Instance.NumberOfCoins.ToString();
 
             SuccessBuyyingItem();
         }

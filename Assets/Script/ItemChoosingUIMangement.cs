@@ -1,10 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using static UnityEditor.Progress;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using System;
 public class ItemChoosingUIMangement : MonoBehaviour
 {

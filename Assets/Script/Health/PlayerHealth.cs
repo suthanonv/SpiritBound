@@ -27,6 +27,7 @@ public class PlayerHealth : Health
     }
     private void Start()
     {
+        currenthealth = MaxHealth;
         HealthBar.SetHealthBar(MaxHealth, currenthealth);
     }
 

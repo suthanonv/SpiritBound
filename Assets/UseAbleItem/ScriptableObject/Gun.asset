@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gun
   m_EditorClassIdentifier: 
   ItemName: Pistol
-  SpriteIcon: {fileID: 21300000, guid: 3a24d079b9f0cf3458d9901b3564d16d, type: 3}
+  SpriteIcon: {fileID: 21300000, guid: 9a8f5943b1df9634c9e5a66f8bf9617a, type: 3}
   ItemDescription: shooting a bullet in the direction that the player is facing,
     dealing 15 damage upon bullet hitting an enemy
   ItemSkill: {fileID: 9049842210450505980, guid: aeb6d23a181eccd42aba6642c17da6ea,

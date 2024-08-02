@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class TitleButtonControll : MonoBehaviour
@@ -66,8 +64,12 @@ public class TitleButtonControll : MonoBehaviour
         CurrentCD = 0;
     }
 
+    [SerializeField] GameObject LoadingScreen;
     public void LoadScene()
     {
+        LoadingScreen.SetActive(true);
+        this.gameObject.SetActive(false);
+
         SceneManager.LoadScene(SceneToLoadName);
     }
 }

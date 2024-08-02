@@ -2,7 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class DoorInterActing : MonoBehaviour
 {
  [SerializeField] int DoorBranchIndex;
@@ -16,8 +16,13 @@ public class DoorInterActing : MonoBehaviour
     bool IsThisObjectVisible;
 
     [SerializeField] GameObject Door;
-   
 
+
+
+    [SerializeField] bool IsTheLastDoor = false;
+
+
+    string nameOfScene = "";
     private void Start()
     {
 
@@ -50,8 +55,8 @@ public class DoorInterActing : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            DestiantionRoom.SetRoom(Player);
-           
+            if (!IsTheLastDoor) DestiantionRoom.SetRoom(Player);
+            else SceneManager.LoadScene("Victory");
         }
     }
 

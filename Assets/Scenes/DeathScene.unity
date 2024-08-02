@@ -638,7 +638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Text: {fileID: 954640058}
-  SceneNameToLoad: 
+  SceneNameToLoad: MainGame
   stringTextAnimatedLists:
   - TextEndColor: {r: 1, g: 1, b: 1, a: 1}
     NextTextCD: 0.25
