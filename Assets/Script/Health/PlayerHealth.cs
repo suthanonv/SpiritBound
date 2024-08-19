@@ -20,6 +20,23 @@ public class PlayerHealth : Health
 
     [SerializeField] bool CanDeath = true;
 
+
+    public void SetHealth(float HealthToSet)
+    {
+        currenthealth = HealthToSet;
+
+        HealthBar.SetHealthBar(MaxHealth, currenthealth);
+    }
+
+    public float GetCurrentHealth()
+    {
+
+    return currenthealth; 
+    
+    } 
+
+
+
     private void Awake()
     {
         

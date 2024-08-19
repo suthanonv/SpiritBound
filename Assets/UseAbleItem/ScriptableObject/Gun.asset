@@ -19,4 +19,4 @@ MonoBehaviour:
   ItemSkill: {fileID: 9049842210450505980, guid: aeb6d23a181eccd42aba6642c17da6ea,
     type: 3}
   UsingLimitPerRoom: -1
-  CDTime: 2
+  CDTime: 0.1

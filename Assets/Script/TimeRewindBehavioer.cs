@@ -17,6 +17,8 @@ public class TimeRewindBehavioer : UseAbleItemSkill
     Transform PlayerPosition;
 
 
+    float HealthToSet;
+
     private void Start()
     {
         ResetItemUseingCount();
@@ -40,6 +42,8 @@ public class TimeRewindBehavioer : UseAbleItemSkill
         if (!HaveBeenUseBefore)
         {
             ONCD = true;
+
+            HealthToSet = PlayerHealth.instance.GetCurrentHealth();
 
             if (ItemInPlayerForm == PlayerFormState.physic)
             {
@@ -82,6 +86,7 @@ public class TimeRewindBehavioer : UseAbleItemSkill
                     Destroy(DamageArea, 0.425f);
                 }
 
+                PlayerHealth.instance.SetHealth(HealthToSet);
                 HaveBeenUseBefore = false;
                 StartItemCD();
             }

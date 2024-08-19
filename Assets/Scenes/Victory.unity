@@ -642,12 +642,12 @@ MonoBehaviour:
   stringTextAnimatedLists:
   - TextEndColor: {r: 1, g: 0.17802961, b: 0, a: 1}
     NextTextCD: 1
-    TextAnimationToPlay: viruses have been eradicated
+    TextAnimationToPlay: viruses have been eradicated for now
     DotLoopCount: 0
     TextDelay: 0.1
   - TextEndColor: {r: 0.35270953, g: 1, b: 0, a: 1}
     NextTextCD: 2
-    TextAnimationToPlay: Thank you for your assistance
+    TextAnimationToPlay: Thanks for your assistance
     DotLoopCount: 0
     TextDelay: 0.1
 --- !u!114 &1336675563
